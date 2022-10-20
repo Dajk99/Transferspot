@@ -17,9 +17,10 @@
     <link rel="stylesheet" href="../css/user_style.css">
 </head>
 <body>
-
     <!-- Sekcja header -->
-    
+    <?php
+        include '../components/user_header.php';
+    ?>
     <!-- Połączenie ze skryptem JS -->
     <script src="../js/user_script.js"></script>
 </body>
