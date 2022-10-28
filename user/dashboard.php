@@ -25,8 +25,8 @@ if(!isset($user_id)){
     <!-- Połączenie ze stylami css -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"> 
-    <link rel="stylesheet" href="/css/user_style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oswald:wght@300;400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="../css/user_style.css">
 </head>
 <body>
     <!-- Sekcja header -->

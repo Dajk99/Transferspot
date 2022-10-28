@@ -1,6 +1,9 @@
 <header class="header">
 
-<a href="/user/dashboard.php" class="header__logo">panel użytkownika</a>
+<div class="header__logo">
+    <a href="/user/dashboard.php">Transferspot</a>
+    <p>panel użytkownika</p>
+</div>
 
 <div class="header__profile">
     <?php
@@ -8,21 +11,29 @@
     $select_profile->execute([$user_id]);
     $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
     ?>
-    <p><?= $fetch_profile['name']; ?></p>
-    <a href="update_profile.php" class="header__btn btn">zaktualizuj profil</a>
+    <p>Witaj, <?= $fetch_profile['name']; ?></p>
+    <button class="btn" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
 </div>
 
 <nav class="header__navbar navbar">
-    <a href="dashboard.php"><i class="fa-solid fa-house"></i>strona główna</a>
-    <a href="add_ann.php"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>
-    <a href="view_ann.php"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
+    <button class="option" onclick="location.href='dashboard.php'">
+        <i class="fa-solid fa-house"></i>strona główna
+    </button>
+    <button class="option" onclick="location.href='add_ann.php'">
+        <i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie
+    </button>
+    <button class="option" onclick="location.href='view_ann.php'">
+        <i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia
+    </button>
+    <a href="/components/user_logout.php" class="logout">
+        <i class="fa-solid fa-right-from-bracket"></i>wyloguj
+    </a>
     <!-- <a href="admin_accounts.php"><i class="fas fa-user"></i>konta</a> -->
-    <a href="/components/user_logout.php" class="logout"><i class="fa-solid fa-right-from-bracket"></i>wyloguj</a>
 </nav>
 
 <div class="header__flex-btn">
-    <a href="/user/user_login.php" class="option-btn">zaloguj się</a>
-    <a href="/user/user_register.php" class="option-btn">zarejestruj się</a>
+    <a href="/user/user_login.php" class="option-btn">logowanie</a>
+    <a href="/user/user_register.php" class="option-btn">rejestracja</a>
 </div>
 
 </header>
