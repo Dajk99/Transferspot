@@ -5,20 +5,52 @@
           box-sizing: border-box;
   margin: 0;
   padding: 0;
-  outline: none;
-  border: none;
-  text-decoration: none;
+}
+
+html,
+body {
+  height: 100%;
 }
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
   overflow: hidden;
-  font-family: "Oswald", sans-serif;
+  font-family: 'Oswald', sans-serif;
   color: #000;
 }
 
+a {
+  text-decoration: none;
+}
+
+img {
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
 body {
-  background-color: #a3b18a;
+  background-color: #2d3a3a;
 }
 
 .btn,
@@ -51,19 +83,20 @@ body {
 
 .inline-option-btn,
 .option-btn {
-  color: #000;
-  background-color: #fff;
+  color: #fcfffc;
+  background-color: #2d3a3a;
   -webkit-transition: background-color 0.3s;
   transition: background-color 0.3s;
 }
+
 .inline-option-btn:hover,
 .option-btn:hover {
-  background-color: #a3b18a;
+  background-color: #040f0f;
 }
 
 .inline-delete-btn,
 .delete-btn {
-  background-color: red;
+  background-color: #b10000;
 }
 
 .header {
@@ -74,38 +107,49 @@ body {
   height: 100vh;
   width: 40rem;
   z-index: 1000;
-  background-color: #dad7cd;
+  background-color: #fcfffc;
 }
+
 .header__logo {
   text-align: center;
   margin-bottom: 0.5em;
 }
+
 .header__logo a {
-  color: #000;
+  color: #248232;
   font-size: 3.5rem;
-  font-family: "Audiowide", cursive;
+  font-family: 'Russo One', sans-serif;
 }
+
 .header__logo p {
   font-size: 2.2rem;
   text-transform: uppercase;
 }
+
 .header__profile {
   margin: 2rem 0;
   padding: 1.5rem;
   font-size: 2.5rem;
-  border-radius: 0.5rem;
-  background-color: #a3b18a;
+  border-radius: 0.8rem;
+  background-color: #2d3a3a;
+  color: #fcfffc;
   text-align: center;
   text-transform: uppercase;
 }
+
 .header__profile .btn {
-  background-color: #fff;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
+  background-color: #2d3a3a;
+  color: #fcfffc;
+  border: 1px solid #fcfffc;
+  -webkit-transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
+
 .header__profile .btn:hover {
-  background-color: #588157;
+  background-color: #fcfffc;
+  color: #2d3a3a;
 }
+
 .header__navbar {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -121,50 +165,63 @@ body {
       -ms-flex-align: center;
           align-items: center;
 }
+
 .header__navbar .option {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 1.5rem 0;
-  padding: 0.8rem 1.6rem;
-  width: 100%;
-  font-size: 2rem;
-  border-radius: 0.5rem;
-  background-color: #fff;
-  text-transform: uppercase;
-  -webkit-transition: background-color 0.3s;
-  transition: background-color 0.3s;
-  cursor: pointer;
-}
-.header__navbar .option:hover {
-  background-color: #a3b18a;
-}
-.header__navbar .option i {
-  margin-right: 2rem;
-}
-.header__navbar .logout {
   display: block;
   padding: 1rem 0;
   margin-bottom: 2rem;
-  font-size: 2rem;
-  color: #588157;
+  font-size: 2.5rem;
+  color: #040f0f;
   text-transform: uppercase;
 }
-.header__navbar .logout i {
+
+.header__navbar .option i {
   margin-right: 1rem;
-  color: #588157;
+  color: #248232;
+  -webkit-transition: margin-right 0.2s linear;
+  transition: margin-right 0.2s linear;
 }
+
+.header__navbar .option:hover i {
+  margin-right: 2rem;
+}
+
+.header__navbar .logout i {
+  color: #b10000;
+}
+
 .header__flex-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   gap: 1rem;
+}
+
+.burger-btn {
+  display: none;
+  position: fixed;
+  top: 1.3rem;
+  left: 1.3rem;
+  padding: 1em;
+  background: none;
+  border: 1px solid transparent;
+  z-index: 1200;
+}
+
+.burger-btn:focus {
+  outline: none;
+  border: 1px solid #040f0f;
+  border-radius: 0.5rem;
+}
+
+.burger-btn__box {
+  position: relative;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.burger-btn__box i {
+  font-size: 2.5rem;
 }
 
 /* media queries */
@@ -173,6 +230,7 @@ body {
     font-size: 55%;
   }
 }
+
 @media (max-width: 450px) {
   html {
     font-size: 50%;
@@ -184,4 +242,5 @@ body {
             flex-flow: column;
     gap: 0;
   }
-}/*# sourceMappingURL=user_style.css.map */
+}
+/*# sourceMappingURL=user_style.css.map */
