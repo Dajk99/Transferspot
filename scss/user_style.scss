@@ -26,7 +26,7 @@ body {
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
-	overflow: hidden;
+	overflow-x: hidden;
 	font-family: 'Oswald', sans-serif;
 	color: $black;
 }
@@ -57,12 +57,14 @@ textarea {
 
 // BODY
 body {
+	padding-left: 40rem;
 	background-color: $main-dark;
 }
 
 // SECTION
 section {
 	padding: 2rem;
+	margin: 0 auto;
 	max-width: 1200px;
 }
 
@@ -117,13 +119,12 @@ section {
 	top: 0;
 	left: 0;
 	padding: 2rem;
-	height: 100vh;
+	min-height: 100vh;
 	width: 40rem;
 	z-index: 1000;
 	background-color: $main-light;
 
 	&__logo {
-		display: block;
 		text-align: center;
 		margin-bottom: 0.5em;
 
@@ -136,15 +137,18 @@ section {
 
 	&__profile {
 		margin: 2rem 0;
-		padding: 1.5rem;
-		font-size: 2.5rem;
+		padding: 2rem;
 		border-radius: 0.8rem;
 		background-color: $main-dark;
-		color: $main-light;
 		text-align: center;
 		text-transform: uppercase;
 
-		.btn {
+		&-text {
+			font-size: 2.5rem;
+			color: $main-light;
+		}
+
+		&-btn {
 			background-color: $main-dark;
 			color: $main-light;
 			border: 1px solid $main-light;
@@ -157,57 +161,92 @@ section {
 		}
 	}
 
+	// &__navbar {
+	// 	display: flex;
+	// 	flex-direction: column;
+	// 	justify-content: center;
+	// 	align-items: center;
+
+	// 	&-option {
+	// 		display: block;
+	// 		padding: 1rem 0;
+	// 		margin-bottom: 2rem;
+	// 		font-size: 2.5rem;
+	// 		color: $dark;
+	// 		text-transform: uppercase;
+
+	// 		i {
+	// 			margin-right: 1rem;
+	// 			color: $dark-green;
+	// 			transition: margin-right 0.2s linear;
+	// 		}
+
+	// 		&:hover i {
+	// 			margin-right: 2rem;
+	// 		}
+	// 	}
+
+	// 	.logout i {
+	// 		color: $red;
+	// 	}
+	// }
+
 	&__navbar {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		grid-template-rows: repeat(2, 8rem) 4rem 4rem;
+		gap: 1.5rem;
 
-		// .option {
-		// 	display: flex;
-		// 	justify-content: center;
-		// 	align-items: center;
-		// 	margin: 1.5rem 0;
-		// 	padding: 0.8rem 1.6rem;
-		// 	width: 100%;
-		// 	font-size: 2rem;
-		// 	border-radius: 0.8rem;
-		// 	background-color: $dark;
-		// 	color: $main-light;
-		// 	text-transform: uppercase;
-		// 	transition: background-color 0.3s;
-		// 	cursor: pointer;
-
-		// 	&:hover {
-		// 		background-color: $main-dark;
-		// 	}
-
-		// 	i {
-		// 		margin-right: 2rem;
-		// 	}
-		// }
-
-		.option {
-			display: block;
-			padding: 1rem 0;
-			margin-bottom: 2rem;
-			font-size: 2.5rem;
-			color: $dark;
-			text-transform: uppercase;
+		&-item {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			pad: 1rem 2rem;
+			border: 2px solid $main-dark;
+			border-radius: 0.8rem;
+			cursor: pointer;
 
 			i {
-				margin-right: 1rem;
+				font-size: 3rem;
+			}
+
+			&--login {
+				grid-column: 1/3;
+				grid-row: 3/4;
+			}
+
+			&--logout {
+				grid-column: 1/3;
+				grid-row: 4/5;
+			}
+
+			&-text {
+				font-size: 2.5rem;
+				text-transform: uppercase;
+			}
+
+			.login,
+			.logout {
+				display: block;
+				width: 100%;
+				text-align: center;
+				transition: 0.3s;
+			}
+
+			.login {
 				color: $dark-green;
-				transition: margin-right 0.2s linear;
 			}
 
-			&:hover i {
-				margin-right: 2rem;
+			.logout {
+				color: $red;
 			}
-		}
 
-		.logout i {
-			color: $red;
+			.login,
+			.logout {
+				&:hover {
+					letter-spacing: 0.3rem;
+				}
+			}
 		}
 	}
 
@@ -218,12 +257,6 @@ section {
 }
 
 //DASHBOARD
-.dashboard {
-	position: fixed;
-	top: 0;
-	left: 40rem;
-	width: 100%;
-}
 
 // BURGER
 .burger-btn {
