@@ -1,7 +1,6 @@
 <header class="header">
     <div class="header__logo">
         <a href="/user/dashboard.php">Transferspot</a>
-        <p>panel użytkownika</p>
     </div>
 
     <div class="header__profile">
@@ -11,19 +10,19 @@
         $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
         ?>
         <p>Witaj, <?= $fetch_profile['name']; ?></p>
-        <button class="btn" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
+        <button class="btn" onclick="location.href='/user/update_profile.php'">zaktualizuj profil</button>
     </div>
 
     <nav class="header__navbar navbar">
-        <a href="dashboard.php" class="option"><i class="fa-solid fa-house"></i>strona główna</a>
+        <a href="/user/dashboard.php" class="option"><i class="fa-solid fa-house"></i>strona główna</a>
         <!-- <button class="option" onclick="location.href='add_ann.php'">
             <i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie
         </button> -->
-        <a href="add_ann.php" class="option"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>
+        <a href="/user/add_ann.php" class="option"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>
         <!-- <button class="option" onclick="location.href='view_ann.php'">
             <i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia
         </button> -->
-        <a href="view_ann.php" class="option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
+        <a href="/user/view_ann.php" class="option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
         <a href="" class="option logout">
             <i class="fa-solid fa-right-from-bracket"></i>wyloguj
         </a>

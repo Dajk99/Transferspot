@@ -9,6 +9,15 @@
 	padding: 0;
 }
 
+::-webkit-scrollbar {
+	height: 0.5rem;
+	width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+
 html,
 body {
 	height: 100%;
@@ -46,14 +55,15 @@ textarea {
 	resize: vertical;
 }
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 // BODY
 body {
 	background-color: $main-dark;
+}
+
+// SECTION
+section {
+	padding: 2rem;
+	max-width: 1200px;
 }
 
 // BUTTONS
@@ -109,11 +119,11 @@ body {
 	padding: 2rem;
 	height: 100vh;
 	width: 40rem;
-	// font-size: 3rem;
 	z-index: 1000;
 	background-color: $main-light;
 
 	&__logo {
+		display: block;
 		text-align: center;
 		margin-bottom: 0.5em;
 
@@ -121,11 +131,6 @@ body {
 			color: $dark-green;
 			font-size: 3.5rem;
 			font-family: 'Russo One', sans-serif;
-		}
-
-		p {
-			font-size: 2.2rem;
-			text-transform: uppercase;
 		}
 	}
 
@@ -212,6 +217,14 @@ body {
 	}
 }
 
+//DASHBOARD
+.dashboard {
+	position: fixed;
+	top: 0;
+	left: 40rem;
+	width: 100%;
+}
+
 // BURGER
 .burger-btn {
 	display: none;
@@ -234,8 +247,9 @@ body {
 		width: 2.5rem;
 		height: 2.5rem;
 
-		i {
+		.fa-bars {
 			font-size: 2.5rem;
+			color: $main-light;
 		}
 	}
 }
@@ -245,6 +259,27 @@ body {
 @media (max-width: 991px) {
 	html {
 		font-size: 55%;
+	}
+
+	.burger-btn {
+		display: inline-block;
+
+		.fa-bars {
+			transition: 0.3s;
+
+			&--dark {
+				color: $main-dark;
+			}
+		}
+	}
+
+	.header {
+		left: -40rem;
+		transition: 0.3s linear;
+
+		&--active {
+			left: 0;
+		}
 	}
 }
 
