@@ -14,24 +14,28 @@
     </div>
 
     <nav class="header__navbar navbar">
-        <div class="header__navbar-item">
+        <button class="header__navbar-item btn" onclick="location.href='dashboard.php'">
             <i class="fa-solid fa-house"></i>
-        </div>
-        <div class="header__navbar-item">
+            <p>strona główna</p>
+        </button>
+        <button class="header__navbar-item btn" onclick="location.href='add_ann.php'">
             <i class="fa-solid fa-square-plus"></i>
-        </div>
-        <div class="header__navbar-item">
+            <p>dodaj ogłoszenie</p>
+        </button>
+        <button class="header__navbar-item btn" onclick="location.href='view_ann.php'">
             <i class="fa-solid fa-book-open"></i>
-        </div>
-        <div class="header__navbar-item">
-        <i class="fa-solid fa-user-plus"></i>
-        </div>
-        <div class="header__navbar-item header__navbar-item--login">
+            <p>przeglądaj ogłoszenia</p>
+        </button>
+        <button class="header__navbar-item btn" onclick="location.href='user_register.php'">
+            <i class="fa-solid fa-user-plus"></i>
+            <p>zarejestruj się</p>
+        </button>
+        <button class="header__navbar-item header__navbar-item--login btn" onclick="location.href='user_login.php'">
             <p class="header__navbar-item-text login">zaloguj</p>
-        </div>
-        <div class="header__navbar-item header__navbar-item--logout">
+        </button>
+        <button class="header__navbar-item header__navbar-item--logout btn">
             <a href="#" class="header__navbar-item-text logout">wyloguj</a>
-        </div>
+        </button>
         <!-- <a href="/user/dashboard.php" class="header__navbar-option"><i class="fa-solid fa-house"></i>strona główna</a>
         <a href="/user/add_ann.php" class="header__navbar-option"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>
         <a href="/user/view_ann.php" class="header__navbar-option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>

@@ -1,0 +1,30 @@
+@media (max-width: 991px) {
+	html {
+		font-size: 55%;
+	}
+
+	body {
+		padding-left: 0;
+	}
+
+	.burger-btn {
+		display: flex;
+
+		.fa-bars {
+			transition: 0.3s;
+
+			&--dark {
+				color: $dark-green;
+			}
+		}
+	}
+
+	.header {
+		left: -40rem;
+		transition: 0.3s linear;
+
+		&--active {
+			left: 0;
+		}
+	}
+}

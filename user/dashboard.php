@@ -40,9 +40,8 @@ if(!isset($user_id)){
         <h1 class="dashboard__heading">panel użytkownika</h1>
         <div class="dashboard__container">
             <div class="dashboard__container-box">
-                <h3>witaj</h3>
-                <p><?= $fetch_profile['name']; ?></p>
-                <button class="btn" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
+                <h3>witaj, <?= $fetch_profile['name']; ?></h3>
+                <button class="dashboard__container-box-btn btn" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
             </div>
             
             <div class="dashboard__container-box">
@@ -52,27 +51,28 @@ if(!isset($user_id)){
                     $post_count = $select_posts->rowCount();
                 ?>
                 <h3>suma dodanych ogłoszeń: <?= $post_count; ?></h3>
-                <a href="add_ann.php" class="option"><i class="fa-solid fa-square-plus"></i>dodaj nowe ogłoszenie</a>
+                <button class="dashboard__container-box-btn btn" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
             </div>
 
             <div class="dashboard__container-box">
                 <?php
+                /* active posts */ 
                     $select_active_posts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
                     $select_active_posts->execute([$user_id, 'active']);
                     $active_post_count = $select_active_posts->rowCount();
-                ?>
-                <h3>aktywne ogłoszenia: <?= $active_post_count; ?></h3>
-                <a href="./view_ann.php" class="option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
-            </div>
-
-            <div class="dashboard__container-box">
-                <?php
+                /* deactive posts */ 
                     $select_deactive_posts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
                     $select_deactive_posts->execute([$user_id, 'deactive']);
                     $deactive_post_count = $select_deactive_posts->rowCount();
+                /* liked posts */
+                    $select_likes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
+                    $select_likes->execute([$user_id]);
+                    $likes_count = $select_likes->rowCount();
                 ?>
+                <h3>aktywne ogłoszenia: <?= $active_post_count; ?></h3>
                 <h3>nieaktywne ogłoszenia: <?= $deactive_post_count; ?></h3>
-                <a href="./view_ann.php" class="option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
+                <h3>polubione ogłoszenia: <?= $likes_count; ?></h3>
+                <button class="dashboard__container-box-btn btn" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
             </div>
 
             <div class="dashboard__container-box">
@@ -82,17 +82,7 @@ if(!isset($user_id)){
                     $comments_count = $select_comments->rowCount();
                 ?>
                 <h3>komentarze: <?= $comments_count; ?></h3>
-                <a href="./comments.php" class="option"><i class="fa-solid fa-book-open"></i>przeglądaj komentarze</a>
-            </div>
-
-            <div class="dashboard__container-box">
-                <?php
-                    $select_likes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
-                    $select_likes->execute([$user_id]);
-                    $likes_count = $select_likes->rowCount();
-                ?>
-                <h3>polubione ogłoszenia: <?= $likes_count; ?></h3>
-                <a href="./view_ann.php" class="option"><i class="fa-solid fa-book-open"></i>sprawdź polubione ogłoszenia</a>
+                <button class="dashboard__container-box-btn btn" onclick="location.href='comments.php'">przeglądaj komentarze</button>
             </div>
         </div>
     </section>
