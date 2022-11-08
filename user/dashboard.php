@@ -7,8 +7,7 @@ session_start();
 $user_id = $_SESSION['user_id'];
 
 if(!isset($user_id)){
-    // header('location:user_login.php');
-    $user_id = 1;
+    header('location:user_login.php');
 }
 
 ?>
@@ -19,7 +18,7 @@ if(!isset($user_id)){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel użytkownika</title>
+    <title>Panel użytkownika | Transferspot</title>
     <!-- Font Awesome kit -->
     <script src="https://kit.fontawesome.com/e6c4644ded.js" crossorigin="anonymous"></script>
     <!-- google fonts  -->
@@ -37,11 +36,11 @@ if(!isset($user_id)){
 
     <!-- dashboard section -->
     <section class="dashboard">
-        <h1 class="dashboard__heading">panel użytkownika</h1>
+        <h1 class="dashboard__heading first-letter">panel użytkownika</h1>
         <div class="dashboard__container">
             <div class="dashboard__container-box">
-                <h3>witaj, <?= $fetch_profile['name']; ?></h3>
-                <button class="dashboard__container-box-btn btn" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
+                <h3 class="first-letter">witaj, <?= $fetch_profile['username']; ?></h3>
+                <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
             </div>
             
             <div class="dashboard__container-box">
@@ -50,8 +49,8 @@ if(!isset($user_id)){
                     $select_posts->execute([$user_id]);
                     $post_count = $select_posts->rowCount();
                 ?>
-                <h3>suma dodanych ogłoszeń: <?= $post_count; ?></h3>
-                <button class="dashboard__container-box-btn btn" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
+                <h3 class="first-letter">suma dodanych ogłoszeń: <?= $post_count; ?></h3>
+                <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
             </div>
 
             <div class="dashboard__container-box">
@@ -69,10 +68,10 @@ if(!isset($user_id)){
                     $select_likes->execute([$user_id]);
                     $likes_count = $select_likes->rowCount();
                 ?>
-                <h3>aktywne ogłoszenia: <?= $active_post_count; ?></h3>
-                <h3>nieaktywne ogłoszenia: <?= $deactive_post_count; ?></h3>
-                <h3>polubione ogłoszenia: <?= $likes_count; ?></h3>
-                <button class="dashboard__container-box-btn btn" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
+                <h3 class="first-letter">aktywne ogłoszenia: <?= $active_post_count; ?></h3>
+                <h3 class="first-letter">Wygasłe ogłoszenia: <?= $deactive_post_count; ?></h3>
+                <h3 class="first-letter">polubione ogłoszenia: <?= $likes_count; ?></h3>
+                <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
             </div>
 
             <div class="dashboard__container-box">
@@ -81,8 +80,8 @@ if(!isset($user_id)){
                     $select_comments->execute([$user_id]);
                     $comments_count = $select_comments->rowCount();
                 ?>
-                <h3>komentarze: <?= $comments_count; ?></h3>
-                <button class="dashboard__container-box-btn btn" onclick="location.href='comments.php'">przeglądaj komentarze</button>
+                <h3 class="first-letter">komentarze: <?= $comments_count; ?></h3>
+                <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='comments.php'">przeglądaj komentarze</button>
             </div>
         </div>
     </section>

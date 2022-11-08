@@ -26,7 +26,7 @@ html {
   scroll-behavior: smooth;
   overflow-x: hidden;
   font-family: "Oswald", sans-serif;
-  color: #000;
+  color: #000000;
 }
 
 a {
@@ -55,7 +55,11 @@ textarea {
 
 body {
   padding-left: 40rem;
-  background-color: #2d3a3a;
+  background-color: #f5f5f5;
+}
+
+.pd-reset {
+  padding-left: 0;
 }
 
 section {
@@ -68,15 +72,49 @@ section {
   overflow: hidden;
 }
 
+.first-letter ::first-letter {
+  text-transform: uppercase;
+}
+.first-letter::first-letter {
+  text-transform: uppercase;
+}
+
 .btn {
   padding: 1rem 2rem;
   width: 100%;
   font-size: 2.3rem;
   text-align: center;
-  text-transform: uppercase;
+  background-color: #fca311;
   border-radius: 0.8rem;
   cursor: pointer;
   overflow: hidden;
+}
+
+.btn-action:hover {
+  background-color: #14213d;
+  color: #ffffff;
+}
+
+.message {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+  background-color: rgba(192, 0, 0, 0.6);
+}
+.message span {
+  font-size: 2rem;
+}
+.message i {
+  font-size: 2rem;
+  cursor: pointer;
 }
 
 .header {
@@ -86,41 +124,25 @@ section {
   padding: 4rem 2rem 2rem;
   min-height: 100vh;
   width: 40rem;
+  border-right: 1rem solid #14213d;
+  background-color: #ffffff;
   z-index: 1000;
-  background-color: #fcfffc;
 }
 .header__logo {
   text-align: center;
-  margin-bottom: 0.5em;
 }
 .header__logo a {
-  color: #248232;
+  color: #14213d;
   font-size: 3.5rem;
   font-family: "Russo One", sans-serif;
 }
 .header__profile {
-  margin: 2rem 0;
-  padding: 2rem;
-  border-radius: 0.8rem;
-  background-color: #2d3a3a;
+  margin: 1rem 0 2rem;
   text-align: center;
-  text-transform: uppercase;
 }
 .header__profile-text {
-  font-size: 2.5rem;
-  color: #fcfffc;
-}
-.header__profile-btn {
-  margin-top: 1rem;
-  background-color: #2d3a3a;
-  color: #fcfffc;
-  border: 1px solid #fcfffc;
-  -webkit-transition: background-color 0.3s, color 0.3s;
-  transition: background-color 0.3s, color 0.3s;
-}
-.header__profile-btn:hover {
-  background-color: #fcfffc;
-  color: #2d3a3a;
+  font-size: 2rem;
+  color: #000000;
 }
 .header__navbar {
   display: grid;
@@ -139,24 +161,25 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #fcfffc;
-  border: 2px solid #2d3a3a;
+}
+.header__navbar-item p,
+.header__navbar-item i,
+.header__navbar-item a {
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
 }
 .header__navbar-item i {
   font-size: 3rem;
 }
 .header__navbar-item p {
   display: none;
-  color: #fcfffc;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
 }
 .header__navbar-item::before, .header__navbar-item::after {
   display: block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: #2d3a3a;
+  background-color: #14213d;
   content: "";
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -171,7 +194,7 @@ section {
 }
 .header__navbar-item:hover p, .header__navbar-item:hover a {
   display: block;
-  color: #fcfffc;
+  color: #ffffff;
   z-index: 100;
 }
 .header__navbar-item:hover i {
@@ -195,27 +218,15 @@ section {
 .header__navbar-item .logout {
   display: block;
   width: 100%;
+  color: #000000;
   text-align: center;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-.header__navbar-item .login {
-  color: #248232;
-}
-.header__navbar-item .logout {
-  color: #b10000;
-}
-.header__navbar-item .login:hover,
-.header__navbar-item .logout:hover {
-  letter-spacing: 0.3rem;
 }
 
 .dashboard__heading {
-  margin-bottom: 2rem;
+  margin: 3rem 0 2rem;
   font-size: 4rem;
-  color: #fcfffc;
+  color: #14213d;
   text-align: center;
-  text-transform: uppercase;
 }
 .dashboard__container {
   display: grid;
@@ -230,31 +241,19 @@ section {
 }
 .dashboard__container-box {
   padding: 2rem;
-  border: 2px solid #000;
+  border: 2px solid #14213d;
   border-radius: 0.8rem;
-  background-color: #fcfffc;
-  -webkit-box-shadow: 0 0.5rem 1rem rgba(252, 255, 252, 0.2);
-          box-shadow: 0 0.5rem 1rem rgba(252, 255, 252, 0.2);
+  background-color: #ffffff;
 }
 .dashboard__container-box h3 {
   font-size: 2.2rem;
-}
-.dashboard__container-box h3::first-letter {
-  text-transform: uppercase;
 }
 .dashboard__container-box h3:last-of-type {
   margin-bottom: 1rem;
 }
 .dashboard__container-box-btn {
-  border: 2px solid #2d3a3a;
-  background-color: #fcfffc;
-  color: #000;
   -webkit-transition: 0.3s;
   transition: 0.3s;
-}
-.dashboard__container-box-btn:hover {
-  background-color: #2d3a3a;
-  color: #fcfffc;
 }
 
 .burger-btn {
@@ -269,7 +268,7 @@ section {
 }
 .burger-btn:focus {
   outline: none;
-  border: 1px solid #040f0f;
+  border: 1px solid #000000;
   border-radius: 0.5rem;
 }
 .burger-btn__box {
@@ -279,7 +278,44 @@ section {
 }
 .burger-btn__box .fa-bars {
   font-size: 3rem;
-  color: #fcfffc;
+  color: #14213d;
+}
+
+.form-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  min-height: 100vh;
+}
+.form-container__form {
+  padding: 2rem;
+  width: 50rem;
+  background-color: #ffffff;
+  border: 0.3rem solid #14213d;
+  border-radius: 0.8rem;
+  text-align: center;
+}
+.form-container__form h3 {
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: #14213d;
+}
+.form-container__form-box {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  width: 100%;
+}
+.form-container__form-btn {
+  margin-top: 1rem;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 /* media queries */
@@ -288,7 +324,7 @@ section {
     font-size: 50%;
   }
   .dashboard__heading {
-    margin: 0.6rem 0 2rem;
+    margin: 3.6rem 0 2rem;
     font-size: 3rem;
   }
   .dashboard__container {
@@ -312,7 +348,7 @@ section {
     transition: 0.3s;
   }
   .burger-btn .fa-bars--dark {
-    color: #248232;
+    color: #14213d;
   }
   .header {
     left: -40rem;

@@ -9,32 +9,32 @@
         $select_profile->execute([$user_id]);
         $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
         ?>
-        <p class="header__profile-text">Witaj, <?= $fetch_profile['name']; ?></p>
-        <button class="header__profile-btn btn" onclick="location.href='/user/update_profile.php'">zaktualizuj profil</button>
+        <p class="header__profile-text">Zalogowano jako <strong><?= $fetch_profile['username']; ?></strong></p>
+        <!-- <button class="header__profile-btn btn" onclick="location.href='/user/update_profile.php'">zaktualizuj profil</button> -->
     </div>
 
     <nav class="header__navbar navbar">
-        <button class="header__navbar-item btn" onclick="location.href='dashboard.php'">
+        <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
             <i class="fa-solid fa-house"></i>
             <p>strona główna</p>
         </button>
-        <button class="header__navbar-item btn" onclick="location.href='add_ann.php'">
+        <button class="header__navbar-item btn first-letter" onclick="location.href='add_ann.php'">
             <i class="fa-solid fa-square-plus"></i>
             <p>dodaj ogłoszenie</p>
         </button>
-        <button class="header__navbar-item btn" onclick="location.href='view_ann.php'">
+        <button class="header__navbar-item btn first-letter" onclick="location.href='view_ann.php'">
             <i class="fa-solid fa-book-open"></i>
             <p>przeglądaj ogłoszenia</p>
         </button>
-        <button class="header__navbar-item btn" onclick="location.href='user_register.php'">
+        <button class="header__navbar-item btn first-letter" onclick="location.href='user_register.php'">
             <i class="fa-solid fa-user-plus"></i>
             <p>zarejestruj się</p>
         </button>
-        <button class="header__navbar-item header__navbar-item--login btn" onclick="location.href='user_login.php'">
-            <p class="header__navbar-item-text login">zaloguj</p>
+        <button class="header__navbar-item header__navbar-item--login btn first-letter" onclick="location.href='user_login.php'">
+            <p class="login">zaloguj</p>
         </button>
-        <button class="header__navbar-item header__navbar-item--logout btn">
-            <a href="#" class="header__navbar-item-text logout">wyloguj</a>
+        <button class="header__navbar-item header__navbar-item--logout btn first-letter">
+            <a href="#" class="logout">wyloguj</a>
         </button>
         <!-- <a href="/user/dashboard.php" class="header__navbar-option"><i class="fa-solid fa-house"></i>strona główna</a>
         <a href="/user/add_ann.php" class="header__navbar-option"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>

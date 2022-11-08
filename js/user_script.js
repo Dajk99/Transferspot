@@ -4,7 +4,7 @@ const burgerBars = document.querySelector('.fa-bars')
 
 const showPanel = () => {
 	header.classList.toggle('header--active')
-	burgerBars.classList.toggle('fa-bars--dark')
+	// burgerBars.classList.toggle('fa-bars--dark')
 	document.body.classList.toggle('sticky')
 }
 
