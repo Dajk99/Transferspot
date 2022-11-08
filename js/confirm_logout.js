@@ -4,7 +4,7 @@ const logoutLink = document.querySelector('a.logout')
 const logoutConf = e => {
 	const msg = 'Nastąpi wylogowanie z konta. Kontynuować?'
 	if (confirm(msg)) {
-		logoutLink.setAttribute('href', '/components/user_logout.php')
+		logoutLink.setAttribute('href', 'user_login.php')
 	} else {
 		e.preventDefault()
 	}

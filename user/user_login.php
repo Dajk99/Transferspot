@@ -11,11 +11,14 @@ if(isset($_POST['submit'])){
     $pass = sha1($_POST['pass']);
     $pass = filter_var($pass, FILTER_SANITIZE_STRING);
 
-    $select_user = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
-    $select_user->execute([$username, $pass]);
+    $selectUser = $conn->prepare("SELECT * FROM users WHERE username = ? AND password = ?");
+    $selectUser->execute([$username, $pass]);
 
-    if($select_user->rowCount() > 0){
-        $message[] = 'Przetwarzanie...';
+    if($selectUser->rowCount() > 0){
+        $fetchUserId = $selectUser->fetch(PDO::FETCH_ASSOC);
+        $_SESSION['user_id'] = $fetchUserId['id'];
+        header('location:dashboard.php');
+        $goodMessage[] = 'Pomyślnie zalogowano!';
     }else {
        $message[] = 'Nieprawidłowe hasło lub nazwa użytkownika!'; 
     }
@@ -41,6 +44,17 @@ if(isset($_POST['submit'])){
 </head>
 
 <body class="pd-reset">
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
 
     <!-- user login section -->
     <section class="form-container">

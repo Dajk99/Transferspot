@@ -4,10 +4,59 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if(!isset($userId)){
     header('location:user_login.php');
+}
+
+if(isset($_POST['submit'])){
+
+    $email = $_POST['email'];
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $username = $_POST['username'];
+    $username = filter_var($username, FILTER_SANITIZE_STRING);
+
+    if(!empty($username)) {
+        $selectUsername = $conn->prepare("SELECT * FROM users WHERE username = ?");
+        $selectUsername->execute([$username]);
+
+        if($selectUsername->rowCount() > 0) {
+            $message[] = 'Wybrana nazwa użytkownika jest już zajęta!';
+        } else {
+            $updateUsername = $conn->prepare("UPDATE users SET username = ? WHERE id = ?");
+            $updateUsername->execute([$username, $userId]);
+            $goodMessage[] = 'Zaktualizowano dane!';
+        }
+    }
+
+    $emptyPass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
+    $selectPreviousPass = $conn->prepare("SELECT password from users where id =?");
+    $selectPreviousPass->execute([$userId]);
+    $fetchPrevPass = $selectPreviousPass->fetch(PDO::FETCH_ASSOC);
+    $prevPass = $fetchPrevPass['password'];
+    $oldPass = sha1($_POST['old_pass']);
+    $oldPass = filter_var($oldPass, FILTER_SANITIZE_STRING);
+    $newPass = sha1($_POST['new_pass']);
+    $newPass = filter_var($newPass, FILTER_SANITIZE_STRING);
+    $ConfNewPass = sha1($_POST['confirm_new_pass']);
+    $ConfNewPass = filter_var($ConfNewPass, FILTER_SANITIZE_STRING);
+
+    if($oldPass != $emptyPass) {
+        if($oldPass != $prevPass) {
+            $message[] = 'Stare hasło się nie zgadza!';
+        } elseif($newPass != $ConfNewPass) {
+            $message[] = 'Podane hasła się nie zgadzają!';
+        } else {
+            if($newPass != $emptyPass) {
+                $updatePassword = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
+                $updatePassword->execute([$ConfNewPass, $userId]);
+                $goodMessage[] = 'Zaktualizowano dane!';
+            } else {
+                $message[] = 'Konieczne jest podanie nowego hasła!';
+            }
+        }
+    }
 }
 
 ?>
@@ -33,6 +82,40 @@ if(!isset($user_id)){
     <?php
         include '../components/user_header.php';
     ?>
+
+    <!-- profile update section -->
+    <section class="form-container">
+        <form action="" method="POST" class="form-container__form">
+            <h3 class="first-letter">edycja profilu</h3>
+            <?php
+                if(isset($message)) {
+                foreach($message as $message) {
+                    echo '
+                    <div class="message">
+                        <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$message.'</span>  
+                    </div>
+                    ';
+                    } 
+                }
+
+                if(isset($goodMessage)) {
+                    foreach($goodMessage as $goodMessage) {
+                        echo '
+                        <div class="good-message">
+                            <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                        </div>
+                        ';
+                    } 
+                }
+            ?>
+            <input type="email" class="form-container__form-box" placeholder="<?= $fetchProfile['email']; ?>" maxlength="30" name="email" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="text" class="form-container__form-box" placeholder="<?= $fetchProfile['username']; ?>" maxlength="30" name="username" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="password" class="form-container__form-box" placeholder="Stare hasło" maxlength="50" name="old_pass" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="password" class="form-container__form-box" placeholder="Nowe hasło" maxlength="50" name="new_pass" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="password" class="form-container__form-box" placeholder="Potwierdź nowe hasło" maxlength="50" name="confirm_new_pass" oninput="this.value = this.value.replace(/\s/g, '')">
+            <input type="submit" name="submit" class="form-container__form-btn btn btn-action" value="Zapisz zmiany">
+        </form>
+    </section>
     
     <!-- JS connection -->
     <script src="../js/confirm_logout.js"></script>

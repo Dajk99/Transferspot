@@ -4,9 +4,10 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if(!isset($userId)){
+    // $_SESSION['user_id'] = 1;
     header('location:user_login.php');
 }
 
@@ -29,6 +30,18 @@ if(!isset($user_id)){
     <link rel="stylesheet" href="../css/user_style.css">
 </head>
 <body>
+
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
     <!-- header section -->
     <?php
         include '../components/user_header.php';
@@ -39,48 +52,48 @@ if(!isset($user_id)){
         <h1 class="dashboard__heading first-letter">panel użytkownika</h1>
         <div class="dashboard__container">
             <div class="dashboard__container-box">
-                <h3 class="first-letter">witaj, <?= $fetch_profile['username']; ?></h3>
+                <h3 class="first-letter">witaj, <?= $fetchProfile['username']; ?></h3>
                 <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
             </div>
             
             <div class="dashboard__container-box">
                 <?php
-                    $select_posts = $conn->prepare("SELECT * FROM posts WHERE user_id = ?");
-                    $select_posts->execute([$user_id]);
-                    $post_count = $select_posts->rowCount();
+                    $selectPosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ?");
+                    $selectPosts->execute([$userId]);
+                    $postCount = $selectPosts->rowCount();
                 ?>
-                <h3 class="first-letter">suma dodanych ogłoszeń: <?= $post_count; ?></h3>
+                <h3 class="first-letter">suma dodanych ogłoszeń: <?= $postCount; ?></h3>
                 <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
             </div>
 
             <div class="dashboard__container-box">
                 <?php
                 /* active posts */ 
-                    $select_active_posts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $select_active_posts->execute([$user_id, 'active']);
-                    $active_post_count = $select_active_posts->rowCount();
+                    $selectActivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
+                    $selectActivePosts->execute([$userId, 'active']);
+                    $activePostCount = $selectActivePosts->rowCount();
                 /* deactive posts */ 
-                    $select_deactive_posts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $select_deactive_posts->execute([$user_id, 'deactive']);
-                    $deactive_post_count = $select_deactive_posts->rowCount();
+                    $selectDeactivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
+                    $selectDeactivePosts->execute([$userId, 'deactive']);
+                    $deactivePostCount = $selectDeactivePosts->rowCount();
                 /* liked posts */
-                    $select_likes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
-                    $select_likes->execute([$user_id]);
-                    $likes_count = $select_likes->rowCount();
+                    $selectLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
+                    $selectLikes->execute([$userId]);
+                    $likesCount = $selectLikes->rowCount();
                 ?>
-                <h3 class="first-letter">aktywne ogłoszenia: <?= $active_post_count; ?></h3>
-                <h3 class="first-letter">Wygasłe ogłoszenia: <?= $deactive_post_count; ?></h3>
-                <h3 class="first-letter">polubione ogłoszenia: <?= $likes_count; ?></h3>
+                <h3 class="first-letter">aktywne ogłoszenia: <?= $activePostCount; ?></h3>
+                <h3 class="first-letter">Wygasłe ogłoszenia: <?= $deactivePostCount; ?></h3>
+                <h3 class="first-letter">polubione ogłoszenia: <?= $likesCount; ?></h3>
                 <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
             </div>
 
             <div class="dashboard__container-box">
                 <?php
-                    $select_comments = $conn->prepare("SELECT * FROM comments WHERE user_id = ?");
-                    $select_comments->execute([$user_id]);
-                    $comments_count = $select_comments->rowCount();
+                    $selectComments = $conn->prepare("SELECT * FROM comments WHERE user_id = ?");
+                    $selectComments->execute([$userId]);
+                    $commentsCount = $selectComments->rowCount();
                 ?>
-                <h3 class="first-letter">komentarze: <?= $comments_count; ?></h3>
+                <h3 class="first-letter">komentarze: <?= $commentsCount; ?></h3>
                 <button class="dashboard__container-box-btn btn first-letter btn-action" onclick="location.href='comments.php'">przeglądaj komentarze</button>
             </div>
         </div>

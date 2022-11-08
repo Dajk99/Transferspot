@@ -1,15 +1,15 @@
 <header class="header">
     <div class="header__logo">
-        <a href="/user/dashboard.php">Transferspot</a>
+        <a href="dashboard.php">Transferspot</a>
     </div>
 
     <div class="header__profile">
         <?php
-        $select_profile = $conn->prepare("SELECT * FROM users WHERE id = ?");
-        $select_profile->execute([$user_id]);
-        $fetch_profile = $select_profile->fetch(PDO::FETCH_ASSOC);
+        $selectProfile = $conn->prepare("SELECT * FROM users WHERE id = ?");
+        $selectProfile->execute([$userId]);
+        $fetchProfile = $selectProfile->fetch(PDO::FETCH_ASSOC);
         ?>
-        <p class="header__profile-text">Zalogowano jako <strong><?= $fetch_profile['username']; ?></strong></p>
+        <p class="header__profile-text">Zalogowano jako <strong><?= $fetchProfile['username']; ?></strong></p>
         <!-- <button class="header__profile-btn btn" onclick="location.href='/user/update_profile.php'">zaktualizuj profil</button> -->
     </div>
 

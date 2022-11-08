@@ -1,7 +1,7 @@
 <?php
-$db_name = 'mysql:host=localhost;dbname=transferspot_db';
-$user_name = 'root';
-$user_password = '';
+$dbName = 'mysql:host=localhost;dbname=transferspot_db';
+$userName = 'root';
+$userPassword = '';
 
-$conn = new PDO($db_name, $user_name, $user_password);
+$conn = new PDO($dbName, $userName, $userPassword);
 ?>
