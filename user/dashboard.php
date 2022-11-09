@@ -30,18 +30,6 @@ if(!isset($userId)){
     <link rel="stylesheet" href="../css/user_style.css">
 </head>
 <body>
-
-    <?php
-        if(isset($goodMessage)) {
-            foreach($goodMessage as $goodMessage) {
-                echo '
-                <div class="good-message">
-                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
-                </div>
-                ';
-            } 
-        }
-    ?>
     <!-- header section -->
     <?php
         include '../components/user_header.php';

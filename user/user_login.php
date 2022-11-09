@@ -17,8 +17,8 @@ if(isset($_POST['submit'])){
     if($selectUser->rowCount() > 0){
         $fetchUserId = $selectUser->fetch(PDO::FETCH_ASSOC);
         $_SESSION['user_id'] = $fetchUserId['id'];
-        header('location:dashboard.php');
         $goodMessage[] = 'Pomyślnie zalogowano!';
+        header('location:dashboard.php');
     }else {
        $message[] = 'Nieprawidłowe hasło lub nazwa użytkownika!'; 
     }
@@ -44,17 +44,6 @@ if(isset($_POST['submit'])){
 </head>
 
 <body class="pd-reset">
-    <?php
-        if(isset($goodMessage)) {
-            foreach($goodMessage as $goodMessage) {
-                echo '
-                <div class="good-message">
-                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
-                </div>
-                ';
-            } 
-        }
-    ?>
 
     <!-- user login section -->
     <section class="form-container">
@@ -74,6 +63,10 @@ if(isset($_POST['submit'])){
             <input type="text" required class="form-container__form-box" placeholder="Nazwa użytkownika" maxlength="30" name="username" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="password" required class="form-container__form-box" placeholder="Hasło" maxlength="50" name="pass" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="submit" name="submit" class="form-container__form-btn btn btn-action" value="Zaloguj się">
+            <div class="form-container__form-info">
+                <p class="first-letter">nie masz konta?</p>
+                <a href="user_register.php" class="first-letter">zarejestruj się</a>
+            </div>
         </form>
     </section>
     

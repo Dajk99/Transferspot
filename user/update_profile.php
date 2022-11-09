@@ -16,21 +16,6 @@ if(isset($_POST['submit'])){
     $email = filter_var($email, FILTER_SANITIZE_STRING);
     $username = $_POST['username'];
     $username = filter_var($username, FILTER_SANITIZE_STRING);
-
-    if(!empty($username)) {
-        $selectUsername = $conn->prepare("SELECT * FROM users WHERE username = ?");
-        $selectUsername->execute([$username]);
-
-        if($selectUsername->rowCount() > 0) {
-            $message[] = 'Wybrana nazwa użytkownika jest już zajęta!';
-        } else {
-            $updateUsername = $conn->prepare("UPDATE users SET username = ? WHERE id = ?");
-            $updateUsername->execute([$username, $userId]);
-            $goodMessage[] = 'Zaktualizowano dane!';
-        }
-    }
-
-    $emptyPass = 'da39a3ee5e6b4b0d3255bfef95601890afd80709';
     $selectPreviousPass = $conn->prepare("SELECT password from users where id =?");
     $selectPreviousPass->execute([$userId]);
     $fetchPrevPass = $selectPreviousPass->fetch(PDO::FETCH_ASSOC);
@@ -42,20 +27,49 @@ if(isset($_POST['submit'])){
     $ConfNewPass = sha1($_POST['confirm_new_pass']);
     $ConfNewPass = filter_var($ConfNewPass, FILTER_SANITIZE_STRING);
 
-    if($oldPass != $emptyPass) {
+    if(empty($email) || empty($username) || empty($oldPass)) {
+        $message[] = 'Niewystarczająca ilość danych!';
+    } else {
+        if(!empty($username)) {
+            $selectUsername = $conn->prepare("SELECT * FROM users WHERE username = ?");
+            $selectUsername->execute([$username]);
+    
+            if($selectUsername->rowCount() > 0) {
+                $message[] = 'Wybrana nazwa użytkownika jest już zajęta!';
+            } else {
+                $goodMessage[] = 'Zaktualizowano nazwę użytkownika!';
+                $updateUsername = $conn->prepare("UPDATE users SET username = ? WHERE id = ?");
+                $updateUsername->execute([$username, $userId]);
+            }
+        }
+
+        if(!empty($email)) {
+            $selectEmail = $conn->prepare("SELECT * FROM users WHERE email = ?");
+            $selectEmail->execute([$email]);
+    
+            if($selectEmail->rowCount() > 0) {
+                $message[] = 'Użytkownik z podanym adresem e-mail istnieje!';
+            } else {
+                $goodMessage[] = 'Zaktualizowano adres e-mail!';
+                $updateEmail = $conn->prepare("UPDATE users SET email = ? WHERE id = ?");
+                $updateEmail->execute([$email, $userId]);
+            }
+        }
+        
         if($oldPass != $prevPass) {
             $message[] = 'Stare hasło się nie zgadza!';
-        } elseif($newPass != $ConfNewPass) {
+        } else if($newPass != $ConfNewPass) {
             $message[] = 'Podane hasła się nie zgadzają!';
         } else {
-            if($newPass != $emptyPass) {
+            if($newPass != '') {
                 $updatePassword = $conn->prepare("UPDATE users SET password = ? WHERE id = ?");
                 $updatePassword->execute([$ConfNewPass, $userId]);
-                $goodMessage[] = 'Zaktualizowano dane!';
+                $goodMessage[] = 'Zaktualizowano hasło!';
             } else {
                 $message[] = 'Konieczne jest podanie nowego hasła!';
             }
         }
+
     }
 }
 
@@ -95,16 +109,6 @@ if(isset($_POST['submit'])){
                         <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$message.'</span>  
                     </div>
                     ';
-                    } 
-                }
-
-                if(isset($goodMessage)) {
-                    foreach($goodMessage as $goodMessage) {
-                        echo '
-                        <div class="good-message">
-                            <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
-                        </div>
-                        ';
                     } 
                 }
             ?>

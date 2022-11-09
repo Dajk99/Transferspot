@@ -1,3 +1,15 @@
+<?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+?>
+
 <header class="header">
     <div class="header__logo">
         <a href="dashboard.php">Transferspot</a>
@@ -10,13 +22,17 @@
         $fetchProfile = $selectProfile->fetch(PDO::FETCH_ASSOC);
         ?>
         <p class="header__profile-text">Zalogowano jako <strong><?= $fetchProfile['username']; ?></strong></p>
-        <!-- <button class="header__profile-btn btn" onclick="location.href='/user/update_profile.php'">zaktualizuj profil</button> -->
+        <button class="header__profile-btn btn first-letter btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
     </div>
 
     <nav class="header__navbar navbar">
-        <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
+        <!-- <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
             <i class="fa-solid fa-house"></i>
             <p>strona główna</p>
+        </button> -->
+        <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
+            <i class="fa-solid fa-gear"></i>
+            <p>panel użytkownika</p>
         </button>
         <button class="header__navbar-item btn first-letter" onclick="location.href='add_ann.php'">
             <i class="fa-solid fa-square-plus"></i>
