@@ -61,6 +61,7 @@ button {
 }
 
 textarea {
+	min-height: 20rem;
 	resize: vertical;
 }
 
@@ -112,7 +113,7 @@ section {
 .btn {
 	padding: 1rem 2rem;
 	width: 100%;
-	font-size: 2rem;
+	font-size: 2.1rem;
 	text-align: center;
 	background-color: $yellow;
 	border-radius: 0.8rem;
@@ -245,27 +246,21 @@ section {
 		text-align: center;
 
 		&-text {
-			font-size: 2rem;
+			font-size: 2.2rem;
 			color: $black;
 		}
 
-		&-btn {
-			margin-top: 1rem;
-			transition: 0.3s;
-		}
-
-		// 	&:hover {
-		// 		background-color: $navy;
-		// 		color: $gray;
-		// 	}
+		// &-btn {
+		// 	margin-top: 1rem;
+		// 	transition: 0.3s;
 		// }
 	}
 
 	&__navbar {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(2, 8rem) 4rem 4rem;
-		gap: 1.5rem;
+		grid-template-rows: 5rem repeat(2, 8rem) repeat(2, 5rem);
+		gap: 0.8rem;
 
 		&-item,
 		&-opt {
@@ -332,16 +327,15 @@ section {
 		}
 
 		&-opt {
+			grid-column: 1/3;
 			transition: 0.4s;
 
 			&--login {
-				grid-column: 1/3;
-				grid-row: 3/4;
+				grid-row: 4/5;
 			}
 
 			&--logout {
-				grid-column: 1/3;
-				grid-row: 4/5;
+				grid-row: 5/6;
 			}
 		}
 	}
@@ -355,6 +349,7 @@ section {
 		gap: 2rem;
 		justify-content: center;
 		align-items: flex-start;
+		margin: 1rem 0;
 
 		&-box {
 			padding: 2rem;
@@ -415,7 +410,7 @@ section {
 	}
 }
 
-// ADDING ANNOUNCEMENTS
+// ANN-EDITOR SECTION
 .ann-editor {
 	&__form {
 		margin: 0 auto;
@@ -449,7 +444,7 @@ section {
 	}
 }
 
-// SHOWING ANNOUNCEMENTS
+// SHOW-ANN SECTION
 .show-ann {
 	&__container {
 		display: grid;
@@ -457,6 +452,7 @@ section {
 		gap: 1.5rem;
 		justify-content: center;
 		align-items: flex-start;
+		margin: 1rem 0;
 
 		&__box {
 			padding: 2rem;
@@ -473,11 +469,12 @@ section {
 			}
 
 			&-status {
+				position: relative;
 				display: inline-block;
 				margin-bottom: 1rem;
-				padding: 0.8rem 1.6rem;
-				color: $white;
+				padding: 0.5rem 1rem;
 				border-radius: 0.8rem;
+				background-color: $gray;
 				font-size: 1.8rem;
 			}
 
@@ -492,12 +489,10 @@ section {
 			}
 
 			&-content {
+				margin-bottom: 0.5rem;
 				padding: 1rem 0;
 				font-size: 1.8rem;
-
-				&::after {
-					content: '...';
-				}
+				overflow-wrap: break-word;
 			}
 
 			&-icons {

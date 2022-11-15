@@ -22,7 +22,6 @@
         $fetchProfile = $selectProfile->fetch(PDO::FETCH_ASSOC);
         ?>
         <p class="header__profile-text">Zalogowano jako <strong><?= $fetchProfile['username']; ?></strong></p>
-        <button class="header__profile-btn btn first-letter btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
     </div>
 
     <nav class="header__navbar navbar">
@@ -30,6 +29,7 @@
             <i class="fa-solid fa-house"></i>
             <p>strona główna</p>
         </button> -->
+        <button class="header__navbar-opt btn first-letter btn-action" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>
         <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
             <i class="fa-solid fa-gear"></i>
             <p>panel użytkownika</p>

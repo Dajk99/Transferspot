@@ -1,4 +1,4 @@
-const logoutBtn = document.querySelector('.header__navbar-item--logout')
+const logoutBtn = document.querySelector('.header__navbar-opt--logout')
 const logoutLink = document.querySelector('a.logout')
 
 const logoutConf = e => {

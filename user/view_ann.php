@@ -59,16 +59,16 @@ if(!isset($userId)){
             ?>
             <form method="post" class="show-ann__container__box">
                 <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                <?php
+                if($fetchPosts['status'] == 'active') {
+                    echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
+                } else {
+                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
+                }
+                ?>
                 <?php if($fetchPosts['image'] != ''){ ?>
                     <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image" alt="">
                 <?php } ?>
-                <?php
-                if($fetchPosts['status'] == 'active') {
-                    echo '<div class="show-ann__container__box-status" style="background-color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
-                } else {
-                    echo '<div class="show-ann__container__box-status" style="background-color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
-                }
-                ?>
                 <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
                 <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
                 <div class="show-ann__container__box-icons">
