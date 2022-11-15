@@ -1,4 +1,4 @@
-<?php
+<?php /*
         if(isset($goodMessage)) {
             foreach($goodMessage as $goodMessage) {
                 echo '
@@ -7,7 +7,7 @@
                 </div>
                 ';
             } 
-        }
+        } */
 ?>
 
 <header class="header">

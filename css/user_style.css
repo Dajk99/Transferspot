@@ -101,12 +101,19 @@ section {
 .btn {
   padding: 1rem 2rem;
   width: 100%;
-  font-size: 2.3rem;
+  font-size: 2rem;
   text-align: center;
   background-color: #fca311;
   border-radius: 0.8rem;
   cursor: pointer;
   overflow: hidden;
+}
+
+.form-btn {
+  margin-top: 1rem;
+  border: none;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
 .btn-action:hover {
@@ -147,6 +154,40 @@ section {
   top: 0;
   margin: 0 auto;
   background-color: rgba(43, 255, 0, 0.6);
+}
+
+.dashboard__heading,
+.ann-editor__heading,
+.show-ann__heading {
+  margin: 3rem 0 2rem;
+  font-size: 4rem;
+  color: #14213d;
+  text-align: center;
+}
+
+.burger-btn {
+  display: none;
+  position: fixed;
+  top: 3.4rem;
+  left: 1.3rem;
+  padding: 1rem;
+  background: none;
+  border: 1px solid transparent;
+  z-index: 1200;
+}
+.burger-btn:focus {
+  outline: none;
+  border: 1px solid #000000;
+  border-radius: 0.5rem;
+}
+.burger-btn__box {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+}
+.burger-btn__box .fa-bars {
+  font-size: 3rem;
+  color: #14213d;
 }
 
 .header {
@@ -259,12 +300,6 @@ section {
   text-align: center;
 }
 
-.dashboard__heading {
-  margin: 3rem 0 2rem;
-  font-size: 4rem;
-  color: #14213d;
-  text-align: center;
-}
 .dashboard__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
@@ -284,38 +319,6 @@ section {
 }
 .dashboard__container-box h3 {
   font-size: 2.2rem;
-}
-.dashboard__container-box h3:last-of-type {
-  margin-bottom: 1rem;
-}
-.dashboard__container-box-btn {
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.burger-btn {
-  display: none;
-  position: fixed;
-  top: 3.4rem;
-  left: 1.3rem;
-  padding: 1rem;
-  background: none;
-  border: 1px solid transparent;
-  z-index: 1200;
-}
-.burger-btn:focus {
-  outline: none;
-  border: 1px solid #000000;
-  border-radius: 0.5rem;
-}
-.burger-btn__box {
-  position: relative;
-  width: 3rem;
-  height: 3rem;
-}
-.burger-btn__box .fa-bars {
-  font-size: 3rem;
-  color: #14213d;
 }
 
 .form-container,
@@ -351,12 +354,7 @@ section {
   margin: 1rem 0;
   padding: 1.5rem;
   width: 100%;
-}
-.form-container__form-btn {
-  margin-top: 1rem;
-  border: none;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+  font-size: 1.5rem;
 }
 .form-container__form-info {
   margin-top: 1rem;
@@ -368,6 +366,94 @@ section {
   color: #14213d;
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.ann-editor__form {
+  margin: 0 auto;
+  padding: 1.5rem;
+  max-width: 80rem;
+  background-color: #ffffff;
+  border: 0.3rem solid #14213d;
+  border-radius: 0.8rem;
+}
+.ann-editor__form-text {
+  padding-top: 0.5rem;
+  font-size: 1.8rem;
+}
+.ann-editor__form-text span {
+  color: rgba(192, 0, 0, 0.6);
+}
+.ann-editor__form-box {
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  width: 100%;
+  font-size: 1.5rem;
+  border: 0.2rem solid #14213d;
+}
+.ann-editor__form-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+
+.show-ann__container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 35rem);
+  gap: 1.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.show-ann__container__box {
+  padding: 2rem;
+  border: 2px solid #14213d;
+  border-radius: 0.8rem;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+.show-ann__container__box-image {
+  margin-bottom: 1rem;
+  height: 20rem;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+.show-ann__container__box-status {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.8rem;
+  font-size: 1.8rem;
+}
+.show-ann__container__box-title {
+  padding: 1rem 0;
+  min-width: 100%;
+  font-size: 2.2rem;
+  color: #14213d;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.show-ann__container__box-content {
+  padding: 1rem 0;
+  font-size: 1.7rem;
+}
+.show-ann__container__box-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 1rem;
+}
+.show-ann__container__box-btns :first-child {
+  background-color: #14213d;
+  color: #ffffff;
+}
+.show-ann__container__box-btns :last-child {
+  background-color: rgba(192, 0, 0, 0.6);
 }
 
 /* media queries */

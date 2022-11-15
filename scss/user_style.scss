@@ -112,12 +112,18 @@ section {
 .btn {
 	padding: 1rem 2rem;
 	width: 100%;
-	font-size: 2.3rem;
+	font-size: 2rem;
 	text-align: center;
 	background-color: $yellow;
 	border-radius: 0.8rem;
 	cursor: pointer;
 	overflow: hidden;
+}
+
+.form-btn {
+	margin-top: 1rem;
+	border: none;
+	transition: 0.3s;
 }
 
 // BUTTONS HOVER ACTION
@@ -156,6 +162,47 @@ section {
 	top: 0;
 	margin: 0 auto;
 	background-color: $msg-green;
+}
+
+// HEADINGS
+.dashboard,
+.ann-editor,
+.show-ann {
+	&__heading {
+		margin: 3rem 0 2rem;
+		font-size: 4rem;
+		color: $navy;
+		text-align: center;
+	}
+}
+
+// BURGER
+.burger-btn {
+	display: none;
+	position: fixed;
+	top: 3.4rem;
+	left: 1.3rem;
+	padding: 1rem;
+	background: none;
+	border: 1px solid transparent;
+	z-index: 1200;
+
+	&:focus {
+		outline: none;
+		border: 1px solid $black;
+		border-radius: 0.5rem;
+	}
+
+	&__box {
+		position: relative;
+		width: 3rem;
+		height: 3rem;
+
+		.fa-bars {
+			font-size: 3rem;
+			color: $navy;
+		}
+	}
 }
 
 // HEADER
@@ -290,13 +337,6 @@ section {
 
 //DASHBOARD
 .dashboard {
-	&__heading {
-		margin: 3rem 0 2rem;
-		font-size: 4rem;
-		color: $navy;
-		text-align: center;
-	}
-
 	&__container {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
@@ -313,49 +353,19 @@ section {
 			h3 {
 				font-size: 2.2rem;
 
-				&:last-of-type {
-					margin-bottom: 1rem;
-				}
+				// &:last-of-type {
+				// 	margin-bottom: 1rem;
+				// }
 			}
 
-			&-btn {
-				transition: 0.3s;
-			}
-		}
-	}
-}
-
-// BURGER
-.burger-btn {
-	display: none;
-	position: fixed;
-	top: 3.4rem;
-	left: 1.3rem;
-	padding: 1rem;
-	background: none;
-	border: 1px solid transparent;
-	z-index: 1200;
-
-	&:focus {
-		outline: none;
-		border: 1px solid $black;
-		border-radius: 0.5rem;
-	}
-
-	&__box {
-		position: relative;
-		width: 3rem;
-		height: 3rem;
-
-		.fa-bars {
-			font-size: 3rem;
-			color: $navy;
+			// &-btn {
+			// 	transition: 0.3s;
+			// }
 		}
 	}
 }
 
 // FORMS
-
 .form-container,
 .form-container__form-info {
 	display: flex;
@@ -384,12 +394,7 @@ section {
 			margin: 1rem 0;
 			padding: 1.5rem;
 			width: 100%;
-		}
-
-		&-btn {
-			margin-top: 1rem;
-			border: none;
-			transition: 0.3s;
+			font-size: 1.5rem;
 		}
 
 		&-info {
@@ -401,6 +406,103 @@ section {
 				font-weight: bold;
 				color: $navy;
 				transition: 0.3s;
+			}
+		}
+	}
+}
+
+// ADDING ANNOUNCEMENTS
+.ann-editor {
+	&__form {
+		margin: 0 auto;
+		padding: 1.5rem;
+		max-width: 80rem;
+		background-color: $white;
+		border: 0.3rem solid $navy;
+		border-radius: 0.8rem;
+
+		&-text {
+			padding-top: 0.5rem;
+			font-size: 1.8rem;
+
+			span {
+				color: $msg-red;
+			}
+		}
+
+		&-box {
+			margin: 0.5rem 0;
+			padding: 0.8rem;
+			width: 100%;
+			font-size: 1.5rem;
+			border: 0.2rem solid $navy;
+		}
+
+		&-btns {
+			display: flex;
+			gap: 1rem;
+		}
+	}
+}
+
+// SHOWING ANNOUNCEMENTS
+.show-ann {
+	&__container {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, 35rem);
+		gap: 1.5rem;
+		justify-content: center;
+		align-items: flex-start;
+
+		&__box {
+			padding: 2rem;
+			border: 2px solid $navy;
+			border-radius: 0.8rem;
+			background-color: $white;
+			overflow: hidden;
+
+			&-image {
+				margin-bottom: 1rem;
+				height: 20rem;
+				width: 100%;
+				object-fit: contain;
+			}
+
+			&-status {
+				display: inline-block;
+				margin-bottom: 1rem;
+				padding: 0.8rem 1.6rem;
+				border-radius: 0.8rem;
+				font-size: 1.8rem;
+			}
+
+			&-title {
+				padding: 1rem 0;
+				min-width: 100%;
+				font-size: 2.2rem;
+				color: $navy;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			&-content {
+				padding: 1rem 0;
+				font-size: 1.7rem;
+			}
+
+			&-btns {
+				display: flex;
+				gap: 1rem;
+
+				:first-child {
+					background-color: $navy;
+					color: $white;
+				}
+
+				:last-child {
+					background-color: $msg-red;
+				}
 			}
 		}
 	}

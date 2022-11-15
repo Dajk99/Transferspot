@@ -4,9 +4,9 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if(!isset($userId)){
     header('location:user_login.php');
 }
 
@@ -33,6 +33,62 @@ if(!isset($user_id)){
     <?php
         include '../components/user_header.php';
     ?>
+
+    <!-- posts -->
+    <section class="show-ann">
+        <h1 class="show-ann__heading first-letter">twoje ogłoszenia</h1>
+        <div class="show-ann__container">
+
+            <?php
+                $activePost = 'rgba(43, 255, 0, 0.6)';
+                $deactivePost = 'rgba(192, 0, 0, 0.6)';
+                $selectPosts = $conn->prepare('SELECT * FROM posts WHERE user_id = ?');
+                $selectPosts->execute([$userId]);
+
+                if($selectPosts->rowCount() > 0) {
+                    while($fetchPosts = $selectPosts->fetch(PDO::FETCH_ASSOC)){
+                        $postId = $fetchPosts['id'];
+         
+                        $postComments = $conn->prepare("SELECT * FROM comments WHERE post_id = ?");
+                        $postComments->execute([$postId]);
+                        $totalPostComments = $postComments->rowCount();
+         
+                        $postLikes = $conn->prepare("SELECT * FROM likes WHERE post_id = ?");
+                        $postLikes->execute([$postId]);
+                        $totalPostLikes = $postLikes->rowCount();
+            ?>
+            <form method="post" class="show-ann__container__box">
+                <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                <?php if($fetchPosts['image'] != ''){ ?>
+                    <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image" alt="">
+                <?php } ?>
+                <?php
+                if($fetchPosts['status'] == 'active') {
+                    echo '<div class="show-ann__container__box-status" style="background-color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
+                } else {
+                    echo '<div class="show-ann__container__box-status" style="background-color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
+                }
+                ?>
+                <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
+                <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
+                <div class="show-ann__container__box-icons">
+                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><span><?= $totalPostLikes; ?></span></div>
+                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><span><?= $totalPostComments; ?></span></div>
+                </div>
+                <div class="show-ann__container__box-btns">
+                    <button class="btn form-btn first-letter" onclick="location.href='edit_ann.php?post_id=<?= $postId; ?>'">edytuj</button>
+                    <button type="submit" name="delete" class="btn form-btn first-letter" onclick="return confirm('Na pewno usunąć to ogłoszenie?');">usuń</button>
+                </div>
+                <a href="read_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter">zobacz post</a>
+            </form>
+            <?php
+                    }
+                } else {
+                    echo '<p class="show-ann__container-empty first-letter">aktualnie brak dodanych ogłoszeń</p>';
+                }
+            ?>
+        </div>
+    </section>
     
     <!-- JS connection -->
     <script src="../js/confirm_logout.js"></script>

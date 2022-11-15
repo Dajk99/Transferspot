@@ -62,7 +62,7 @@ if(isset($_POST['submit'])){
             ?>
             <input type="text" required class="form-container__form-box" placeholder="Nazwa użytkownika" maxlength="30" name="username" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="password" required class="form-container__form-box" placeholder="Hasło" maxlength="50" name="pass" oninput="this.value = this.value.replace(/\s/g, '')">
-            <input type="submit" name="submit" class="form-container__form-btn btn btn-action" value="Zaloguj się">
+            <input type="submit" name="submit" class="form-container__form-btn btn form-btn btn-action" value="Zaloguj się">
             <div class="form-container__form-info">
                 <p class="first-letter">nie masz konta?</p>
                 <a href="user_register.php" class="first-letter">zarejestruj się</a>
