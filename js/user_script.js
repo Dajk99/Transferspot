@@ -1,6 +1,7 @@
 const header = document.querySelector('.header')
 const burgerBtn = document.querySelector('.burger-btn')
 const burgerBars = document.querySelector('.fa-bars')
+const posts = document.querySelectorAll('.show-ann__container__box-content')
 
 const darkBody = () => {
 	const darkDiv = document.querySelector('.dark')
@@ -20,8 +21,13 @@ const showPanel = () => {
 	darkBody()
 }
 
+posts.forEach(content => {
+	if (content.innerHTML.length > 50) content.innerHTML = content.innerHTML.slice(0, 50)
+})
+
 // window.onscroll = () => {
 // 	header.classList.remove('header--active')
+// 	darkBody()
 // }
 
 burgerBtn.addEventListener('click', showPanel)

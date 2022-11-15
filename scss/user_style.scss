@@ -126,10 +126,23 @@ section {
 	transition: 0.3s;
 }
 
+.login,
+.logout,
+.view {
+	display: block;
+	width: 100%;
+	color: $black;
+	text-align: center;
+}
+
 // BUTTONS HOVER ACTION
 .btn-action {
 	&:hover {
 		background-color: $navy;
+		color: $white;
+	}
+
+	&:hover a {
 		color: $white;
 	}
 }
@@ -254,7 +267,8 @@ section {
 		grid-template-rows: repeat(2, 8rem) 4rem 4rem;
 		gap: 1.5rem;
 
-		&-item {
+		&-item,
+		&-opt {
 			display: flex;
 			position: relative;
 			justify-content: center;
@@ -265,7 +279,9 @@ section {
 			a {
 				transition: 0.4s;
 			}
+		}
 
+		&-item {
 			i {
 				font-size: 3rem;
 			}
@@ -313,6 +329,10 @@ section {
 			&:hover::after {
 				right: 0;
 			}
+		}
+
+		&-opt {
+			transition: 0.4s;
 
 			&--login {
 				grid-column: 1/3;
@@ -322,14 +342,6 @@ section {
 			&--logout {
 				grid-column: 1/3;
 				grid-row: 4/5;
-			}
-
-			.login,
-			.logout {
-				display: block;
-				width: 100%;
-				color: $black;
-				text-align: center;
 			}
 		}
 	}
@@ -352,15 +364,7 @@ section {
 
 			h3 {
 				font-size: 2.2rem;
-
-				// &:last-of-type {
-				// 	margin-bottom: 1rem;
-				// }
 			}
-
-			// &-btn {
-			// 	transition: 0.3s;
-			// }
 		}
 	}
 }
@@ -472,6 +476,7 @@ section {
 				display: inline-block;
 				margin-bottom: 1rem;
 				padding: 0.8rem 1.6rem;
+				color: $white;
 				border-radius: 0.8rem;
 				font-size: 1.8rem;
 			}
@@ -479,8 +484,8 @@ section {
 			&-title {
 				padding: 1rem 0;
 				min-width: 100%;
-				font-size: 2.2rem;
 				color: $navy;
+				font-size: 2.2rem;
 				overflow: hidden;
 				text-overflow: ellipsis;
 				white-space: nowrap;
@@ -488,20 +493,46 @@ section {
 
 			&-content {
 				padding: 1rem 0;
-				font-size: 1.7rem;
+				font-size: 1.8rem;
+
+				&::after {
+					content: '...';
+				}
+			}
+
+			&-icons {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1rem;
+				background-color: $gray;
+				border-radius: 0.8rem;
+				font-size: 1.5rem;
+
+				i {
+					margin-right: 0.5rem;
+				}
 			}
 
 			&-btns {
 				display: flex;
 				gap: 1rem;
 
-				:first-child {
-					background-color: $navy;
+				:first-child,
+				:last-child {
 					color: $white;
 				}
 
+				:first-child {
+					background-color: $navy;
+
+					i {
+						background: none;
+					}
+				}
+
 				:last-child {
-					background-color: $msg-red;
+					background-color: $red;
 				}
 			}
 		}

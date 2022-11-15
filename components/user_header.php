@@ -46,10 +46,10 @@
             <i class="fa-solid fa-user-plus"></i>
             <p>zarejestruj się</p>
         </button>
-        <button class="header__navbar-item header__navbar-item--login btn first-letter" onclick="location.href='user_login.php'">
-            <p class="login">zaloguj</p>
+        <button class="header__navbar-opt header__navbar-opt--login btn btn-action first-letter" onclick="location.href='user_login.php'">
+            <a class="login">zaloguj</a>
         </button>
-        <button class="header__navbar-item header__navbar-item--logout btn first-letter">
+        <button class="header__navbar-opt header__navbar-opt--logout btn btn-action first-letter">
             <a href="#" class="logout">wyloguj</a>
         </button>
         <!-- <a href="/user/dashboard.php" class="header__navbar-option"><i class="fa-solid fa-house"></i>strona główna</a>

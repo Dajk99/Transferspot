@@ -40,8 +40,8 @@ if(!isset($userId)){
         <div class="show-ann__container">
 
             <?php
-                $activePost = 'rgba(43, 255, 0, 0.6)';
-                $deactivePost = 'rgba(192, 0, 0, 0.6)';
+                $activePost = 'rgb(33, 197, 0)';
+                $deactivePost = 'rgba(192, 0, 0, 0.9)';
                 $selectPosts = $conn->prepare('SELECT * FROM posts WHERE user_id = ?');
                 $selectPosts->execute([$userId]);
 
@@ -72,14 +72,16 @@ if(!isset($userId)){
                 <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
                 <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
                 <div class="show-ann__container__box-icons">
-                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><span><?= $totalPostLikes; ?></span></div>
-                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><span><?= $totalPostComments; ?></span></div>
+                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
+                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
                 </div>
                 <div class="show-ann__container__box-btns">
-                    <button class="btn form-btn first-letter" onclick="location.href='edit_ann.php?post_id=<?= $postId; ?>'">edytuj</button>
-                    <button type="submit" name="delete" class="btn form-btn first-letter" onclick="return confirm('Na pewno usunąć to ogłoszenie?');">usuń</button>
+                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="submit" name="delete" class="btn form-btn first-letter" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <a href="read_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter">zobacz post</a>
+                <button class="btn form-btn first-letter">
+                    <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
+                </button>
             </form>
             <?php
                     }
