@@ -178,6 +178,13 @@ section {
   text-align: center;
 }
 
+.ann-image {
+  height: 20rem;
+  width: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
 .burger-btn {
   display: none;
   position: fixed;
@@ -403,7 +410,42 @@ section {
   display: flex;
   gap: 1rem;
 }
+.ann-editor__form img {
+  margin: 1rem 0;
+}
 
+.show-ann__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  padding: 1rem 2rem;
+  border: 0.2rem solid #14213d;
+  background-color: #ffffff;
+}
+.show-ann__form input {
+  width: 100%;
+  font-size: 2rem;
+  border: none transparent;
+}
+.show-ann__form input:focus {
+  outline: none;
+}
+.show-ann__form button {
+  padding: 0.5rem 1rem;
+  background: none;
+}
+.show-ann__form button i {
+  color: #fca311;
+  font-size: 2rem;
+}
 .show-ann__container {
   display: grid;
   grid-template-columns: repeat(auto-fit, 35rem);
@@ -425,10 +467,6 @@ section {
 }
 .show-ann__container__box-image {
   margin-bottom: 1rem;
-  height: 20rem;
-  width: 100%;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 .show-ann__container__box-status {
   position: relative;

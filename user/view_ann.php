@@ -10,6 +10,22 @@ if(!isset($userId)){
     header('location:user_login.php');
 }
 
+if(isset($_POST['delete'])) {
+    $postId = $_POST['post_id'];
+    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
+    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+    $deleteImage->execute([$postId]);
+    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
+    if($fetchDeleteImage['image'] != ''){
+      unlink('../images/'.$fetchDeleteImage['image']);
+    }
+    $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
+    $deletePost->execute([$postId]);
+    $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
+    $deleteComments->execute([$postId]);
+    $goodMessage[] = 'Pomyślnie usunięto ogłoszenie!';
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -34,11 +50,29 @@ if(!isset($userId)){
         include '../components/user_header.php';
     ?>
 
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
+    
     <!-- posts -->
     <section class="show-ann">
         <h1 class="show-ann__heading first-letter">twoje ogłoszenia</h1>
-        <div class="show-ann__container">
 
+        <!-- search form -->
+        <form action="search_page.php" method="POST" class="show-ann__form">
+            <input type="text" placeholder="Szukaj..." required maxlength="100" name="search_box">
+            <button name="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+        <div class="show-ann__container">
             <?php
                 $activePost = 'rgb(33, 197, 0)';
                 $deactivePost = 'rgba(192, 0, 0, 0.9)';
@@ -67,7 +101,7 @@ if(!isset($userId)){
                 }
                 ?>
                 <?php if($fetchPosts['image'] != ''){ ?>
-                    <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image" alt="">
+                    <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
                 <?php } ?>
                 <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
                 <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
