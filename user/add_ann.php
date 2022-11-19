@@ -23,7 +23,7 @@ if(isset($_POST['publish'])) {
     $voivodeship = filter_var($voivodeship, FILTER_SANITIZE_STRING);
     $league = $_POST['league'];
     $league = filter_var($league, FILTER_SANITIZE_STRING);
-    $status = 'active';
+    $status = 'Aktywne';
 
     $img = $_FILES['image']['name'];
     $img = filter_var($img, FILTER_SANITIZE_STRING);
@@ -49,7 +49,7 @@ if(isset($_POST['publish'])) {
      if($selectImg->rowCount() > 0 AND $img != ''){
         $message[] = 'Zmień nazwę pliku!';
      } else {
-        $insertPost = $conn->prepare('INSERT INTO posts (user_id, username, title, content, category, ligue, voivodeship, image, status) VALUES (?,?,?,?,?,?,?,?,?)');
+        $insertPost = $conn->prepare('INSERT INTO posts (user_id, username, title, content, category, league, voivodeship, image, status) VALUES (?,?,?,?,?,?,?,?,?)');
         $insertPost->execute([$userId, $username, $title, $content, $category, $league, $voivodeship, $img, $status]);
         $goodMessage[] = 'Pomyślnie opublikowano ogłoszenie!';
      }
@@ -150,44 +150,44 @@ if(isset($_POST['draft'])) {
             <p class="ann-editor__form-text first-letter">kategoria ogłoszenia<span>*</span></p>
             <select name="category" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz kategorię</option>
-                <option value="need_player">Nabór zawodników</option>
-                <option value="need_coach">Nabór trenerów</option>
-                <option value="club_club_p">Poszukuję klubu (zawodnik)</option>
-                <option value="club_club_c">Poszukuję klubu (trener)</option>
-                <option value="trainings">Treningi</option>
-                <option value="tournaments">Turnieje</option>
-                <option value="coaching">Szkolenia</option>
-                <option value="tests">Testy</option>   
+                <option value="Nabór zawodników">Nabór zawodników</option>
+                <option value="Nabór trenerów">Nabór trenerów</option>
+                <option value="Zawodnik szuka pracy">Zawodnik szuka pracy</option>
+                <option value="Trener szuka pracy">Trener szuka pracy</option>
+                <option value="Treningi">Treningi</option>
+                <option value="Turnieje">Turnieje</option>
+                <option value="Szkolenia">Szkolenia</option>
+                <option value="Testy">Testy</option>   
             </select>
             <p class="ann-editor__form-text first-letter">województwo<span>*</span></p>
             <select name="voivodeship" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz województwo</option>
-                <option value="DS">Dolnośląskie</option>
-                <option value="KP">Kujawsko-Pomorskie</option>
-                <option value="LU">Lubelskie</option>
-                <option value="LB">Lubuskie</option>
-                <option value="LD">Łódzkie</option>
-                <option value="MP">Małopolskie</option>
-                <option value="MZ">Mazowieckie</option>
-                <option value="OP">Opolskie</option>
-                <option value="PK">Podkarpackie</option>
-                <option value="PD">Podlaskie</option>
-                <option value="PM">Pomorskie</option>
-                <option value="SL">Śląskie</option>
-                <option value="SW">Świętokrzyskie</option>
-                <option value="WM">Warmińsko-Mazurskie</option>
-                <option value="WP">Wielkopolskie</option>
-                <option value="ZP">Zachodniopomorskie</option>   
+                <option value="Dolnośląskie">Dolnośląskie</option>
+                <option value="Kujawsko-Pomorskie">Kujawsko-Pomorskie</option>
+                <option value="Lubelskie">Lubelskie</option>
+                <option value="Lubuskie">Lubuskie</option>
+                <option value="Łódzkie">Łódzkie</option>
+                <option value="Małopolskie">Małopolskie</option>
+                <option value="Mazowieckie">Mazowieckie</option>
+                <option value="Opolskie">Opolskie</option>
+                <option value="Podkarpackie">Podkarpackie</option>
+                <option value="Podlaskie">Podlaskie</option>
+                <option value="Pomorskie">Pomorskie</option>
+                <option value="Śląskie">Śląskie</option>
+                <option value="Świętokrzyskie">Świętokrzyskie</option>
+                <option value="Warmińsko-Mazurskie">Warmińsko-Mazurskie</option>
+                <option value="Wielkopolskie">Wielkopolskie</option>
+                <option value="Zachodniopomorskie">Zachodniopomorskie</option>   
             </select>
             <p class="ann-editor__form-text first-letter">poziom rozgrywek<span>*</span></p>
             <select name="league" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz ligę</option>
-                <option value="pzpn_4">PZPN 4 liga</option>
-                <option value="pzpn_5">PZPN 5 liga</option>
-                <option value="wzpn_ko">WZPN Klasa okręgowa</option>
-                <option value="wzpn_a">WZPN A klasa</option>
-                <option value="wzpn_b">WZPN B klasa</option>
-                <option value="wzpn_c">WZPN C klasa</option>   
+                <option value="PZPN 4 liga">PZPN 4 liga</option>
+                <option value="PZPN 5 liga">PZPN 5 liga</option>
+                <option value="WZPN Klasa okręgowa">WZPN Klasa okręgowa</option>
+                <option value="WZPN A klasa">WZPN A klasa</option>
+                <option value="WZPN B klasa">WZPN B klasa</option>
+                <option value="WZPN C klasa">WZPN C klasa</option>   
             </select>
             <p class="ann-editor__form-text first-letter">Zdjęcie</p>
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">

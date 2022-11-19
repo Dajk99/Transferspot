@@ -10,24 +10,8 @@ if(!isset($userId)){
     header('location:user_login.php');
 }
 
-if(isset($_POST['delete'])) {
-    $postId = $_POST['post_id'];
-    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
-    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-    $deleteImage->execute([$postId]);
-    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
-    if($fetchDeleteImage['image'] != ''){
-      unlink('../images/'.$fetchDeleteImage['image']);
-    }
-    $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
-    $deletePost->execute([$postId]);
-    $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
-    $deleteComments->execute([$postId]);
-    $goodMessage[] = 'Pomyślnie usunięto ogłoszenie!';
-}
-
 if(isset($_POST['save'])) {
-    $postId = $_GET['id'];
+    $postId = $_GET['post_id'];
     $username = $_POST['username'];
     $username = filter_var($username, FILTER_SANITIZE_STRING);
     $title = $_POST['title'];
@@ -43,6 +27,12 @@ if(isset($_POST['save'])) {
     $status = $_POST['status'];
     $status = filter_var($status, FILTER_SANITIZE_STRING);
 
+    $updatePost = $conn->prepare("UPDATE posts SET title = ?, content = ?, category = ?, voivodeship = ?, league = ?, status = ? WHERE id = ?");
+    $updatePost->execute([$title, $content, $category, $voivodeship, $league, $status, $postId]);
+    $goodMessage[] = 'Pomyślnie zaktualizowano ogłoszenie!';
+
+    $oldImage = $_POST['old_image'];
+    $oldImage = filter_var($oldImage, FILTER_SANITIZE_STRING);
     $img = $_FILES['image']['name'];
     $img = filter_var($img, FILTER_SANITIZE_STRING);
     $imgSize = $_FILES['image']['size'];
@@ -52,26 +42,55 @@ if(isset($_POST['save'])) {
     $selectImg = $conn->prepare('SELECT * FROM posts WHERE image = ? AND user_id = ?');
     $selectImg->execute([$img, $userId]);
 
-    if(isset($img)){
-        if($selectImg->rowCount() > 0 AND $img != ''){
-           $message[] = 'Konieczna zmiana nazwy pliku!';
-        }else if($imgSize > 2000000){
-           $message[] = 'Załączony plik jest za duży!';
-        }else{
-           move_uploaded_file($imgTmpName, $imgFolder);
+    if(!empty($img)){
+        if($imgSize > 2000000){
+            $message[] = 'Załączony plik jest za duży!';
+        } else if($selectImg->rowCount() > 0 AND $img != ''){
+            $message[] = 'Zmień nazwę pliku!';
+        } else{
+            $updateImage = $conn->prepare("UPDATE posts SET image = ? WHERE id = ?");
+            $updateImage->execute([$img, $postId]);
+            move_uploaded_file($imgTmpName, $imgFolder);
+            if($oldImage != $img AND $oldImage != '') {
+                unlink('../images/'.$oldImage);
+            }
+            $goodMessage[] = 'Pomyślnie zaktualizowano zdjęcie!';
         }
-     }else{
+     } else{
         $img = '';
      }
-
-     if($selectImg->rowCount() > 0 AND $img != ''){
-        $message[] = 'Zmień nazwę pliku!';
-     } else {
-        $insertPost = $conn->prepare('INSERT INTO posts (user_id, username, title, content, category, ligue, voivodeship, image, status) VALUES (?,?,?,?,?,?,?,?,?)');
-        $insertPost->execute([$userId, $username, $title, $content, $category, $league, $voivodeship, $img, $status]);
-        $goodMessage[] = 'Szkic został zapisany!';
-     }
 }
+
+if(isset($_POST['delete'])) {
+    $postId = $_POST['post_id'];
+    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
+    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+    $deleteImage->execute([$postId]);
+    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
+    if($fetchDeleteImage['image'] != ''){
+      unlink('../images/'.$fetchDeleteImage['image']);
+    }
+    $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
+    $deletePost->execute([$postId]);
+    $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
+    $deleteComments->execute([$postId]);
+    $goodMessage[] = 'Pomyślnie usunięto ogłoszenie!';
+}
+ 
+if(isset($_POST['delete_image'])){
+    $emptyImg = '';
+    $postId = $_POST['post_id'];
+    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
+    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+    $deleteImage->execute([$postId]);
+    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
+    if($fetchDeleteImage['image'] != ''){
+       unlink('../images/'.$fetchDeleteImage['image']);
+    }
+    $unsetImage = $conn->prepare("UPDATE `posts` SET image = ? WHERE id = ?");
+    $unsetImage->execute([$emptyImg, $postId]);
+    $goodMessage[] = 'Zdjęcie zostało usunięte!';
+ }
 
 ?>
 
@@ -97,12 +116,24 @@ if(isset($_POST['save'])) {
         include '../components/user_header.php';
     ?>
 
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
+
     <!-- edit ann -->
     <section class="ann-editor">
         <h1 class="ann-editor__heading first-letter">edytuj ogłoszenie</h1>
         
         <?php
-        $postId = $_GET['id'];
+        $postId = $_GET['post_id'];
         $selectPosts = $conn->prepare("SELECT * FROM posts WHERE id = ?");
         $selectPosts->execute([$postId]);
         if($selectPosts->rowCount() > 0){
@@ -111,6 +142,7 @@ if(isset($_POST['save'])) {
 
         <form action="" method="POST" enctype="multipart/form-data" class="ann-editor__form">
             <input type="hidden" name="post_id" value="<?= $fetchPosts['id']; ?>">
+            <input type="hidden" name="old_image" value="<?= $fetchPosts['image']; ?>">
             <input type="hidden" name="username" value="<?= $fetchProfile['username']; ?>">
             <p class="ann-editor__form-text first-letter">status ogłoszenia <span>*</span></p>
             <select name="status" class="ann-editor__form-box" required>
@@ -121,48 +153,48 @@ if(isset($_POST['save'])) {
             <p class="ann-editor__form-text first-letter">tytuł ogłoszenia<span>*</span></p>
             <input type="text" name="title" required placeholder="Tytuł ogłoszenia" maxlength="100" class="ann-editor__form-box" value="<?= $fetchPosts['title']; ?>">
             <p class="ann-editor__form-text first-letter">treść ogłoszenia<span>*</span></p>
-            <textarea name="content" class="ann-editor__form-box" required maxlength="10000" placeholder="Treść twojego ogłoszenia" cols="30" rows="10"><?= $fetchPosts['content']; ?>"</textarea>
+            <textarea name="content" class="ann-editor__form-box" required maxlength="10000" placeholder="Treść twojego ogłoszenia" cols="30" rows="10"><?= $fetchPosts['content']; ?></textarea>
             <p class="ann-editor__form-text first-letter">kategoria ogłoszenia<span>*</span></p>
             <select name="category" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['category']; ?>" selected><?= $fetchPosts['category']; ?></option>
-                <option value="need_player">Nabór zawodników</option>
-                <option value="need_coach">Nabór trenerów</option>
-                <option value="club_club_p">Poszukuję klubu (zawodnik)</option>
-                <option value="club_club_c">Poszukuję klubu (trener)</option>
-                <option value="trainings">Treningi</option>
-                <option value="tournaments">Turnieje</option>
-                <option value="coaching">Szkolenia</option>
-                <option value="tests">Testy</option>   
+                <option value="Nabór zawodników">Nabór zawodników</option>
+                <option value="Nabór trenerów">Nabór trenerów</option>
+                <option value="Zawodnik szuka pracy">Zawodnik szuka pracy</option>
+                <option value="Trener szuka pracy">Trener szuka pracy</option>
+                <option value="Treningi">Treningi</option>
+                <option value="Turnieje">Turnieje</option>
+                <option value="Szkolenia">Szkolenia</option>
+                <option value="Testy">Testy</option>    
             </select>
             <p class="ann-editor__form-text first-letter">województwo<span>*</span></p>
             <select name="voivodeship" class="ann-editor__form-box" required>
-                <option value="<?= $fetchPosts['voivodeship']; ?>" selected><?= $fetchPosts['voivodeship']; ?>"</option>
-                <option value="DS">Dolnośląskie</option>
-                <option value="KP">Kujawsko-Pomorskie</option>
-                <option value="LU">Lubelskie</option>
-                <option value="LB">Lubuskie</option>
-                <option value="LD">Łódzkie</option>
-                <option value="MP">Małopolskie</option>
-                <option value="MZ">Mazowieckie</option>
-                <option value="OP">Opolskie</option>
-                <option value="PK">Podkarpackie</option>
-                <option value="PD">Podlaskie</option>
-                <option value="PM">Pomorskie</option>
-                <option value="SL">Śląskie</option>
-                <option value="SW">Świętokrzyskie</option>
-                <option value="WM">Warmińsko-Mazurskie</option>
-                <option value="WP">Wielkopolskie</option>
-                <option value="ZP">Zachodniopomorskie</option>   
+                <option value="<?= $fetchPosts['voivodeship']; ?>" selected><?= $fetchPosts['voivodeship']; ?></option>
+                <option value="Dolnośląskie">Dolnośląskie</option>
+                <option value="Kujawsko-Pomorskie">Kujawsko-Pomorskie</option>
+                <option value="Lubelskie">Lubelskie</option>
+                <option value="Lubuskie">Lubuskie</option>
+                <option value="Łódzkie">Łódzkie</option>
+                <option value="Małopolskie">Małopolskie</option>
+                <option value="Mazowieckie">Mazowieckie</option>
+                <option value="Opolskie">Opolskie</option>
+                <option value="Podkarpackie">Podkarpackie</option>
+                <option value="Podlaskie">Podlaskie</option>
+                <option value="Pomorskie">Pomorskie</option>
+                <option value="Śląskie">Śląskie</option>
+                <option value="Świętokrzyskie">Świętokrzyskie</option>
+                <option value="Warmińsko-Mazurskie">Warmińsko-Mazurskie</option>
+                <option value="Wielkopolskie">Wielkopolskie</option>
+                <option value="Zachodniopomorskie">Zachodniopomorskie</option>  
             </select>
             <p class="ann-editor__form-text first-letter">poziom rozgrywek<span>*</span></p>
             <select name="league" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['league']; ?>" selected><?= $fetchPosts['league']; ?></option>
-                <option value="pzpn_4">PZPN 4 liga</option>
-                <option value="pzpn_5">PZPN 5 liga</option>
-                <option value="wzpn_ko">WZPN Klasa okręgowa</option>
-                <option value="wzpn_a">WZPN A klasa</option>
-                <option value="wzpn_b">WZPN B klasa</option>
-                <option value="wzpn_c">WZPN C klasa</option>   
+                <option value="PZPN 4 liga">PZPN 4 liga</option>
+                <option value="PZPN 5 liga">PZPN 5 liga</option>
+                <option value="WZPN Klasa okręgowa">WZPN Klasa okręgowa</option>
+                <option value="WZPN A klasa">WZPN A klasa</option>
+                <option value="WZPN B klasa">WZPN B klasa</option>
+                <option value="WZPN C klasa">WZPN C klasa</option>   
             </select>
             <p class="ann-editor__form-text first-letter">Zdjęcie</p>
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">
@@ -171,14 +203,17 @@ if(isset($_POST['save'])) {
                 <input type="submit" value="Usuń zdjęcie" class="btn form-btn btn-action" name="delete_image">
             <?php } ?>
             <div class="ann-editor__form-btns">
-                <input type="submit" value="Zapisz zmiany" name="save" class="btn form-btn btn-action">
-                <button type="submit" name="delete" class="btn form-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+                <button type="submit" name="save" class="btn form-btn green-btn"><i class="fa-solid fa-file-circle-check"></i></button>
+                <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div class="ann-editor__form-comeback">
+                <a href="view_ann.php">Wróć do ogłoszeń</a>
             </div>
         </form>
         <?php
                     }
                 } else {
-                    echo '<p class="show-ann__container-empty first-letter">aktualnie brak dodanych ogłoszeń</p>';
+                    echo '<div class="show-ann__container-empty first-letter">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
                 }
         ?>
     </section>

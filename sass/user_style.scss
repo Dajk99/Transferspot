@@ -1,4 +1,5 @@
 @import './colors';
+@import './tags';
 
 // RESET
 *,
@@ -40,8 +41,17 @@ html {
 	color: $black;
 }
 
-a {
+a,
+i {
 	text-decoration: none;
+}
+
+a {
+	color: inherit;
+}
+
+i {
+	background: none;
 }
 
 img {
@@ -57,6 +67,7 @@ select {
 
 button {
 	border: none;
+	background: none;
 	cursor: pointer;
 }
 
@@ -78,7 +89,7 @@ body {
 // SECTION
 section {
 	padding: 0 2rem;
-	margin: 0 auto;
+	margin: 0 auto 1rem;
 	max-width: 1200px;
 }
 
@@ -116,7 +127,7 @@ section {
 	font-size: 2.1rem;
 	text-align: center;
 	background-color: $yellow;
-	border-radius: 0.8rem;
+	border-radius: $border-radius;
 	cursor: pointer;
 	overflow: hidden;
 }
@@ -125,6 +136,24 @@ section {
 	margin-top: 1rem;
 	border: none;
 	transition: 0.3s;
+}
+
+.red-btn,
+.navy-btn,
+.green-btn {
+	color: $white;
+}
+
+.red-btn {
+	background-color: $red;
+}
+
+.navy-btn {
+	background-color: $navy;
+}
+
+.green-btn {
+	background-color: $green;
 }
 
 .login,
@@ -205,13 +234,13 @@ section {
 	left: 1.3rem;
 	padding: 1rem;
 	background: none;
-	border: 1px solid transparent;
+	border: $border-burger;
 	z-index: 1200;
 
 	&:focus {
 		outline: none;
-		border: 1px solid $black;
-		border-radius: 0.5rem;
+		border: $border-burger-focus;
+		border-radius: $border-radius;
 	}
 
 	&__box {
@@ -234,7 +263,7 @@ section {
 	padding: 4rem 2rem 2rem;
 	min-height: 100vh;
 	width: 40rem;
-	border-right: 1rem solid $navy;
+	border-right: $border-header;
 	background-color: $white;
 	z-index: 1000;
 
@@ -256,11 +285,6 @@ section {
 			font-size: 2.2rem;
 			color: $black;
 		}
-
-		// &-btn {
-		// 	margin-top: 1rem;
-		// 	transition: 0.3s;
-		// }
 	}
 
 	&__navbar {
@@ -360,8 +384,8 @@ section {
 
 		&-box {
 			padding: 2rem;
-			border: 2px solid $navy;
-			border-radius: 0.8rem;
+			border: $border-navy;
+			border-radius: $border-radius;
 			background-color: $white;
 
 			h3 {
@@ -386,8 +410,8 @@ section {
 		padding: 1.5rem;
 		width: 50rem;
 		background-color: $white;
-		border: 0.3rem solid $navy;
-		border-radius: 0.8rem;
+		border: $border-navy;
+		border-radius: $border-radius;
 		text-align: center;
 
 		h3 {
@@ -424,8 +448,8 @@ section {
 		padding: 1.5rem;
 		max-width: 80rem;
 		background-color: $white;
-		border: 0.3rem solid $navy;
-		border-radius: 0.8rem;
+		border: $border-navy;
+		border-radius: $border-radius;
 
 		&-text {
 			padding-top: 0.5rem;
@@ -441,7 +465,7 @@ section {
 			padding: 0.8rem;
 			width: 100%;
 			font-size: 1.5rem;
-			border: 0.2rem solid $navy;
+			border: $border-navy;
 		}
 
 		&-btns {
@@ -451,6 +475,21 @@ section {
 
 		img {
 			margin: 1rem 0;
+		}
+
+		&-comeback {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			margin-top: 1rem;
+
+			a {
+				font-size: 2.2rem;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
 		}
 	}
 }
@@ -464,7 +503,7 @@ section {
 		gap: 1.5rem;
 		margin-bottom: 2.5rem;
 		padding: 1rem 2rem;
-		border: 0.2rem solid $navy;
+		border: $border-navy;
 		background-color: $white;
 
 		input {
@@ -479,7 +518,6 @@ section {
 
 		button {
 			padding: 0.5rem 1rem;
-			background: none;
 
 			i {
 				color: $yellow;
@@ -498,8 +536,8 @@ section {
 
 		&__box {
 			padding: 2rem;
-			border: 2px solid $navy;
-			border-radius: 0.8rem;
+			border: $border-navy;
+			border-radius: $border-radius;
 			background-color: $white;
 			overflow: hidden;
 
@@ -512,7 +550,7 @@ section {
 				display: inline-block;
 				margin-bottom: 1rem;
 				padding: 0.5rem 1rem;
-				border-radius: 0.8rem;
+				border-radius: $border-radius;
 				background-color: $gray;
 				font-size: 1.8rem;
 			}
@@ -540,7 +578,7 @@ section {
 				align-items: center;
 				padding: 1rem;
 				background-color: $gray;
-				border-radius: 0.8rem;
+				border-radius: $border-radius;
 				font-size: 1.5rem;
 
 				i {
@@ -551,23 +589,110 @@ section {
 			&-btns {
 				display: flex;
 				gap: 1rem;
+			}
 
-				:first-child,
-				:last-child {
-					color: $white;
-				}
+			&-tags {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, 35rem);
+				justify-content: center;
+				margin-top: 1rem;
+				padding: 1rem 2rem;
+				border: $border-gray;
+				border-radius: $border-radius;
 
-				:first-child {
-					background-color: $navy;
+				&-tag {
+					font-size: 2rem;
+					text-align: center;
 
 					i {
-						background: none;
+						margin-right: 0.5rem;
+					}
+				}
+			}
+		}
+
+		&-empty {
+			grid-column: 1/-1;
+			text-align: center;
+			font-size: 2.5rem;
+
+			a {
+				color: $yellow;
+
+				&:hover {
+					text-decoration: underline;
+				}
+			}
+		}
+	}
+}
+
+// READ ANN
+.read-ann {
+	margin-top: 2rem;
+}
+
+// COMMENTS
+.comments {
+	&__title,
+	&__container {
+		padding: 1.5rem;
+	}
+
+	&__title {
+		border-top-left-radius: $border-radius;
+		border-top-right-radius: $border-radius;
+		background-color: $navy;
+		color: $white;
+		font-size: 3rem;
+	}
+
+	&__container {
+		display: grid;
+		gap: 2rem;
+		padding: 2rem;
+		border: $border-navy;
+		border-bottom-left-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+		background-color: $white;
+
+		&-comment {
+			&-user {
+				display: flex;
+				align-items: center;
+				gap: 1.5rem;
+
+				&-icon {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 4.5rem;
+					height: 4.5rem;
+					border-radius: $border-radius;
+					background-color: $gray;
+
+					i {
+						color: $black;
+						font-size: 2.5rem;
 					}
 				}
 
-				:last-child {
-					background-color: $red;
+				&-info {
+					span {
+						color: $navy;
+						font-size: 2rem;
+					}
+
+					div {
+						margin-top: 0.2rem;
+						font-size: 1.6rem;
+					}
 				}
+			}
+
+			&-content {
+				padding: 1rem 0;
+				font-size: 1.8rem;
 			}
 		}
 	}

@@ -58,11 +58,11 @@ if(!isset($userId)){
                 <?php
                 /* active posts */ 
                     $selectActivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $selectActivePosts->execute([$userId, 'active']);
+                    $selectActivePosts->execute([$userId, 'Aktywne']);
                     $activePostCount = $selectActivePosts->rowCount();
                 /* deactive posts */ 
                     $selectDeactivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $selectDeactivePosts->execute([$userId, 'deactive']);
+                    $selectDeactivePosts->execute([$userId, 'Nieaktywne']);
                     $deactivePostCount = $selectDeactivePosts->rowCount();
                 /* liked posts */
                     $selectLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
