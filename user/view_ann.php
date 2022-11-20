@@ -113,7 +113,7 @@ if(isset($_POST['delete'])) {
                     <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
                     <button type="submit" name="delete" class="btn form-btn first-letter red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <button class="btn form-btn first-letter">
+                <button class="btn form-btn first-letter pd-btn-reset">
                     <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
                 </button>
             </form>

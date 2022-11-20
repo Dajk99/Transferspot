@@ -48,6 +48,8 @@ if(isset($_POST['submit'])){
     <!-- user login section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
+            <h1 class="logo"><a href="dashboard.php">Transferspot</a></h1>
+            <div class="underline"></div>
             <h3 class="first-letter">logowanie</h3>
             <?php
                 if(isset($message)) {

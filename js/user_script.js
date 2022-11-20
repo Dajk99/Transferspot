@@ -16,14 +16,15 @@ const darkBody = () => {
 
 const showPanel = () => {
 	header.classList.toggle('header--active')
-	// burgerBars.classList.toggle('fa-bars--dark')
 	document.body.classList.toggle('sticky')
 	darkBody()
 }
 
 posts.forEach(content => {
-	if (content.innerHTML.length > 100) {
-		content.innerHTML = content.innerHTML.slice(0, 100) + '...'
+	if (content.classList.contains('no-slice') != true) {
+		if (content.innerHTML.length > 100) {
+			content.innerHTML = content.innerHTML.slice(0, 100) + '...'
+		}
 	}
 })
 

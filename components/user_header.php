@@ -11,7 +11,7 @@
 ?>
 
 <header class="header">
-    <div class="header__logo">
+    <div class="header__logo logo">
         <a href="dashboard.php">Transferspot</a>
     </div>
 

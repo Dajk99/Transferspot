@@ -160,9 +160,14 @@ section {
 .logout,
 .view {
 	display: block;
+	padding: 1rem 2rem;
 	width: 100%;
 	color: $black;
 	text-align: center;
+}
+
+.pd-btn-reset {
+	padding: 0;
 }
 
 // BUTTONS HOVER ACTION
@@ -183,15 +188,15 @@ section {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	padding: 2rem;
+	padding: 1.5rem;
 	gap: 2rem;
 
-	span {
-		font-size: 2rem;
+	span,
+	i {
+		font-size: 1.8rem;
 	}
 
 	i {
-		font-size: 2rem;
 		cursor: pointer;
 	}
 }
@@ -219,6 +224,21 @@ section {
 	}
 }
 
+// LOGO & UNDERLINE
+.logo {
+	color: $navy;
+	font-size: 3.5rem;
+	font-weight: bold;
+	font-family: 'Russo One', sans-serif;
+	letter-spacing: 0.15rem;
+}
+
+.underline {
+	height: 0.1rem;
+	background-color: $navy;
+	margin: 0.5rem 0 1.2rem;
+}
+
 // ANN IMAGES
 .ann-image {
 	height: 20rem;
@@ -230,17 +250,17 @@ section {
 .burger-btn {
 	display: none;
 	position: fixed;
-	top: 3.4rem;
+	top: 0.6rem;
 	left: 1.3rem;
-	padding: 1rem;
-	background: none;
-	border: $border-burger;
+	padding: 0.3rem;
+	border: $border-navy;
+	border-radius: $border-radius;
+	background-color: $white;
 	z-index: 1200;
 
 	&:focus {
 		outline: none;
 		border: $border-burger-focus;
-		border-radius: $border-radius;
 	}
 
 	&__box {
@@ -269,12 +289,6 @@ section {
 
 	&__logo {
 		text-align: center;
-
-		a {
-			color: $navy;
-			font-size: 3.5rem;
-			font-family: 'Russo One', sans-serif;
-		}
 	}
 
 	&__profile {
@@ -504,6 +518,7 @@ section {
 		margin-bottom: 2.5rem;
 		padding: 1rem 2rem;
 		border: $border-navy;
+		border-radius: $border-radius;
 		background-color: $white;
 
 		input {
@@ -577,7 +592,7 @@ section {
 				justify-content: space-between;
 				align-items: center;
 				padding: 1rem;
-				background-color: $gray;
+				background-color: $light-gray;
 				border-radius: $border-radius;
 				font-size: 1.5rem;
 
@@ -593,19 +608,18 @@ section {
 
 			&-tags {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, 35rem);
+				grid-template-columns: repeat(auto-fit, 25rem);
 				justify-content: center;
 				margin-top: 1rem;
 				padding: 1rem 2rem;
-				border: $border-gray;
-				border-radius: $border-radius;
 
 				&-tag {
 					font-size: 2rem;
 					text-align: center;
 
 					i {
-						margin-right: 0.5rem;
+						margin-right: 0.6rem;
+						color: $yellow;
 					}
 				}
 			}
@@ -648,8 +662,6 @@ section {
 	}
 
 	&__container {
-		display: grid;
-		gap: 2rem;
 		padding: 2rem;
 		border: $border-navy;
 		border-bottom-left-radius: $border-radius;
@@ -657,42 +669,54 @@ section {
 		background-color: $white;
 
 		&-comment {
+			display: grid;
+			grid-template-columns: 10fr 1fr;
+			grid-template-rows: repeat(2, 1fr);
+
 			&-user {
-				display: flex;
-				align-items: center;
-				gap: 1.5rem;
+				display: grid;
+				grid-template-rows: repeat(2, 3.5rem);
+				grid-template-columns: 30rem;
+				grid-row: 1/2;
+				grid-column: 1/2;
 
-				&-icon {
+				&-date,
+				&-info {
 					display: flex;
-					justify-content: center;
+					justify-content: flex-start;
 					align-items: center;
-					width: 4.5rem;
-					height: 4.5rem;
-					border-radius: $border-radius;
-					background-color: $gray;
+					font-size: 2rem;
+				}
 
-					i {
-						color: $black;
-						font-size: 2.5rem;
-					}
+				&-date {
+					grid-row: 1/2;
+					grid-column: 1/2;
+					color: $dark-gray;
 				}
 
 				&-info {
-					span {
-						color: $navy;
-						font-size: 2rem;
-					}
+					grid-row: 2/3;
+					grid-column: 1/2;
 
-					div {
-						margin-top: 0.2rem;
-						font-size: 1.6rem;
+					span {
+						color: $yellow;
+						font-weight: bold;
 					}
 				}
 			}
 
+			&-btn {
+				grid-row: 1/2;
+				grid-column: 2/3;
+			}
+
 			&-content {
+				grid-row: 2/3;
+				grid-column: 1/3;
+				justify-content: center;
 				padding: 1rem 0;
-				font-size: 1.8rem;
+				font-size: 2.2rem;
+				overflow-wrap: break-word;
 			}
 		}
 	}

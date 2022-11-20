@@ -70,7 +70,7 @@ if(!isset($userId)){
                     $likesCount = $selectLikes->rowCount();
                 ?>
                 <h3 class="first-letter">aktywne ogłoszenia: <?= $activePostCount; ?></h3>
-                <h3 class="first-letter">Wygasłe ogłoszenia: <?= $deactivePostCount; ?></h3>
+                <h3 class="first-letter">Zapisane szkice: <?= $deactivePostCount; ?></h3>
                 <h3 class="first-letter">polubione ogłoszenia: <?= $likesCount; ?></h3>
                 <button class="dashboard__container-box-btn btn form-btn first-letter btn-action" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
             </div>

@@ -110,14 +110,14 @@ if(isset($_POST['delete'])) {
                 <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
                 <?php } ?>
                 <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
-                <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
+                <div class="show-ann__container__box-content no-slice"><?= $fetchPosts['content']; ?></div>
                 <div class="show-ann__container__box-icons">
                     <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
                     <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
                 </div>
                 <div class="show-ann__container__box-btns">
-                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" name="delete" class="btn form-btn first-letter red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
                 </div>
                 <div class="show-ann__container__box-tags">
                     <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
@@ -148,18 +148,17 @@ if(isset($_POST['delete'])) {
 
             <div class="comments__container-comment">
                 <div class="comments__container-comment-user">
-                    <div class="comments__container-comment-user-icon">
-                        <i class="fa-solid fa-user"></i>
+                    <div class="comments__container-comment-user-date">
+                        <p class="comments__container-comment-user-date-text"><?= $fetchComments['date']; ?></p>
                     </div>
                     <div class="comments__container-comment-user-info">
-                        <span><?= $fetchComments['username']; ?></span>
-                        <div><?= $fetchComments['date']; ?></div>
+                        <p>Użytkownik <span><?= $fetchComments['username']; ?></span> napisał:<p>
                     </div>
                 </div>
                 <div class="comments__container-comment-content first-letter"><?= $fetchComments['comment']; ?></div>
-                <form action="" method="POST">
+                <form class ="comments__container-comment-btn" action="" method="POST">
                     <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
-                    <button type="submit" class="btn form-btn btn-action first-letter" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');">usuń komentarz</button>
+                    <button type="submit" class="btn form-btn red-btn" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-comment-slash"></i></button>
                 </form>
             </div>
 

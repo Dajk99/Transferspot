@@ -50,6 +50,18 @@ if(isset($_POST['delete'])) {
         include '../components/user_header.php';
     ?>
 
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
+
     <section class="show-ann">
         <h1 class="show-ann__heading first-letter">twoje ogłoszenia</h1>
 
