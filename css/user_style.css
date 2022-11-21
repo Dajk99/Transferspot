@@ -114,7 +114,6 @@ section {
   width: 100%;
   font-size: 2.1rem;
   text-align: center;
-  background-color: #fca311;
   border-radius: 0.8rem;
   cursor: pointer;
   overflow: hidden;
@@ -132,6 +131,11 @@ section {
 .green-btn {
   color: #ffffff;
 }
+.red-btn a,
+.navy-btn a,
+.green-btn a {
+  color: #ffffff;
+}
 
 .red-btn {
   background-color: rgba(192, 0, 0, 0.9);
@@ -143,6 +147,14 @@ section {
 
 .green-btn {
   background-color: rgb(24, 141, 0);
+}
+
+.yellow-btn {
+  background-color: #fca311;
+}
+
+.gray-btn {
+  background-color: #e5e5e5;
 }
 
 .login,
@@ -277,16 +289,16 @@ section {
   text-align: center;
 }
 .header__profile-text {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #000000;
 }
 .header__navbar {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 5rem repeat(2, 8rem) repeat(2, 5rem);
+  grid-template-rows: repeat(5, 5.5rem) 1.5rem 7.5rem;
   gap: 0.8rem;
 }
-.header__navbar-item, .header__navbar-opt {
+.header__navbar-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -297,63 +309,40 @@ section {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-.header__navbar-item p,
-.header__navbar-item i,
-.header__navbar-item a, .header__navbar-opt p,
-.header__navbar-opt i,
-.header__navbar-opt a {
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.header__navbar-item i {
-  font-size: 3rem;
-}
-.header__navbar-item p {
-  display: none;
-}
-.header__navbar-item::before, .header__navbar-item::after {
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: #14213d;
-  content: "";
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
-}
-.header__navbar-item::before {
-  top: -50%;
-  left: -100%;
-}
-.header__navbar-item::after {
-  bottom: -50%;
-  right: -100%;
-}
-.header__navbar-item:hover p, .header__navbar-item:hover a {
-  display: block;
-  color: #ffffff;
-  z-index: 100;
-}
-.header__navbar-item:hover i {
-  display: none;
-}
-.header__navbar-item:hover::before {
-  left: 0;
-}
-.header__navbar-item:hover::after {
-  right: 0;
-}
-.header__navbar-opt {
   grid-column: 1/3;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
 }
-.header__navbar-opt--login {
-  grid-row: 4/5;
+.header__navbar-item--login, .header__navbar-item--logout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  grid-row: 7/8;
+  font-size: 1.75rem;
 }
-.header__navbar-opt--logout {
-  grid-row: 5/6;
+.header__navbar-item--login i, .header__navbar-item--logout i {
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+.header__navbar-item--login:hover i, .header__navbar-item--logout:hover i {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+.header__navbar-item--login {
+  grid-column: 1/2;
+}
+.header__navbar-item--login:hover {
+  color: #fca311;
+}
+.header__navbar-item--logout {
+  grid-column: 2/3;
+}
+.header__navbar-item--logout:hover {
+  color: rgba(192, 0, 0, 0.9);
 }
 
 .dashboard__container {

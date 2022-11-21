@@ -41,7 +41,7 @@ if(!isset($userId)){
         <div class="dashboard__container">
             <div class="dashboard__container-box">
                 <h3 class="first-letter">witaj, <?= $fetchProfile['username']; ?></h3>
-                <button class="dashboard__container-box-btn btn form-btn first-letter btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
+                <button class="dashboard__container-box-btn btn form-btn first-letter yellow-btn btn-action" onclick="location.href='update_profile.php'">zaktualizuj profil</button>
             </div>
             
             <div class="dashboard__container-box">
@@ -51,7 +51,7 @@ if(!isset($userId)){
                     $postCount = $selectPosts->rowCount();
                 ?>
                 <h3 class="first-letter">suma dodanych ogłoszeń: <?= $postCount; ?></h3>
-                <button class="dashboard__container-box-btn btn form-btn first-letter btn-action" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
+                <button class="dashboard__container-box-btn btn form-btn first-letter yellow-btn btn-action" onclick="location.href='add_ann.php'">dodaj nowe ogłoszenie</button>
             </div>
 
             <div class="dashboard__container-box">
@@ -72,7 +72,7 @@ if(!isset($userId)){
                 <h3 class="first-letter">aktywne ogłoszenia: <?= $activePostCount; ?></h3>
                 <h3 class="first-letter">Zapisane szkice: <?= $deactivePostCount; ?></h3>
                 <h3 class="first-letter">polubione ogłoszenia: <?= $likesCount; ?></h3>
-                <button class="dashboard__container-box-btn btn form-btn first-letter btn-action" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
+                <button class="dashboard__container-box-btn btn form-btn first-letter yellow-btn btn-action" onclick="location.href='view_ann.php'">przeglądaj ogłoszenia</button>
             </div>
 
             <div class="dashboard__container-box">
@@ -82,7 +82,7 @@ if(!isset($userId)){
                     $commentsCount = $selectComments->rowCount();
                 ?>
                 <h3 class="first-letter">komentarze: <?= $commentsCount; ?></h3>
-                <button class="dashboard__container-box-btn btn form-btn first-letter btn-action" onclick="location.href='comments.php'">przeglądaj komentarze</button>
+                <button class="dashboard__container-box-btn btn form-btn first-letter yellow-btn btn-action" onclick="location.href='comments.php'">przeglądaj komentarze</button>
             </div>
         </div>
     </section>

@@ -192,8 +192,8 @@ if(isset($_POST['draft'])) {
             <p class="ann-editor__form-text first-letter">Zdjęcie</p>
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">
             <div class="ann-editor__form-btns">
-                <input type="submit" value="Opublikuj" name="publish" class="btn form-btn btn-action">
-                <input type="submit" value="Zapisz szkic" name="draft" class="btn form-btn btn-action">
+                <input type="submit" value="Opublikuj" name="publish" class="btn form-btn yellow-btn">
+                <input type="submit" value="Zapisz szkic" name="draft" class="btn form-btn yellow-btn">
             </div>
         </form>
     </section>

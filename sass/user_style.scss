@@ -126,7 +126,6 @@ section {
 	width: 100%;
 	font-size: 2.1rem;
 	text-align: center;
-	background-color: $yellow;
 	border-radius: $border-radius;
 	cursor: pointer;
 	overflow: hidden;
@@ -142,6 +141,10 @@ section {
 .navy-btn,
 .green-btn {
 	color: $white;
+
+	a {
+		color: $white;
+	}
 }
 
 .red-btn {
@@ -154,6 +157,14 @@ section {
 
 .green-btn {
 	background-color: $green;
+}
+
+.yellow-btn {
+	background-color: $yellow;
+}
+
+.gray-btn {
+	background-color: $gray;
 }
 
 .login,
@@ -296,7 +307,7 @@ section {
 		text-align: center;
 
 		&-text {
-			font-size: 2.2rem;
+			font-size: 2.5rem;
 			color: $black;
 		}
 	}
@@ -304,83 +315,48 @@ section {
 	&__navbar {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 5rem repeat(2, 8rem) repeat(2, 5rem);
+		grid-template-rows: repeat(5, 5.5rem) 1.5rem 7.5rem;
 		gap: 0.8rem;
 
-		&-item,
-		&-opt {
+		&-item {
 			display: flex;
 			position: relative;
 			justify-content: center;
 			align-items: center;
-
-			p,
-			i,
-			a {
-				transition: 0.4s;
-			}
-		}
-
-		&-item {
-			i {
-				font-size: 3rem;
-			}
-
-			p {
-				display: none;
-			}
-
-			&::before,
-			&::after {
-				display: block;
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				background-color: $navy;
-				content: '';
-				transition: 0.4s;
-			}
-
-			&::before {
-				top: -50%;
-				left: -100%;
-			}
-
-			&::after {
-				bottom: -50%;
-				right: -100%;
-			}
-
-			&:hover p,
-			&:hover a {
-				display: block;
-				color: $white;
-				z-index: 100;
-			}
-
-			&:hover i {
-				display: none;
-			}
-
-			&:hover::before {
-				left: 0;
-			}
-
-			&:hover::after {
-				right: 0;
-			}
-		}
-
-		&-opt {
 			grid-column: 1/3;
-			transition: 0.4s;
+
+			&--login,
+			&--logout {
+				display: flex;
+				flex-direction: column;
+				grid-row: 7/8;
+				font-size: 1.75rem;
+
+				i {
+					transition: transform 0.3s;
+				}
+
+				&:hover {
+					i {
+						transform: scale(1.2);
+					}
+				}
+			}
 
 			&--login {
-				grid-row: 4/5;
+				grid-column: 1/2;
+
+				&:hover {
+					color: $yellow;
+				}
 			}
 
 			&--logout {
-				grid-row: 5/6;
+				grid-column: 2/3;
+
+				&:hover {
+					color: $red;
+				}
 			}
 		}
 	}

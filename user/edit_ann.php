@@ -200,11 +200,11 @@ if(isset($_POST['delete_image'])){
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">
             <?php if($fetchPosts['image'] != ''){ ?>
                 <img src="../images/<?= $fetchPosts['image']; ?>" class="ann-image" alt="">
-                <input type="submit" value="Usuń zdjęcie" class="btn form-btn btn-action" name="delete_image">
+                <button type="submit" class="btn form-btn gray-btn first-letter" name="delete_image"><i class="fa-solid fa-trash"></i><p>usuń zdjęcie</p></button>
             <?php } ?>
             <div class="ann-editor__form-btns">
-                <button type="submit" name="save" class="btn form-btn green-btn"><i class="fa-solid fa-file-circle-check"></i></button>
-                <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+                <button type="submit" name="save" class="btn form-btn green-btn first-letter"><i class="fa-solid fa-file-circle-check"></i><p>zapisz zmiany</p></button>
+                <button type="submit" name="delete" class="btn form-btn red-btn first-letter" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-file-circle-xmark"></i><p>usuń ogłoszenie</p></button>
             </div>
             <div class="ann-editor__form-comeback">
                 <a href="view_ann.php">Wróć do ogłoszeń</a>
