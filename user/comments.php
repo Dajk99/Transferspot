@@ -4,10 +4,19 @@
 
 session_start();
 
-$user_id = $_SESSION['user_id'];
+$userId = $_SESSION['user_id'];
 
-if(!isset($user_id)){
+if(!isset($userId)){
     header('location:user_login.php');
+}
+
+if(isset($_POST['delete_comment'])) {
+    $commentId = $_POST['comment_id'];
+    $commentId = filter_var($commentId, FILTER_SANITIZE_STRING);
+    $deleteComment = $conn->prepare("DELETE FROM comments WHERE id = ?");
+    $deleteComment->execute([$commentId]);
+    $goodMessage[] = 'Komentarz usunięty!';
+
 }
 
 ?>
@@ -18,7 +27,7 @@ if(!isset($user_id)){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komentarze | Transferspot</title>
+    <title>Twoje komentarze | Transferspot</title>
     <!-- Font Awesome kit -->
     <script src="https://kit.fontawesome.com/e6c4644ded.js" crossorigin="anonymous"></script>
     <!-- google fonts  -->
@@ -33,6 +42,61 @@ if(!isset($user_id)){
     <?php
         include '../components/user_header.php';
     ?>
+
+    <?php
+        if(isset($goodMessage)) {
+            foreach($goodMessage as $goodMessage) {
+                echo '
+                <div class="good-message">
+                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
+                </div>
+                ';
+            } 
+        }
+    ?>
+
+    <section class="comments show-comments">
+        <p class="comments__title first-letter">twoje komentarze</p>   
+        <div class="comments__container">
+            <?php
+                $selectComments = $conn->prepare("SELECT * FROM comments WHERE user_id = ?");
+                $selectComments->execute([$userId]);
+                if($selectComments->rowCount() > 0){
+                    while($fetchComments = $selectComments->fetch(PDO::FETCH_ASSOC)){
+            ?>
+
+            <div class="comments__container-comment">
+                <div class="comments__container-comment-user">
+                    <div class="comments__container-comment-user-date">
+                        <p class="comments__container-comment-user-date-text"><?= $fetchComments['date']; ?></p>
+                    </div>
+                    <div class="comments__container-comment-user-info">
+                        <?php
+                            $selectPost = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+                            $selectPost->execute([$fetchComments['post_id']]);
+                            while($fetchPosts = $selectPost->fetch(PDO::FETCH_ASSOC)){
+                        ?>
+                        <p>Komentarz do ogłoszenia <span class="title-highlight"><a class="first-letter" href="read_ann.php?post_id=<?= $fetchPosts['id']; ?>" ><?= $fetchPosts['title']; ?></a></span></p>
+                        <?php
+                            }
+                        ?>
+                    </div>
+                </div>
+                <div class="comments__container-comment-content first-letter"><?= $fetchComments['comment']; ?></div>
+                <form class ="comments__container-comment-btn" action="" method="POST">
+                    <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
+                    <button type="submit" class="btn form-btn red-btn" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-comment-slash"></i></button>
+                </form>
+            </div>
+
+            <?php
+                    }
+                }else{
+                    echo '<div class="show-ann__container-empty first-letter">brak komentarzy...</div>';
+                }
+            ?>    
+        </div>         
+    </section>
     
     <!-- JS connection -->
     <script src="../js/confirm_logout.js"></script>

@@ -1,43 +1,41 @@
 <?php
+    @include "../components/connect.php";
 
-@include "../components/connect.php";
+    session_start();
 
-session_start();
+    $userId = $_SESSION['user_id'];
 
-$userId = $_SESSION['user_id'];
-
-if(!isset($userId)){
-    header('location:user_login.php');
-}
-
-$getId = $_GET['post_id'];
-
-if(isset($_POST['delete'])) {
-    $postId = $_POST['post_id'];
-    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
-    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-    $deleteImage->execute([$postId]);
-    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
-    if($fetchDeleteImage['image'] != ''){
-       unlink('../images/'.$fetchDeleteImage['image']);
+    if(!isset($userId)){
+        header('location:user_login.php');
     }
-    $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
-    $deletePost->execute([$postId]);
-    $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
-    $deleteComments->execute([$postId]);
-    header('location:view_ann.php');
-    $goodMessage[] = 'Ogłoszenie zostało usunięte!';
- }
 
- if(isset($_POST['delete_comment'])) {
-    $commentId = $_POST['comment_id'];
-    $commentId = filter_var($commentId, FILTER_SANITIZE_STRING);
-    $deleteComment = $conn->prepare("DELETE FROM comments WHERE id = ?");
-    $deleteComment->execute([$commentId]);
-    $goodMessage[] = 'Komentarz usunięty!';
+    $getId = $_GET['post_id'];
 
- }
+    if(isset($_POST['delete'])) {
+        $postId = $_POST['post_id'];
+        $postId = filter_var($postId, FILTER_SANITIZE_STRING);
+        $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
+        $deleteImage->execute([$postId]);
+        $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
+        if($fetchDeleteImage['image'] != ''){
+        unlink('../images/'.$fetchDeleteImage['image']);
+        }
+        $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
+        $deletePost->execute([$postId]);
+        $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
+        $deleteComments->execute([$postId]);
+        header('location:view_ann.php');
+        $goodMessage[] = 'Ogłoszenie zostało usunięte!';
+    }
 
+    if(isset($_POST['delete_comment'])) {
+        $commentId = $_POST['comment_id'];
+        $commentId = filter_var($commentId, FILTER_SANITIZE_STRING);
+        $deleteComment = $conn->prepare("DELETE FROM comments WHERE id = ?");
+        $deleteComment->execute([$commentId]);
+        $goodMessage[] = 'Komentarz usunięty!';
+
+    }
 ?>
 
 <!DOCTYPE html>
@@ -107,24 +105,24 @@ if(isset($_POST['delete'])) {
                 }
             ?>
             <?php if($fetchPosts['image'] != ''){ ?>
-                <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
-                <?php } ?>
-                <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
-                <div class="show-ann__container__box-content no-slice"><?= $fetchPosts['content']; ?></div>
-                <div class="show-ann__container__box-icons">
-                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
-                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
-                </div>
-                <div class="show-ann__container__box-btns">
-                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                <div class="show-ann__container__box-tags">
-                    <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
-                    <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
-                    <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
-                </div>
-                <div class="ann-editor__form-comeback">
+            <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
+            <?php } ?>
+            <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
+            <div class="show-ann__container__box-tags">
+                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
+                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
+                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
+            </div>
+            <div class="show-ann__container__box-content no-slice"><?= $fetchPosts['content']; ?></div>
+            <div class="show-ann__container__box-icons">
+                <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
+                <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
+            </div>
+            <div class="show-ann__container__box-btns">
+                <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+            </div>
+            <div class="ann-editor__form-comeback">
                 <a href="view_ann.php">Wróć do ogłoszeń</a>
             </div>
         </form>
@@ -152,7 +150,7 @@ if(isset($_POST['delete'])) {
                         <p class="comments__container-comment-user-date-text"><?= $fetchComments['date']; ?></p>
                     </div>
                     <div class="comments__container-comment-user-info">
-                        <p>Użytkownik <span><?= $fetchComments['username']; ?></span> napisał:<p>
+                        <p>Użytkownik <span class="username-highlight"><?= $fetchComments['username']; ?></span> napisał:<p>
                     </div>
                 </div>
                 <div class="comments__container-comment-content first-letter"><?= $fetchComments['comment']; ?></div>

@@ -11,6 +11,7 @@
 ?>
 
 <header class="header">
+    
     <div class="header__logo logo">
         <a href="dashboard.php">Transferspot</a>
     </div>
@@ -26,10 +27,6 @@
     <div class="underline"></div>
 
     <nav class="header__navbar navbar">
-        <!-- <button class="header__navbar-item btn first-letter" onclick="location.href='dashboard.php'">
-            <i class="fa-solid fa-house"></i>
-            <p>strona główna</p>
-        </button> -->
         <button class="header__navbar-item btn navy-btn first-letter" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>
         <button class="header__navbar-item btn navy-btn first-letter" onclick="location.href='dashboard.php'">
             <p>panel użytkownika</p>
@@ -51,18 +48,8 @@
             <i class="fa-solid fa-power-off"></i>
             <a href="#" class="logout">wyloguj</a>
         </button>
-        <!-- <a href="/user/dashboard.php" class="header__navbar-option"><i class="fa-solid fa-house"></i>strona główna</a>
-        <a href="/user/add_ann.php" class="header__navbar-option"><i class="fa-solid fa-square-plus"></i>dodaj ogłoszenie</a>
-        <a href="/user/view_ann.php" class="header__navbar-option"><i class="fa-solid fa-book-open"></i>przeglądaj ogłoszenia</a>
-        <a href="" class="header__navbar-option logout">
-            <i class="fa-solid fa-right-from-bracket"></i>wyloguj
-        </a> -->
     </nav>
 
-    <!-- <div class="header__flex-btn">
-        <a href="/user/user_login.php" class="option-btn">logowanie</a>
-        <a href="/user/user_register.php" class="option-btn">rejestracja</a>
-    </div> -->
 </header>
 
 <button class="burger-btn">

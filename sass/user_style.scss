@@ -373,13 +373,37 @@ section {
 		margin: 1rem 0;
 
 		&-box {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			text-align: center;
 			padding: 2rem;
 			border: $border-navy;
 			border-radius: $border-radius;
 			background-color: $white;
 
 			h3 {
-				font-size: 2.2rem;
+				font-size: 2.3rem;
+			}
+
+			&-content {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				margin-top: 1rem;
+				font-size: 2rem;
+
+				i {
+					margin-right: 0.8rem;
+					transition: color 0.3s, margin-right 0.3s;
+				}
+
+				&:hover {
+					i {
+						color: $yellow;
+						margin-right: 1rem;
+					}
+				}
 			}
 		}
 	}
@@ -584,17 +608,15 @@ section {
 
 			&-tags {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, 25rem);
-				justify-content: center;
-				margin-top: 1rem;
-				padding: 1rem 2rem;
+				grid-template-columns: repeat(3, 25rem);
+				justify-content: flex-start;
+				margin-bottom: 0.5rem;
 
 				&-tag {
-					font-size: 2rem;
-					text-align: center;
+					font-size: 1.6rem;
 
 					i {
-						margin-right: 0.6rem;
+						margin-right: 0.5rem;
 						color: $yellow;
 					}
 				}
@@ -617,8 +639,9 @@ section {
 	}
 }
 
-// READ ANN
-.read-ann {
+// READ ANN, SHOW-COMMENTS MARGIN
+.read-ann,
+.show-comments {
 	margin-top: 2rem;
 }
 
@@ -652,7 +675,7 @@ section {
 			&-user {
 				display: grid;
 				grid-template-rows: repeat(2, 3.5rem);
-				grid-template-columns: 30rem;
+				grid-template-columns: 70rem;
 				grid-row: 1/2;
 				grid-column: 1/2;
 
@@ -674,9 +697,19 @@ section {
 					grid-row: 2/3;
 					grid-column: 1/2;
 
-					span {
+					.username-highlight,
+					.title-highlight {
 						color: $yellow;
+					}
+
+					.username-highlight {
 						font-weight: bold;
+					}
+
+					.title-highlight {
+						&:hover {
+							text-decoration: underline;
+						}
 					}
 				}
 			}
