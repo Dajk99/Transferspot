@@ -184,12 +184,12 @@ section {
 // BUTTONS HOVER ACTION
 .btn-action {
 	&:hover {
-		background-color: $navy;
-		color: $white;
+		background-color: $gray;
+		color: $black;
 	}
 
 	&:hover a {
-		color: $white;
+		color: $black;
 	}
 }
 
@@ -315,7 +315,7 @@ section {
 	&__navbar {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: repeat(5, 5.5rem) 1.5rem 7.5rem;
+		grid-template-rows: repeat(5, 5.5rem) 0.5rem 7.5rem;
 		gap: 0.8rem;
 
 		&-item {
@@ -346,7 +346,7 @@ section {
 			&--login {
 				grid-column: 1/2;
 
-				&:hover {
+				&:hover i {
 					color: $yellow;
 				}
 			}
@@ -354,7 +354,7 @@ section {
 			&--logout {
 				grid-column: 2/3;
 
-				&:hover {
+				&:hover i {
 					color: $red;
 				}
 			}
