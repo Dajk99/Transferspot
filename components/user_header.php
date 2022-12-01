@@ -1,19 +1,7 @@
-<?php /*
-        if(isset($goodMessage)) {
-            foreach($goodMessage as $goodMessage) {
-                echo '
-                <div class="good-message">
-                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
-                </div>
-                ';
-            } 
-        } */
-?>
-
 <header class="header">
     
-    <div class="header__logo logo">
-        <a href="dashboard.php">Transferspot</a>
+    <div class="header__logo">
+        <a href="../home.php">transferspot</a>
     </div>
     <div class="underline"></div>
     <div class="header__profile">
@@ -27,23 +15,23 @@
     <div class="underline"></div>
 
     <nav class="header__navbar navbar">
-        <button class="header__navbar-item btn navy-btn btn-action first-letter" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>
-        <button class="header__navbar-item btn navy-btn btn-action first-letter" onclick="location.href='dashboard.php'">
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='dashboard.php'">
             <p>panel użytkownika</p>
         </button>
-        <button class="header__navbar-item btn navy-btn btn-action first-letter" onclick="location.href='add_ann.php'">
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='add_ann.php'">
             <p>dodaj ogłoszenie</p>
         </button>
-        <button class="header__navbar-item btn navy-btn btn-action first-letter" onclick="location.href='view_ann.php'">
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='view_ann.php'">
             <p>przeglądaj ogłoszenia</p>
         </button>
-        <button class="header__navbar-item btn navy-btn btn-action first-letter" onclick="location.href='user_register.php'">
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='user_register.php'">
             <p>zarejestruj się</p>
         </button>
-        <button class="header__navbar-item header__navbar-item--login btn first-letter" onclick="location.href='user_login.php'">
+        <button class="header__navbar-item header__navbar-item--login btn" onclick="location.href='user_login.php'">
             <a class="login"><i class="fa-solid fa-repeat"></i><p>przełącz konto</p></a>
         </button>
-        <button class="header__navbar-item header__navbar-item--logout btn first-letter">
+        <button class="header__navbar-item header__navbar-item--logout btn">
             <a href="#" class="logout"><i class="fa-solid fa-power-off"></i><p>wyloguj</p></a>
         </button>
     </nav>

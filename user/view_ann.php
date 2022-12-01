@@ -64,7 +64,7 @@ if(isset($_POST['delete'])) {
     
     <!-- posts -->
     <section class="show-ann">
-        <h1 class="show-ann__heading first-letter">twoje ogłoszenia</h1>
+        <h1 class="show-ann__heading">twoje ogłoszenia</h1>
 
         <!-- search form -->
         <form action="search_page.php" method="POST" class="show-ann__form">
@@ -97,7 +97,7 @@ if(isset($_POST['delete'])) {
                 if($fetchPosts['status'] == 'Aktywne') {
                     echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
                 } else {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
+                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-pencil"></i></div>';
                 }
                 ?>
                 <?php if($fetchPosts['image'] != ''){ ?>
@@ -110,17 +110,17 @@ if(isset($_POST['delete'])) {
                     <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
                 </div>
                 <div class="show-ann__container__box-btns">
-                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn first-letter navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" name="delete" class="btn form-btn first-letter red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                    <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
                 </div>
-                <button class="btn form-btn yellow-btn first-letter pd-btn-reset">
+                <button class="btn form-btn yellow-btn pd-btn-reset">
                     <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
                 </button>
             </form>
             <?php
                     }
                 } else {
-                    echo '<div class="show-ann__container-empty first-letter">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
+                    echo '<div class="show-ann__container-empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
                 }
             ?>
         </div>

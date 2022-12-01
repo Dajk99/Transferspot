@@ -101,7 +101,7 @@
                 if($fetchPosts['status'] == 'Aktywne') {
                     echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
                 } else {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
+                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-pencil"></i></i></div>';
                 }
             ?>
             <?php if($fetchPosts['image'] != ''){ ?>
@@ -129,13 +129,13 @@
         <?php
                 }
             } else {
-                echo '<div class="show-ann__container-empty first-letter">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
+                echo '<div class="show-ann__container-empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
                 }
         ?>
     </section>
 
     <section class="comments">
-        <p class="comments__title first-letter">komentarze</p>   
+        <p class="comments__title">komentarze</p>   
         <div class="comments__container">
             <?php
                 $selectComments = $conn->prepare("SELECT * FROM comments WHERE post_id = ?");
@@ -153,7 +153,7 @@
                         <p>Użytkownik <span class="username-highlight"><?= $fetchComments['username']; ?></span> napisał:<p>
                     </div>
                 </div>
-                <div class="comments__container-comment-content first-letter"><?= $fetchComments['comment']; ?></div>
+                <div class="comments__container-comment-content"><?= $fetchComments['comment']; ?></div>
                 <form class ="comments__container-comment-btn" action="" method="POST">
                     <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
                     <button type="submit" class="btn form-btn red-btn" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-comment-slash"></i></button>
@@ -163,7 +163,7 @@
             <?php
                     }
                 }else{
-                    echo '<div class="show-ann__container-empty first-letter">brak komentarzy...</div>';
+                    echo '<div class="show-ann__container-empty">brak komentarzy...</div>';
                 }
             ?>    
         </div>         

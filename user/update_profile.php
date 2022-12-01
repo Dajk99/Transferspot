@@ -100,7 +100,7 @@ if(isset($_POST['submit'])){
     <!-- profile update section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
-            <h3 class="first-letter">edycja profilu</h3>
+            <h3>edycja profilu</h3>
             <?php
                 if(isset($message)) {
                 foreach($message as $message) {

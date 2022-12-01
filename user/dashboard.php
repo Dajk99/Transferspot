@@ -37,7 +37,7 @@ if(!isset($userId)){
 
     <!-- dashboard section -->
     <section class="dashboard">
-        <h1 class="dashboard__heading first-letter">panel użytkownika</h1>
+        <h1 class="dashboard__heading ">panel użytkownika</h1>
         <div class="dashboard__container">
             <div class="dashboard__container-box">
                 <?php
@@ -45,10 +45,10 @@ if(!isset($userId)){
                     $selectPosts->execute([$userId]);
                     $postCount = $selectPosts->rowCount();
                 ?>
-                <h3 class="first-letter">dodane ogłoszenia: <?= $postCount; ?></h3>
+                <h3>dodane ogłoszenia: <?= $postCount; ?></h3>
                 <button class="dashboard__container-box-content" onclick="location.href='add_ann.php'">
                     <i class="fa-solid fa-file-circle-plus"></i>
-                    <p class="first-letter">dodaj nowe ogłoszenie</p>
+                    <p>dodaj nowe ogłoszenie</p>
                 </button>
             </div>
 
@@ -59,10 +59,10 @@ if(!isset($userId)){
                     $selectLikes->execute([$userId]);
                     $likesCount = $selectLikes->rowCount();
                 ?>
-                <h3 class="first-letter">polubione ogłoszenia: <?= $likesCount; ?></h3>
+                <h3>polubione ogłoszenia: <?= $likesCount; ?></h3>
                 <button class="dashboard__container-box-content" onclick="location.href='likes.php'">
                     <i class="fa-solid fa-heart"></i>
-                    <p class="first-letter">przeglądaj polubione ogłoszenia</p>
+                    <p>przeglądaj polubione ogłoszenia</p>
                 </button>
             </div>
 
@@ -77,11 +77,11 @@ if(!isset($userId)){
                     $selectDeactivePosts->execute([$userId, 'Nieaktywne']);
                     $deactivePostCount = $selectDeactivePosts->rowCount();
                 ?>
-                <h3 class="first-letter">aktywne ogłoszenia: <?= $activePostCount; ?></h3>
-                <h3 class="first-letter">Zapisane szkice: <?= $deactivePostCount; ?></h3>
+                <h3>aktywne ogłoszenia: <?= $activePostCount; ?></h3>
+                <h3>Zapisane szkice: <?= $deactivePostCount; ?></h3>
                 <button class="dashboard__container-box-content" onclick="location.href='view_ann.php'">
                     <i class="fa-solid fa-book-open"></i>
-                    <p class="first-letter">przeglądaj dodane ogłoszenia</p>
+                    <p>przeglądaj dodane ogłoszenia</p>
                 </button>
             </div>
 
@@ -91,10 +91,10 @@ if(!isset($userId)){
                     $selectComments->execute([$userId]);
                     $commentsCount = $selectComments->rowCount();
                 ?>
-                <h3 class="first-letter">komentarze: <?= $commentsCount; ?></h3>
+                <h3>komentarze: <?= $commentsCount; ?></h3>
                 <button class="dashboard__container-box-content" onclick="location.href='comments.php'">
                     <i class="fa-solid fa-comment"></i>
-                    <p class="first-letter">przeglądaj komentarze</p>
+                    <p>przeglądaj komentarze</p>
                 </button>
             </div>
         </div>

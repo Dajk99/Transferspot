@@ -68,7 +68,7 @@ if(isset($_POST['draft'])) {
     $voivodeship = filter_var($voivodeship, FILTER_SANITIZE_STRING);
     $league = $_POST['league'];
     $league = filter_var($league, FILTER_SANITIZE_STRING);
-    $status = 'deactive';
+    $status = 'Nieaktywne';
 
     $img = $_FILES['image']['name'];
     $img = filter_var($img, FILTER_SANITIZE_STRING);
@@ -94,7 +94,7 @@ if(isset($_POST['draft'])) {
      if($selectImg->rowCount() > 0 AND $img != ''){
         $message[] = 'Zmień nazwę pliku!';
      } else {
-        $insertPost = $conn->prepare('INSERT INTO posts (user_id, username, title, content, category, ligue, voivodeship, image, status) VALUES (?,?,?,?,?,?,?,?,?)');
+        $insertPost = $conn->prepare('INSERT INTO posts (user_id, username, title, content, category, league, voivodeship, image, status) VALUES (?,?,?,?,?,?,?,?,?)');
         $insertPost->execute([$userId, $username, $title, $content, $category, $league, $voivodeship, $img, $status]);
         $goodMessage[] = 'Szkic został zapisany!';
      }
@@ -139,15 +139,15 @@ if(isset($_POST['draft'])) {
 
     <!-- post editing section -->
     <section class="ann-editor">
-        <h1 class="ann-editor__heading first-letter">dodaj ogłoszenie</h1>  
+        <h1 class="ann-editor__heading">dodaj ogłoszenie</h1>  
 
         <form action="" method="POST" enctype="multipart/form-data" class="ann-editor__form">
             <input type="hidden" name="username" value="<?= $fetchProfile['username']; ?>">
-            <p class="ann-editor__form-text first-letter">tytuł ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">tytuł ogłoszenia<span>*</span></p>
             <input type="text" name="title" required placeholder="Tytuł ogłoszenia" maxlength="100" class="ann-editor__form-box">
-            <p class="ann-editor__form-text first-letter">treść ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">treść ogłoszenia<span>*</span></p>
             <textarea name="content" class="ann-editor__form-box" required maxlength="10000" placeholder="Treść twojego ogłoszenia" cols="30" rows="10"></textarea>
-            <p class="ann-editor__form-text first-letter">kategoria ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">kategoria ogłoszenia<span>*</span></p>
             <select name="category" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz kategorię</option>
                 <option value="Nabór zawodników">Nabór zawodników</option>
@@ -159,7 +159,7 @@ if(isset($_POST['draft'])) {
                 <option value="Szkolenia">Szkolenia</option>
                 <option value="Testy">Testy</option>   
             </select>
-            <p class="ann-editor__form-text first-letter">województwo<span>*</span></p>
+            <p class="ann-editor__form-text">województwo<span>*</span></p>
             <select name="voivodeship" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz województwo</option>
                 <option value="Dolnośląskie">Dolnośląskie</option>
@@ -179,7 +179,7 @@ if(isset($_POST['draft'])) {
                 <option value="Wielkopolskie">Wielkopolskie</option>
                 <option value="Zachodniopomorskie">Zachodniopomorskie</option>   
             </select>
-            <p class="ann-editor__form-text first-letter">poziom rozgrywek<span>*</span></p>
+            <p class="ann-editor__form-text">poziom rozgrywek<span>*</span></p>
             <select name="league" class="ann-editor__form-box" required>
                 <option value="" selected disabled>-- Wybierz ligę</option>
                 <option value="PZPN 4 liga">PZPN 4 liga</option>
@@ -189,7 +189,7 @@ if(isset($_POST['draft'])) {
                 <option value="WZPN B klasa">WZPN B klasa</option>
                 <option value="WZPN C klasa">WZPN C klasa</option>   
             </select>
-            <p class="ann-editor__form-text first-letter">Zdjęcie</p>
+            <p class="ann-editor__form-text">Zdjęcie</p>
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">
             <div class="ann-editor__form-btns">
                 <input type="submit" value="Opublikuj" name="publish" class="btn form-btn yellow-btn">

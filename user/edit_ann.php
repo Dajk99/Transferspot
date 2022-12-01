@@ -130,7 +130,7 @@ if(isset($_POST['delete_image'])){
 
     <!-- edit ann -->
     <section class="ann-editor">
-        <h1 class="ann-editor__heading first-letter">edytuj ogłoszenie</h1>
+        <h1 class="ann-editor__heading">edytuj ogłoszenie</h1>
         
         <?php
         $postId = $_GET['post_id'];
@@ -144,17 +144,17 @@ if(isset($_POST['delete_image'])){
             <input type="hidden" name="post_id" value="<?= $fetchPosts['id']; ?>">
             <input type="hidden" name="old_image" value="<?= $fetchPosts['image']; ?>">
             <input type="hidden" name="username" value="<?= $fetchProfile['username']; ?>">
-            <p class="ann-editor__form-text first-letter">status ogłoszenia <span>*</span></p>
+            <p class="ann-editor__form-text">status ogłoszenia <span>*</span></p>
             <select name="status" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['status']; ?>" selected><?= $fetchPosts['status']; ?></option>
                 <option value="active">Aktywne</option>
                 <option value="deactive">Nieaktywne</option>
             </select>
-            <p class="ann-editor__form-text first-letter">tytuł ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">tytuł ogłoszenia<span>*</span></p>
             <input type="text" name="title" required placeholder="Tytuł ogłoszenia" maxlength="100" class="ann-editor__form-box" value="<?= $fetchPosts['title']; ?>">
-            <p class="ann-editor__form-text first-letter">treść ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">treść ogłoszenia<span>*</span></p>
             <textarea name="content" class="ann-editor__form-box" required maxlength="10000" placeholder="Treść twojego ogłoszenia" cols="30" rows="10"><?= $fetchPosts['content']; ?></textarea>
-            <p class="ann-editor__form-text first-letter">kategoria ogłoszenia<span>*</span></p>
+            <p class="ann-editor__form-text">kategoria ogłoszenia<span>*</span></p>
             <select name="category" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['category']; ?>" selected><?= $fetchPosts['category']; ?></option>
                 <option value="Nabór zawodników">Nabór zawodników</option>
@@ -166,7 +166,7 @@ if(isset($_POST['delete_image'])){
                 <option value="Szkolenia">Szkolenia</option>
                 <option value="Testy">Testy</option>    
             </select>
-            <p class="ann-editor__form-text first-letter">województwo<span>*</span></p>
+            <p class="ann-editor__form-text">województwo<span>*</span></p>
             <select name="voivodeship" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['voivodeship']; ?>" selected><?= $fetchPosts['voivodeship']; ?></option>
                 <option value="Dolnośląskie">Dolnośląskie</option>
@@ -186,7 +186,7 @@ if(isset($_POST['delete_image'])){
                 <option value="Wielkopolskie">Wielkopolskie</option>
                 <option value="Zachodniopomorskie">Zachodniopomorskie</option>  
             </select>
-            <p class="ann-editor__form-text first-letter">poziom rozgrywek<span>*</span></p>
+            <p class="ann-editor__form-text">poziom rozgrywek<span>*</span></p>
             <select name="league" class="ann-editor__form-box" required>
                 <option value="<?= $fetchPosts['league']; ?>" selected><?= $fetchPosts['league']; ?></option>
                 <option value="PZPN 4 liga">PZPN 4 liga</option>
@@ -196,15 +196,15 @@ if(isset($_POST['delete_image'])){
                 <option value="WZPN B klasa">WZPN B klasa</option>
                 <option value="WZPN C klasa">WZPN C klasa</option>   
             </select>
-            <p class="ann-editor__form-text first-letter">Zdjęcie</p>
+            <p class="ann-editor__form-text">Zdjęcie</p>
             <input type="file" name="image" accept="image/jpeg, image/png, image/webp" class="ann-editor__form-box">
             <?php if($fetchPosts['image'] != ''){ ?>
                 <img src="../images/<?= $fetchPosts['image']; ?>" class="ann-image" alt="">
-                <button type="submit" class="btn form-btn gray-btn first-letter" name="delete_image"><i class="fa-solid fa-trash"></i><p>usuń zdjęcie</p></button>
+                <button type="submit" class="btn form-btn gray-btn" name="delete_image"><i class="fa-solid fa-trash"></i><p>usuń zdjęcie</p></button>
             <?php } ?>
             <div class="ann-editor__form-btns">
-                <button type="submit" name="save" class="btn form-btn green-btn first-letter"><i class="fa-solid fa-file-circle-check"></i><p>zapisz zmiany</p></button>
-                <button type="submit" name="delete" class="btn form-btn red-btn first-letter" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-file-circle-xmark"></i><p>usuń ogłoszenie</p></button>
+                <button type="submit" name="save" class="btn form-btn green-btn"><i class="fa-solid fa-file-circle-check"></i><p>zapisz zmiany</p></button>
+                <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-file-circle-xmark"></i><p>usuń ogłoszenie</p></button>
             </div>
             <div class="ann-editor__form-comeback">
                 <a href="view_ann.php">Wróć do ogłoszeń</a>
@@ -213,7 +213,7 @@ if(isset($_POST['delete_image'])){
         <?php
                     }
                 } else {
-                    echo '<div class="show-ann__container-empty first-letter">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
+                    echo '<div class="show-ann__container-empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
                 }
         ?>
     </section>

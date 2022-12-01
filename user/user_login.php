@@ -48,9 +48,9 @@ if(isset($_POST['submit'])){
     <!-- user login section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
-            <h1 class="logo"><a href="dashboard.php">Transferspot</a></h1>
+            <h1><a href="dashboard.php">Transferspot</a></h1>
             <div class="underline"></div>
-            <h3 class="first-letter">logowanie</h3>
+            <h3>logowanie</h3>
             <?php
                 if(isset($message)) {
                 foreach($message as $message) {
@@ -66,8 +66,8 @@ if(isset($_POST['submit'])){
             <input type="password" required class="form-container__form-box" placeholder="Hasło" maxlength="50" name="pass" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="submit" name="submit" class="form-container__form-btn btn form-btn yellow-btn" value="Zaloguj się">
             <div class="form-container__form-info">
-                <p class="first-letter">nie masz konta?</p>
-                <a href="user_register.php" class="first-letter">zarejestruj się</a>
+                <p>nie masz konta?</p>
+                <a href="user_register.php">zarejestruj się</a>
             </div>
         </form>
     </section>
