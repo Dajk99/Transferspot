@@ -17,19 +17,6 @@
   background-color: rgb(20, 33, 61);
 }
 
-::-webkit-scrollbar {
-  width: 1rem;
-  height: 0.5rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: none;
-}
-
-::-webkit-scrollbar-thumb {
-  background-color: rgb(20, 33, 61);
-}
-
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -140,6 +127,39 @@ body {
 .navbar__mobile-item::first-letter {
   text-transform: uppercase;
 }
+.navbar__desktop {
+  position: relative;
+  display: none;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+  padding: 2rem;
+  background-color: rgb(20, 33, 61);
+}
+.navbar__desktop-logo {
+  position: absolute;
+  left: 2rem;
+  color: rgb(20, 33, 61);
+  font-weight: bold;
+  font-family: "Russo One", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+}
+.navbar__desktop-logo, .navbar__desktop-item {
+  color: #ffffff;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  -webkit-transition: 0.3s color;
+  transition: 0.3s color;
+}
+.navbar__desktop-logo:hover, .navbar__desktop-item:hover {
+  color: #fca311;
+}
 
 @-webkit-keyframes navItemsAnimation {
   from {
@@ -163,8 +183,8 @@ body {
   }
 }
 .nav-items-animation {
-  -webkit-animation: navItemsAnimation 0.5s both;
-          animation: navItemsAnimation 0.5s both;
+  -webkit-animation: navItemsAnimation 0.3s both;
+          animation: navItemsAnimation 0.3s both;
 }
 
 header {
@@ -233,6 +253,14 @@ header .fa-chevron-down {
   background-color: rgb(20, 33, 61);
   font-size: 3rem;
   color: #ffffff;
+}
+
+footer {
+  padding: 1.5rem;
+  background-color: rgb(20, 33, 61);
+  color: #ffffff;
+  text-align: center;
+  font-size: 2rem;
 }
 
 @media (min-width: 576px) {
@@ -318,7 +346,29 @@ header .fa-chevron-down {
   }
 }
 @media (min-width: 992px) {
+  .navbar__mobile {
+    display: none;
+  }
+  .navbar__desktop {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
   header .hero-img {
     background-image: url(../img/soccer-hero-big.jpg);
+  }
+  header .hero-text {
+    padding: 1.2rem;
+  }
+  header .hero-text h1 {
+    font-size: 5rem;
+  }
+  header .hero-text p {
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .navbar__desktop-logo, .navbar__desktop-item {
+    font-size: 2.1rem;
   }
 }/*# sourceMappingURL=main.css.map */

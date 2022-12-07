@@ -16,19 +16,6 @@
 	background-color: $navy;
 }
 
-::-webkit-scrollbar {
-	width: 1rem;
-	height: 0.5rem;
-}
-
-::-webkit-scrollbar-track {
-	background-color: none;
-}
-
-::-webkit-scrollbar-thumb {
-	background-color: $navy;
-}
-
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
@@ -77,6 +64,13 @@ body {
 	position: relative;
 	background-color: $light-gray;
 }
+
+// WRAPPER
+// .wrapper {
+// 	margin: 0 auto;
+// 	max-width: 1200px;
+// 	width: 100%;
+// }
 
 // ACTIVE NAVIGATION
 .deactive {
@@ -128,6 +122,35 @@ body {
 			@include firstLetter;
 		}
 	}
+
+	&__desktop {
+		position: relative;
+		display: none;
+		justify-content: flex-end;
+		align-items: center;
+		gap: 3.5rem;
+		width: 100%;
+		padding: 2rem;
+		background-color: $navy;
+
+		&-logo {
+			position: absolute;
+			left: 2rem;
+			@include logo;
+		}
+
+		&-logo,
+		&-item {
+			color: $white;
+			font-size: 1.8rem;
+			text-transform: uppercase;
+			transition: 0.3s color;
+
+			&:hover {
+				color: $yellow;
+			}
+		}
+	}
 }
 
 @keyframes navItemsAnimation {
@@ -140,7 +163,7 @@ body {
 }
 
 .nav-items-animation {
-	animation: navItemsAnimation 0.5s both;
+	animation: navItemsAnimation 0.3s both;
 }
 
 // MAIN HEADER
@@ -197,6 +220,14 @@ header {
 		font-size: 3rem;
 		color: $white;
 	}
+}
+
+footer {
+	padding: 1.5rem;
+	background-color: $navy;
+	color: $white;
+	text-align: center;
+	font-size: 2rem;
 }
 
 // -----------------------
@@ -288,9 +319,42 @@ header {
 }
 
 @media (min-width: 992px) {
+	.navbar {
+		&__mobile {
+			display: none;
+		}
+
+		&__desktop {
+			display: flex;
+		}
+	}
+
 	header {
 		.hero-img {
 			background-image: url(../img/soccer-hero-big.jpg);
+		}
+
+		.hero-text {
+			padding: 1.2rem;
+
+			h1 {
+				font-size: 5rem;
+			}
+
+			p {
+				font-size: 2.5rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	.navbar {
+		&__desktop {
+			&-logo,
+			&-item {
+				font-size: 2.1rem;
+			}
 		}
 	}
 }

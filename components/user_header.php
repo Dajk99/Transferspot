@@ -1,7 +1,7 @@
 <header class="header">
     
     <div class="header__logo">
-        <a href="../home.php">transferspot</a>
+        <a href="../user/home.php">transferspot</a>
     </div>
     <div class="underline"></div>
     <div class="header__profile">
