@@ -248,9 +248,7 @@ section {
 
 // ANN IMAGES
 .ann-image {
-	height: 20rem;
-	width: 100%;
-	object-fit: contain;
+	@include annImg;
 }
 
 // BURGER

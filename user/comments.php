@@ -92,7 +92,7 @@ if(isset($_POST['delete_comment'])) {
             <?php
                     }
                 }else{
-                    echo '<div class="show-ann__container-empty">brak komentarzy...</div>';
+                    echo '<div class="show-ann__container-empty">nie dodałeś do tej pory żadnego komentarza...</div>';
                 }
             ?>    
         </div>         

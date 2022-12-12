@@ -24,3 +24,21 @@
 	background-color: $navy;
 	margin: 0.5rem 0 1.2rem;
 }
+
+@mixin wrapper {
+	margin: 0 auto;
+	max-width: 1200px;
+	width: 100%;
+}
+
+@mixin sectionTitle {
+	color: $navy;
+	font-size: 3rem;
+	@include firstLetter;
+}
+
+@mixin annImg {
+	height: 20rem;
+	width: 100%;
+	object-fit: contain;
+}

@@ -4,7 +4,7 @@
         <div class="hero-text">
             <h1>transferspot</h1>
             <p>piłkarskie ogłoszenia dla lig amatorskich</p>
-            <a href="#announcements"><i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#stats"><i class="fa-solid fa-chevron-down"></i></a>
         </div>
     </div>
 </header>
