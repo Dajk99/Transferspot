@@ -10,8 +10,6 @@ if(isset($_SESSION['user_id'])){
     $userId = '';
 };
 
-// include 'components/like_post.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -111,39 +109,76 @@ if(isset($_SESSION['user_id'])){
                 <a href="./view_ann.php?post_id=<?= $postId; ?>">
                     <form class="posts__container__box__post" method="post">
                         <input type="hidden" name="post_id" value="<?= $postId; ?>">
-                        <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">  
-                            <?php
-                                if($fetchPosts['image'] != ''){  
-                            ?>
-                                <img src="../images/<?= $fetchPosts['image']; ?>" class="posts__container__box__post-image" alt="">
-                            <?php
-                            }
-                            ?>
-                            <div class="posts__container__box__post-title"><?= $fetchPosts['title']; ?></div>
-                            <div class="posts__container__box__post-tags">
-                                <div class="posts__container__box__post-tags-tag">
-                                    <i class="fas fa-tag"></i><?= $fetchPosts['category']; ?>
-                                </div>
-                                <div class="posts__container__box__post-tags-tag">
-                                    <i class="fa-solid fa-location-dot"></i><?= $fetchPosts['voivodeship']; ?>
-                                </div>
-                                <div class="posts__container__box__post-tags-tag">
-                                    <i class="fa-solid fa-futbol"></i><?= $fetchPosts['league']; ?>
-                                </div>
+                        <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">
+                        <div class="posts__container__box__post-info">
+                            <div class="posts__container__box__post-info-date">
+                                <p><?= $fetchPosts['date']?></p>
                             </div>
-                            <div class="posts__container__box__post-reactions">
-                                <button><i class="fas fa-comment"></i><span>(<?= $totalPostComments; ?>)</span></button>
-                                <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span>(<?= $totalPostLikes; ?>)</span></button>
+                            <div class="posts__container__box__post-info-user">
+                                <i class="fa-solid fa-user"></i>
+                                <p><?= $fetchPosts['username']?></p>
                             </div>
+                        </div>
+                        <div class="underline"></div>
+                        <?php
+                            if($fetchPosts['image'] != ''){  
+                        ?>
+                            <img src="../images/<?= $fetchPosts['image']; ?>" class="posts__container__box__post-image" alt="">
+                        <?php
+                        }
+                        ?>
+                        <div class="posts__container__box__post-title"><?= $fetchPosts['title']; ?></div>
+                        <div class="posts__container__box__post-tags">
+                            <div class="posts__container__box__post-tags-tag">
+                                <i class="fas fa-tag"></i><?= $fetchPosts['category']; ?>
+                            </div>
+                            <div class="posts__container__box__post-tags-tag">
+                                <i class="fa-solid fa-location-dot"></i><?= $fetchPosts['voivodeship']; ?>
+                            </div>
+                            <div class="posts__container__box__post-tags-tag">
+                                <i class="fa-solid fa-futbol"></i><?= $fetchPosts['league']; ?>
+                            </div>
+                        </div>
+                        <div class="posts__container__box__post-reactions">
+                            <button><i class="fas fa-comment"></i><span>(<?= $totalPostComments; ?>)</span></button>
+                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span>(<?= $totalPostLikes; ?>)</span></button>
+                        </div>
                     </form>
                 </a>
-
                 <?php
                         }
                     } else {
-                        echo '<p class="posts__container__box-text">Aktualnie brak aktywnych ogłoszeń!</p>';
+                        echo '<div class="posts__container__box-info">
+                            <p>aktualnie brak jakichkolwiek ogłoszeń...</p>
+                        </div>';
                     }
                 ?>
+            </div>
+            <?php 
+                if($selectPosts->rowCount() > 0){
+                    echo '<div class="posts__container__btn">
+                            <a href="./announcements.php">zobacz wszystkie</a>
+                          </div>';
+                }
+            ?>
+        </div>
+    </section>
+    <!-- CATEGORIES -->
+    <section id="categories" class="categories">
+        <div class="categories__container">
+            <p class="categories__container__title">kategorie</p>
+            <div class="categories__container__box">
+                <p class="categories__container__box-text">zobacz ogłoszenia dla wybranej kategorii</p>
+                <div class="categories__container__box-options">
+                    <a href="./category.php?category=Nabór zawodników" class="categories__container__box-options-link">Nabór zawodników</a>
+                    <a href="./category.php?category=Nabór trenerów" class="categories__container__box-options-link">Nabór trenerów</a>
+                    <a href="./category.php?category=Zawodnik szuka pracy" class="categories__container__box-options-link">Zawodnik szuka pracy</a>
+                    <a href="./category.php?category=Trener szuka pracy" class="categories__container__box-options-link">Trener szuka pracy</a>
+                    <a href="./category.php?category=Treningi" class="categories__container__box-options-link">Treningi</a>
+                    <a href="./category.php?category=Turnieje" class="categories__container__box-options-link">Turnieje</a>
+                    <a href="./category.php?category=Szkolenia" class="categories__container__box-options-link">Szkolenia</a>
+                    <a href="./category.php?category=Testy" class="categories__container__box-options-link">Testy</a>
+                </div>
             </div>
         </div>
     </section>

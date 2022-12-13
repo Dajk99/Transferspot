@@ -20,6 +20,7 @@
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
+  scroll-padding-top: 62px;
   overflow-x: hidden;
   font-family: "Oswald", sans-serif;
   color: #000000;
@@ -63,6 +64,10 @@ textarea {
 body {
   position: relative;
   background-color: #f5f5f5;
+}
+
+.top-margin {
+  margin-top: 7rem;
 }
 
 .deactive {
@@ -139,7 +144,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 3.5rem;
+  gap: 2.2rem;
   width: 100%;
   padding: 2rem;
 }
@@ -154,39 +159,13 @@ body {
 }
 .navbar__desktop-logo, .navbar__desktop-item {
   color: #ffffff;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
   text-transform: uppercase;
   -webkit-transition: 0.3s color;
   transition: 0.3s color;
 }
 .navbar__desktop-logo:hover, .navbar__desktop-item:hover {
   color: rgb(252, 163, 17);
-}
-
-@-webkit-keyframes navItemsAnimation {
-  from {
-    -webkit-transform: translateX(350%);
-            transform: translateX(350%);
-  }
-  to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-
-@keyframes navItemsAnimation {
-  from {
-    -webkit-transform: translateX(350%);
-            transform: translateX(350%);
-  }
-  to {
-    -webkit-transform: translateX(0);
-            transform: translateX(0);
-  }
-}
-.nav-items-animation {
-  -webkit-animation: navItemsAnimation 0.3s both;
-          animation: navItemsAnimation 0.3s both;
 }
 
 header {
@@ -258,24 +237,28 @@ header .fa-chevron-down {
 }
 
 .home__container,
-.posts__container {
-  padding-top: 1rem;
+.posts__container,
+.categories__container {
+  padding: 1rem 0;
   text-align: center;
   margin: 0 auto;
   max-width: 1200px;
   width: 100%;
 }
 .home__container__title,
-.posts__container__title {
+.posts__container__title,
+.categories__container__title {
   color: rgb(20, 33, 61);
   font-size: 3rem;
 }
 .home__container__title ::first-letter,
-.posts__container__title ::first-letter {
+.posts__container__title ::first-letter,
+.categories__container__title ::first-letter {
   text-transform: uppercase;
 }
 .home__container__title::first-letter,
-.posts__container__title::first-letter {
+.posts__container__title::first-letter,
+.categories__container__title::first-letter {
   text-transform: uppercase;
 }
 
@@ -286,13 +269,14 @@ header .fa-chevron-down {
   color: #ffffff;
 }
 .home__container__box {
-  padding: 1rem;
+  padding: 1rem 1rem 0;
   text-align: center;
 }
 .home__container__box-text {
   margin-bottom: 0.5rem;
-  font-size: 2.3rem;
   color: #ffffff;
+  font-size: 2.3rem;
+  font-weight: 200;
 }
 .home__container__box-text ::first-letter {
   text-transform: uppercase;
@@ -305,11 +289,11 @@ header .fa-chevron-down {
   font-weight: bolder;
 }
 .home__container__box-text a {
+  color: rgb(252, 163, 17);
   font-weight: bolder;
-  cursor: pointer;
 }
 .home__container__box-text a:hover {
-  color: rgb(252, 163, 17);
+  text-decoration: underline;
 }
 .home__container__box-content {
   display: -webkit-box;
@@ -324,18 +308,15 @@ header .fa-chevron-down {
 .home__container__box-content-option {
   padding: 1rem;
 }
-.home__container__box-content-option:hover i, .home__container__box-content-option:hover p {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
 .home__container__box-content-option i,
 .home__container__box-content-option p {
   color: #ffffff;
   font-size: 2.5rem;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.home__container__box-content-option:hover i {
+  color: rgb(252, 163, 17);
 }
 .home__container__box-content-option p.digits {
   color: rgb(252, 163, 17);
@@ -346,7 +327,11 @@ header .fa-chevron-down {
   padding: 1rem;
 }
 .posts__container__title {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+.posts__container__title span {
+  color: rgb(252, 163, 17);
+  text-transform: uppercase;
 }
 .posts__container__box {
   display: grid;
@@ -356,6 +341,48 @@ header .fa-chevron-down {
   padding: 1rem;
   -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.posts__container__box__post-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.posts__container__box__post-info-date {
+  color: #b1b1b1;
+  font-size: 1.6rem;
+}
+.posts__container__box__post-info-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.4rem;
+}
+.posts__container__box__post-info-user i {
+  margin-right: 0.5rem;
+}
+.posts__container__box__post-info-user p {
+  font-weight: bolder;
+}
+.posts__container__box__post .underline {
+  height: 0.1rem;
+  background-color: #e5e5e5;
+  margin: 0.5rem 0 1rem;
 }
 .posts__container__box__post-image {
   height: 20rem;
@@ -400,9 +427,97 @@ header .fa-chevron-down {
 .posts__container__box__post-reactions span {
   font-size: 1.6rem;
 }
+.posts__container__box-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+  gap: 1rem;
+}
+.posts__container__box-info p,
+.posts__container__box-info a {
+  font-size: 1.8rem;
+}
+.posts__container__box-info p ::first-letter,
+.posts__container__box-info a ::first-letter {
+  text-transform: uppercase;
+}
+.posts__container__box-info p::first-letter,
+.posts__container__box-info a::first-letter {
+  text-transform: uppercase;
+}
+.posts__container__box-info a {
+  text-decoration: underline;
+}
+.posts__container__btn {
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.posts__container__btn ::first-letter {
+  text-transform: uppercase;
+}
+.posts__container__btn::first-letter {
+  text-transform: uppercase;
+}
+.posts__container__btn a {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+}
+.posts__container__btn a:hover {
+  color: rgb(252, 163, 17);
+}
+
+.categories {
+  background-color: #e5e5e5;
+}
+.categories__container__box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 1rem;
+}
+.categories__container__box-text {
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-weight: 200;
+}
+.categories__container__box-text ::first-letter {
+  text-transform: uppercase;
+}
+.categories__container__box-text::first-letter {
+  text-transform: uppercase;
+}
+.categories__container__box-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+}
+.categories__container__box-options-link {
+  color: rgb(20, 33, 61);
+  font-size: 1.7rem;
+}
 
 footer {
-  padding: 1.5rem;
+  padding: 1.2rem;
   background-color: rgb(20, 33, 61);
   color: #ffffff;
   text-align: center;
@@ -410,6 +525,9 @@ footer {
 }
 
 @media (min-width: 576px) {
+  html {
+    scroll-padding-top: 72px;
+  }
   .navbar__mobile {
     gap: 0.7rem;
     padding: 1.1rem;
@@ -419,26 +537,6 @@ footer {
   }
   .navbar__mobile-item {
     font-size: 2rem;
-  }
-  @-webkit-keyframes navItemsAnimation {
-    from {
-      -webkit-transform: translateX(600%);
-              transform: translateX(600%);
-    }
-    to {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-  }
-  @keyframes navItemsAnimation {
-    from {
-      -webkit-transform: translateX(600%);
-              transform: translateX(600%);
-    }
-    to {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
   }
   header .hero-text {
     padding: 1rem;
@@ -450,7 +548,8 @@ footer {
     font-size: 2rem;
   }
   .home__container__title,
-.posts__container__title {
+.posts__container__title,
+.categories__container__title {
     font-size: 3.3rem;
   }
   .home__container__box-text {
@@ -475,8 +574,27 @@ footer {
 .posts__container__box__post-reactions span {
     font-size: 2rem;
   }
+  .posts__container__box-info p,
+.posts__container__box-info a {
+    font-size: 2.3rem;
+  }
+  .posts__container__btn a {
+    font-size: 2.5rem;
+  }
+  .categories__container__box-text {
+    font-size: 2.5rem;
+  }
+  .categories__container__box-options {
+    gap: 1rem;
+  }
+  .categories__container__box-options-link {
+    font-size: 2rem;
+  }
 }
 @media (min-width: 768px) {
+  html {
+    scroll-padding-top: 76px;
+  }
   .navbar__mobile {
     gap: 0.7rem;
     padding: 1.1rem;
@@ -486,26 +604,6 @@ footer {
   }
   .navbar__mobile-item {
     font-size: 2.3rem;
-  }
-  @-webkit-keyframes navItemsAnimation {
-    from {
-      -webkit-transform: translateX(800%);
-              transform: translateX(800%);
-    }
-    to {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
-  }
-  @keyframes navItemsAnimation {
-    from {
-      -webkit-transform: translateX(800%);
-              transform: translateX(800%);
-    }
-    to {
-      -webkit-transform: translateX(0);
-              transform: translateX(0);
-    }
   }
   header .hero-text {
     padding: 1rem;
@@ -520,7 +618,8 @@ footer {
     font-size: 3rem;
   }
   .home__container__title,
-.posts__container__title {
+.posts__container__title,
+.categories__container__title {
     font-size: 3.6rem;
   }
   .home__container__box-text {
@@ -530,8 +629,29 @@ footer {
 .home__container__box-content-option p {
     font-size: 3rem;
   }
+  .posts__container__box__post-info-date {
+    font-size: 1.8rem;
+  }
+  .posts__container__box__post-info-user {
+    font-size: 1.6rem;
+  }
+  .posts__container__box__post-info-user i {
+    margin-right: 0.5rem;
+  }
+  .categories__container__box-text {
+    font-size: 2.8rem;
+  }
+  .categories__container__box-options {
+    gap: 1.2rem;
+  }
+  .categories__container__box-options-link {
+    font-size: 2.2rem;
+  }
 }
 @media (min-width: 992px) {
+  html {
+    scroll-padding-top: 65px;
+  }
   .navbar__mobile {
     display: none;
   }
@@ -575,13 +695,27 @@ footer {
 .posts__container__box__post-reactions span {
     font-size: 2rem;
   }
+  .posts__container__box-info p,
+.posts__container__box-info a {
+    font-size: 2.8rem;
+  }
+  .posts__container__btn a {
+    font-size: 2.8rem;
+  }
 }
 @media (min-width: 1200px) {
+  html {
+    scroll-padding-top: 71px;
+  }
+  .navbar__desktop {
+    gap: 2.4rem;
+  }
   .navbar__desktop-logo, .navbar__desktop-item {
     font-size: 2.1rem;
   }
   .home__container__title,
-.posts__container__title {
+.posts__container__title,
+.categories__container__title {
     font-size: 4rem;
   }
   .home__container__box-text {
@@ -603,5 +737,15 @@ footer {
   .posts__container__box__post-reactions i,
 .posts__container__box__post-reactions span {
     font-size: 2.2rem;
+  }
+  .categories__container__box-text {
+    font-size: 3rem;
+  }
+  .categories__container__box-options {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.4rem;
+  }
+  .categories__container__box-options-link {
+    font-size: 2.3rem;
   }
 }/*# sourceMappingURL=main.css.map */

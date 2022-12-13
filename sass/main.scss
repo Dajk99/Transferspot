@@ -19,6 +19,7 @@
 html {
 	font-size: 62.5%;
 	scroll-behavior: smooth;
+	scroll-padding-top: 62px;
 	overflow-x: hidden;
 	font-family: 'Oswald', sans-serif;
 	color: $black;
@@ -65,12 +66,10 @@ body {
 	background-color: $light-gray;
 }
 
-// WRAPPER
-// .wrapper {
-// 	margin: 0 auto;
-// 	max-width: 1200px;
-// 	width: 100%;
-// }
+// TOP PADDING
+.top-margin {
+	margin-top: 7rem;
+}
 
 // ACTIVE NAVIGATION
 .deactive {
@@ -133,7 +132,7 @@ body {
 		display: none;
 		justify-content: flex-end;
 		align-items: center;
-		gap: 3.5rem;
+		gap: 2.2rem;
 		width: 100%;
 		padding: 2rem;
 
@@ -146,7 +145,7 @@ body {
 		&-logo,
 		&-item {
 			color: $white;
-			font-size: 1.7rem;
+			font-size: 1.6rem;
 			text-transform: uppercase;
 			transition: 0.3s color;
 
@@ -155,19 +154,6 @@ body {
 			}
 		}
 	}
-}
-
-@keyframes navItemsAnimation {
-	from {
-		transform: translateX(350%);
-	}
-	to {
-		transform: translateX(0);
-	}
-}
-
-.nav-items-animation {
-	animation: navItemsAnimation 0.3s both;
 }
 
 // MAIN HEADER
@@ -228,9 +214,10 @@ header {
 
 //STATS & POSTS WRAPPER and TITLE
 .home,
-.posts {
+.posts,
+.categories {
 	&__container {
-		padding-top: 1rem;
+		padding: 1rem 0;
 		text-align: center;
 		@include wrapper;
 
@@ -250,13 +237,14 @@ header {
 		}
 
 		&__box {
-			padding: 1rem;
+			padding: 1rem 1rem 0;
 			text-align: center;
 
 			&-text {
 				margin-bottom: 0.5rem;
-				font-size: 2.3rem;
 				color: $white;
+				font-size: 2.3rem;
+				font-weight: 200;
 				@include firstLetter;
 
 				span {
@@ -265,11 +253,11 @@ header {
 				}
 
 				a {
+					color: $yellow;
 					font-weight: bolder;
-					cursor: pointer;
 
 					&:hover {
-						color: $yellow;
+						text-decoration: underline;
 					}
 				}
 			}
@@ -283,16 +271,15 @@ header {
 				&-option {
 					padding: 1rem;
 
-					&:hover i,
-					&:hover p {
-						transform: scale(1.1);
-					}
-
 					i,
 					p {
 						color: $white;
 						font-size: 2.5rem;
-						transition: transform 0.3s;
+						transition: color 0.3s;
+					}
+
+					&:hover i {
+						color: $yellow;
 					}
 
 					p.digits {
@@ -311,7 +298,12 @@ header {
 		padding: 1rem;
 
 		&__title {
-			margin-bottom: 1rem;
+			margin-bottom: 1.5rem;
+
+			span {
+				color: $yellow;
+				text-transform: uppercase;
+			}
 		}
 
 		&__box {
@@ -321,6 +313,37 @@ header {
 			&__post {
 				padding: 1rem;
 				box-shadow: 0 0 1rem $black-shadow;
+
+				&-info {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+
+					&-date {
+						color: $dark-gray;
+						font-size: 1.6rem;
+					}
+
+					&-user {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						font-size: 1.4rem;
+
+						i {
+							margin-right: 0.5rem;
+						}
+
+						p {
+							font-weight: bolder;
+						}
+					}
+				}
+
+				.underline {
+					@include grayUnderline;
+				}
 
 				&-image {
 					@include annImg;
@@ -332,6 +355,7 @@ header {
 					font-size: 1.8rem;
 					font-weight: bolder;
 				}
+
 				&-tags,
 				&-reactions {
 					display: flex;
@@ -363,13 +387,80 @@ header {
 					}
 				}
 			}
+
+			&-info {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				text-align: center;
+				gap: 1rem;
+
+				p,
+				a {
+					font-size: 1.8rem;
+					@include firstLetter;
+				}
+
+				a {
+					text-decoration: underline;
+				}
+			}
+		}
+
+		&__btn {
+			margin-top: 1rem;
+			padding: 1rem;
+			@include firstLetter;
+
+			a {
+				padding: 0.5rem 1rem;
+				font-size: 2rem;
+				transition: color 0.3s;
+
+				&:hover {
+					color: $yellow;
+				}
+			}
+		}
+	}
+}
+
+// SECTION CATEGORIES
+.categories {
+	background-color: $gray;
+
+	&__container {
+		&__box {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			padding: 1rem;
+
+			&-text {
+				margin-bottom: 1.5rem;
+				font-size: 2rem;
+				font-weight: 200;
+				@include firstLetter;
+			}
+
+			&-options {
+				display: grid;
+				grid-template-columns: repeat(2, 1fr);
+				gap: 0.5rem;
+
+				&-link {
+					color: $navy;
+					font-size: 1.7rem;
+				}
+			}
 		}
 	}
 }
 
 // FOOTER
 footer {
-	padding: 1.5rem;
+	padding: 1.2rem;
 	background-color: $navy;
 	color: $white;
 	text-align: center;
@@ -381,6 +472,10 @@ footer {
 // -----------------------
 
 @media (min-width: 576px) {
+	html {
+		scroll-padding-top: 72px;
+	}
+
 	.navbar {
 		&__mobile {
 			gap: 0.7rem;
@@ -395,15 +490,6 @@ footer {
 			&-item {
 				font-size: 2rem;
 			}
-		}
-	}
-
-	@keyframes navItemsAnimation {
-		from {
-			transform: translateX(600%);
-		}
-		to {
-			transform: translateX(0);
 		}
 	}
 
@@ -422,7 +508,8 @@ footer {
 	}
 
 	.home,
-	.posts {
+	.posts,
+	.categories {
 		&__container {
 			&__title {
 				font-size: 3.3rem;
@@ -470,12 +557,47 @@ footer {
 						}
 					}
 				}
+
+				&-info {
+					p,
+					a {
+						font-size: 2.3rem;
+					}
+				}
+			}
+
+			&__btn {
+				a {
+					font-size: 2.5rem;
+				}
+			}
+		}
+	}
+
+	.categories {
+		&__container {
+			&__box {
+				&-text {
+					font-size: 2.5rem;
+				}
+
+				&-options {
+					gap: 1rem;
+
+					&-link {
+						font-size: 2rem;
+					}
+				}
 			}
 		}
 	}
 }
 
 @media (min-width: 768px) {
+	html {
+		scroll-padding-top: 76px;
+	}
+
 	.navbar {
 		&__mobile {
 			gap: 0.7rem;
@@ -490,15 +612,6 @@ footer {
 			&-item {
 				font-size: 2.3rem;
 			}
-		}
-	}
-
-	@keyframes navItemsAnimation {
-		from {
-			transform: translateX(800%);
-		}
-		to {
-			transform: translateX(0);
 		}
 	}
 
@@ -521,7 +634,8 @@ footer {
 	}
 
 	.home,
-	.posts {
+	.posts,
+	.categories {
 		&__container {
 			&__title {
 				font-size: 3.6rem;
@@ -547,9 +661,53 @@ footer {
 			}
 		}
 	}
+
+	.posts {
+		&__container {
+			&__box {
+				&__post {
+					&-info {
+						&-date {
+							font-size: 1.8rem;
+						}
+
+						&-user {
+							font-size: 1.6rem;
+
+							i {
+								margin-right: 0.5rem;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.categories {
+		&__container {
+			&__box {
+				&-text {
+					font-size: 2.8rem;
+				}
+
+				&-options {
+					gap: 1.2rem;
+
+					&-link {
+						font-size: 2.2rem;
+					}
+				}
+			}
+		}
+	}
 }
 
 @media (min-width: 992px) {
+	html {
+		scroll-padding-top: 65px;
+	}
+
 	.navbar {
 		&__mobile {
 			display: none;
@@ -605,14 +763,33 @@ footer {
 						}
 					}
 				}
+
+				&-info {
+					p,
+					a {
+						font-size: 2.8rem;
+					}
+				}
+			}
+
+			&__btn {
+				a {
+					font-size: 2.8rem;
+				}
 			}
 		}
 	}
 }
 
 @media (min-width: 1200px) {
+	html {
+		scroll-padding-top: 71px;
+	}
+
 	.navbar {
 		&__desktop {
+			gap: 2.4rem;
+
 			&-logo,
 			&-item {
 				font-size: 2.1rem;
@@ -621,7 +798,8 @@ footer {
 	}
 
 	.home,
-	.posts {
+	.posts,
+	.categories {
 		&__container {
 			&__title {
 				font-size: 4rem;
@@ -667,6 +845,25 @@ footer {
 						span {
 							font-size: 2.2rem;
 						}
+					}
+				}
+			}
+		}
+	}
+
+	.categories {
+		&__container {
+			&__box {
+				&-text {
+					font-size: 3rem;
+				}
+
+				&-options {
+					grid-template-columns: repeat(4, 1fr);
+					gap: 1.4rem;
+
+					&-link {
+						font-size: 2.3rem;
 					}
 				}
 			}

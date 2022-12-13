@@ -12,7 +12,6 @@
         ?>
         <p class="header__profile-text">Zalogowano jako <strong><?= $fetchProfile['username']; ?></strong></p>
     </div>
-    <div class="underline"></div>
 
     <nav class="header__navbar navbar">
         <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>

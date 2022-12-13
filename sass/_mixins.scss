@@ -25,6 +25,12 @@
 	margin: 0.5rem 0 1.2rem;
 }
 
+@mixin grayUnderline {
+	height: 0.1rem;
+	background-color: $gray;
+	margin: 0.5rem 0 1rem;
+}
+
 @mixin wrapper {
 	margin: 0 auto;
 	max-width: 1200px;

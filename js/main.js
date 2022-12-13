@@ -1,16 +1,20 @@
 const burgerBtn = document.querySelector('.navbar__mobile-btns-btn-burger')
 const navItems = document.querySelectorAll('.navbar__mobile-item')
-const mobileNav = document.querySelector('.navbar__mobile')
+const allSections = document.querySelectorAll('section')
 
-const showNavItems = () => {
-	let delay = 0
-	mobileNav.classList.toggle('active-nav-bg')
+const handleNav = () => {
 	navItems.forEach(item => {
 		item.classList.toggle('deactive')
-		item.classList.toggle('nav-items-animation')
-		item.style.animationDelay = '.' + delay + 's'
-		delay++
+		item.addEventListener('click', () => {
+			hideNav()
+		})
 	})
 }
 
-burgerBtn.addEventListener('click', showNavItems)
+const hideNav = () => {
+	navItems.forEach(item => {
+		item.classList.add('deactive')
+	})
+}
+
+burgerBtn.addEventListener('click', handleNav)
