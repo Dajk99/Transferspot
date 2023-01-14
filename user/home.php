@@ -86,6 +86,10 @@ if(isset($_SESSION['user_id'])){
     <section id="announcements" class="posts">
         <div class="posts__container">
             <p class="posts__container__title">najnowsze ogłoszenia</p>
+            <form action="search.php" method="POST" class="posts__container__form">
+                <input class="posts__container__form-input" type="text" placeholder="Wyszukaj ogłoszenie" required maxlength="100" name="search_box">
+                <button name="search_btn" class="posts__container__form-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
             <div class="posts__container__box">
                 <?php
                     $selectPosts = $conn->prepare("SELECT * FROM posts WHERE status = ? LIMIT 6 ");
@@ -106,7 +110,7 @@ if(isset($_SESSION['user_id'])){
                         $confirmLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ? AND post_id = ?");
                         $confirmLikes->execute([$userId, $postId]);
                 ?>
-                <a href="./view_ann.php?post_id=<?= $postId; ?>">
+                <a href="./view_user_ann.php?post_id=<?= $postId; ?>">
                     <form class="posts__container__box__post" method="post">
                         <input type="hidden" name="post_id" value="<?= $postId; ?>">
                         <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">

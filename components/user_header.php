@@ -31,7 +31,7 @@
             <a class="login"><i class="fa-solid fa-repeat"></i><p>przełącz konto</p></a>
         </button>
         <button class="header__navbar-item header__navbar-item--logout btn">
-            <a href="#" class="logout"><i class="fa-solid fa-power-off"></i><p>wyloguj</p></a>
+            <a href="./user_logout.php" class="logout"><i class="fa-solid fa-power-off"></i><p>wyloguj</p></a>
         </button>
     </nav>
 

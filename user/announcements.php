@@ -59,7 +59,7 @@ if(isset($_SESSION['user_id'])){
                         $confirmLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ? AND post_id = ?");
                         $confirmLikes->execute([$userId, $postId]);
                 ?>
-                <a href="./view_ann.php?post_id=<?= $postId; ?>">
+                <a href="./view_user_ann.php?post_id=<?= $postId; ?>">
                     <form class="posts__container__box__post" method="post">
                         <input type="hidden" name="post_id" value="<?= $postId; ?>">
                         <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">
@@ -106,6 +106,7 @@ if(isset($_SESSION['user_id'])){
                     }
                 ?>
             </div>
+            <a href="./home.php#home"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
         </div>
     </section>  
     <script src="../js/main.js"></script>

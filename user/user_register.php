@@ -72,7 +72,7 @@ if(isset($_POST['submit'])){
     <!-- user registration section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
-            <h1 class="logo"><a href="dashboard.php">Transferspot</a></h1>
+            <h1 class="logo"><a href="home.php">Transferspot</a></h1>
             <div class="underline"></div>
             <h3>Rejestracja</h3>
             <?php

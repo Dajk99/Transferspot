@@ -262,6 +262,21 @@ header .fa-chevron-down {
   text-transform: uppercase;
 }
 
+.comments__container {
+  margin: 0 auto;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.comeback-arrow {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgb(20, 33, 61);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 2.5rem;
+}
+
 .home {
   background-color: rgb(20, 33, 61);
 }
@@ -333,12 +348,42 @@ header .fa-chevron-down {
   color: rgb(252, 163, 17);
   text-transform: uppercase;
 }
+.posts__container__form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1rem 2rem;
+  background-color: #ffffff;
+}
+.posts__container__form-input {
+  width: 100%;
+  font-size: 1.8rem;
+  border: none transparent;
+}
+.posts__container__form-input:focus {
+  outline: none;
+}
+.posts__container__form-btn {
+  padding: 0.5rem;
+}
+.posts__container__form-btn i {
+  color: rgb(252, 163, 17);
+  font-size: 1.8rem;
+}
 .posts__container__box {
   display: grid;
   gap: 1.5rem;
 }
 .posts__container__box__post {
-  padding: 1rem;
+  padding: 1.5rem;
   -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
           box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
@@ -384,6 +429,11 @@ header .fa-chevron-down {
   background-color: #e5e5e5;
   margin: 0.5rem 0 1rem;
 }
+.posts__container__box__post .post_underline {
+  height: 0.1rem;
+  background-color: #e5e5e5;
+  margin: 0.8rem 0;
+}
 .posts__container__box__post-image {
   height: 20rem;
   width: 100%;
@@ -391,10 +441,22 @@ header .fa-chevron-down {
      object-fit: contain;
 }
 .posts__container__box__post-title {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: rgb(20, 33, 61);
   font-size: 1.8rem;
   font-weight: bolder;
+}
+.posts__container__box__post-content {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 200;
+  text-align: justify;
+}
+.posts__container__box__post .left {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
 }
 .posts__container__box__post-tags, .posts__container__box__post-reactions {
   display: -webkit-box;
@@ -441,20 +503,18 @@ header .fa-chevron-down {
   text-align: center;
   gap: 1rem;
 }
-.posts__container__box-info p,
-.posts__container__box-info a {
+.posts__container__box-info p {
   font-size: 1.8rem;
 }
-.posts__container__box-info p ::first-letter,
-.posts__container__box-info a ::first-letter {
+.posts__container__box-info p ::first-letter {
   text-transform: uppercase;
 }
-.posts__container__box-info p::first-letter,
-.posts__container__box-info a::first-letter {
+.posts__container__box-info p::first-letter {
   text-transform: uppercase;
 }
-.posts__container__box-info a {
-  text-decoration: underline;
+.posts__container__box-info p span {
+  color: rgb(252, 163, 17);
+  font-style: italic;
 }
 .posts__container__btn {
   margin-top: 1rem;
@@ -474,6 +534,62 @@ header .fa-chevron-down {
 }
 .posts__container__btn a:hover {
   color: rgb(252, 163, 17);
+}
+
+.comments__container {
+  padding: 0 1rem 1rem;
+}
+.comments__container-title {
+  margin-bottom: 0.5rem;
+  color: rgb(20, 33, 61);
+  font-size: 2.3rem;
+}
+.comments__container-title ::first-letter {
+  text-transform: uppercase;
+}
+.comments__container-title::first-letter {
+  text-transform: uppercase;
+}
+.comments__container-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem;
+  -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.comments__container-comment-user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.8rem;
+}
+.comments__container-comment-user-date, .comments__container-comment-user-info {
+  font-size: 1.4rem;
+}
+.comments__container-comment-user-date-text {
+  color: gray;
+}
+.comments__container-comment-user-info .username-highlight {
+  color: rgb(252, 163, 17);
+}
+.comments__container-comment-content {
+  font-size: 1.5rem;
+  font-weight: 200;
+}
+.comments__container-comment-content ::first-letter {
+  text-transform: uppercase;
+}
+.comments__container-comment-content::first-letter {
+  text-transform: uppercase;
+}
+.comments__container-text {
+  font-size: 1.6rem;
 }
 
 .categories {
@@ -559,16 +675,24 @@ footer {
 .home__container__box-content-option p {
     font-size: 2.8rem;
   }
+  .posts__container__form-input, .posts__container__form-btn i {
+    font-size: 2rem;
+  }
+  .posts__container__box__post-info-date {
+    font-size: 1.9rem;
+  }
+  .posts__container__box__post-info-user {
+    font-size: 1.7rem;
+  }
   .posts__container__box__post-title {
     font-size: 2.2rem;
   }
+  .posts__container__box__post-content {
+    font-size: 1.9rem;
+  }
   .posts__container__box__post-tags {
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    gap: 1rem;
-    font-size: 1.8rem;
+    gap: 0.5rem;
+    font-size: 1.6rem;
   }
   .posts__container__box__post-reactions i,
 .posts__container__box__post-reactions span {
@@ -580,6 +704,21 @@ footer {
   }
   .posts__container__btn a {
     font-size: 2.5rem;
+  }
+  .comments__container-title {
+    font-size: 2.4rem;
+  }
+  .comments__container-comment-user {
+    gap: 1rem;
+  }
+  .comments__container-comment-user-date, .comments__container-comment-user-info {
+    font-size: 1.6rem;
+  }
+  .comments__container-comment-content {
+    font-size: 1.7rem;
+  }
+  .comments__container-comment-text {
+    font-size: 1.8rem;
   }
   .categories__container__box-text {
     font-size: 2.5rem;
@@ -628,6 +767,9 @@ footer {
   .home__container__box-content-option i,
 .home__container__box-content-option p {
     font-size: 3rem;
+  }
+  .posts__container__form-input, .posts__container__form-btn i {
+    font-size: 2.2rem;
   }
   .posts__container__box__post-info-date {
     font-size: 1.8rem;
@@ -688,6 +830,9 @@ footer {
     gap: 0.3rem;
     font-size: 1.8rem;
   }
+  .posts__container__box__post-content {
+    font-size: 2.2rem;
+  }
   .posts__container__box__post-reactions {
     gap: 2.5rem;
   }
@@ -701,6 +846,21 @@ footer {
   }
   .posts__container__btn a {
     font-size: 2.8rem;
+  }
+  .comments__container-title {
+    font-size: 2.6rem;
+  }
+  .comments__container-comment-user {
+    gap: 1rem;
+  }
+  .comments__container-comment-user-date, .comments__container-comment-user-info {
+    font-size: 1.8rem;
+  }
+  .comments__container-comment-content {
+    font-size: 2rem;
+  }
+  .comments__container-text {
+    font-size: 2.2rem;
   }
 }
 @media (min-width: 1200px) {

@@ -1,3 +1,3 @@
 <footer>
-    <p>&copy;Dawid Knap <?=date('Y') ?></p>
+    <p>&copy; Dawid Knap <?=date('Y') ?></p>
 </footer>

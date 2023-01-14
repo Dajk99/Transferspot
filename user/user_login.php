@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
         $fetchUserId = $selectUser->fetch(PDO::FETCH_ASSOC);
         $_SESSION['user_id'] = $fetchUserId['id'];
         $goodMessage[] = 'Pomyślnie zalogowano!';
-        header('location:dashboard.php');
+        header('location:home.php');
     }else {
        $message[] = 'Nieprawidłowe hasło lub nazwa użytkownika!'; 
     }
@@ -48,7 +48,7 @@ if(isset($_POST['submit'])){
     <!-- user login section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
-            <h1><a href="dashboard.php">Transferspot</a></h1>
+            <h1><a href="home.php">Transferspot</a></h1>
             <div class="underline"></div>
             <h3>logowanie</h3>
             <?php

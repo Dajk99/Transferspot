@@ -128,9 +128,7 @@
         </form>
         <?php
                 }
-            } else {
-                echo '<div class="show-ann__container-empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
-                }
+            }
         ?>
     </section>
 
