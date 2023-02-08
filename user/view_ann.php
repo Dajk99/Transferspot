@@ -91,32 +91,33 @@ if(isset($_POST['delete'])) {
                         $postLikes->execute([$postId]);
                         $totalPostLikes = $postLikes->rowCount();
             ?>
-            <form method="post" class="show-ann__container__box">
-                <input type="hidden" name="post_id" value="<?= $postId; ?>">
-                <?php
-                if($fetchPosts['status'] == 'Aktywne') {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
-                } else {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-pencil"></i></div>';
-                }
-                ?>
-                <?php if($fetchPosts['image'] != ''){ ?>
-                    <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
-                <?php } ?>
-                <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
-                <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
-                <div class="show-ann__container__box-icons">
-                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
-                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
-                </div>
-                <div class="show-ann__container__box-btns">
-                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                <button class="btn form-btn yellow-btn pd-btn-reset">
-                    <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
-                </button>
-            </form>
+            <a href="read_ann.php?post_id=<?= $postId; ?>">
+                <form method="post" class="show-ann__container__box">
+                    <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                    <?php
+                    if($fetchPosts['status'] == 'Aktywne') {
+                        echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
+                    } else {
+                        echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-pencil"></i></div>';
+                    }
+                    ?>
+                    <?php if($fetchPosts['image'] != ''){ ?>
+                        <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
+                    <?php } ?>
+                    <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
+                    <div class="show-ann__container__box-icons">
+                        <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
+                        <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
+                    </div>
+                    <div class="show-ann__container__box-btns">
+                        <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <button class="btn form-btn yellow-btn pd-btn-reset">
+                        <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
+                    </button>
+                </form>
+            </a>
             <?php
                     }
                 } else {

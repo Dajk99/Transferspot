@@ -1,9 +1,10 @@
 <header class="header">
-    
     <div class="header__logo">
         <a href="../user/home.php">transferspot</a>
     </div>
+
     <div class="underline"></div>
+
     <div class="header__profile">
         <?php
         $selectProfile = $conn->prepare("SELECT * FROM users WHERE id = ?");
@@ -14,15 +15,17 @@
     </div>
 
     <nav class="header__navbar navbar">
-        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='update_profile.php'"><a class="view">Zaktualizuj profil</a></button>
-        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='dashboard.php'">
-            <p>panel użytkownika</p>
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='home.php'">
+            <p>strona główna</p>
+        </button>
+        <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='update_profile.php'">
+            <p>Zaktualizuj profil</p>
         </button>
         <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='add_ann.php'">
             <p>dodaj ogłoszenie</p>
         </button>
         <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='view_ann.php'">
-            <p>przeglądaj ogłoszenia</p>
+            <p>twoje ogłoszenia</p>
         </button>
         <button class="header__navbar-item btn navy-btn btn-action" onclick="location.href='user_register.php'">
             <p>zarejestruj się</p>
@@ -34,7 +37,6 @@
             <a href="./user_logout.php" class="logout"><i class="fa-solid fa-power-off"></i><p>wyloguj</p></a>
         </button>
     </nav>
-
 </header>
 
 <button class="burger-btn">

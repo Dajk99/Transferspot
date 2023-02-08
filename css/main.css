@@ -299,10 +299,6 @@ header .fa-chevron-down {
 .home__container__box-text::first-letter {
   text-transform: uppercase;
 }
-.home__container__box-text span {
-  color: rgb(252, 163, 17);
-  font-weight: bolder;
-}
 .home__container__box-text a {
   color: rgb(252, 163, 17);
   font-weight: bolder;
@@ -435,6 +431,7 @@ header .fa-chevron-down {
   margin: 0.8rem 0;
 }
 .posts__container__box__post-image {
+  margin-bottom: 1rem;
   height: 20rem;
   width: 100%;
   -o-object-fit: contain;
@@ -664,15 +661,15 @@ footer {
     font-size: 2rem;
   }
   .home__container__title,
-.posts__container__title,
-.categories__container__title {
+  .posts__container__title,
+  .categories__container__title {
     font-size: 3.3rem;
   }
   .home__container__box-text {
     font-size: 2.5rem;
   }
   .home__container__box-content-option i,
-.home__container__box-content-option p {
+  .home__container__box-content-option p {
     font-size: 2.8rem;
   }
   .posts__container__form-input, .posts__container__form-btn i {
@@ -695,11 +692,11 @@ footer {
     font-size: 1.6rem;
   }
   .posts__container__box__post-reactions i,
-.posts__container__box__post-reactions span {
+  .posts__container__box__post-reactions span {
     font-size: 2rem;
   }
   .posts__container__box-info p,
-.posts__container__box-info a {
+  .posts__container__box-info a {
     font-size: 2.3rem;
   }
   .posts__container__btn a {
@@ -757,15 +754,15 @@ footer {
     font-size: 3rem;
   }
   .home__container__title,
-.posts__container__title,
-.categories__container__title {
+  .posts__container__title,
+  .categories__container__title {
     font-size: 3.6rem;
   }
   .home__container__box-text {
     font-size: 2.8rem;
   }
   .home__container__box-content-option i,
-.home__container__box-content-option p {
+  .home__container__box-content-option p {
     font-size: 3rem;
   }
   .posts__container__form-input, .posts__container__form-btn i {
@@ -837,11 +834,11 @@ footer {
     gap: 2.5rem;
   }
   .posts__container__box__post-reactions i,
-.posts__container__box__post-reactions span {
+  .posts__container__box__post-reactions span {
     font-size: 2rem;
   }
   .posts__container__box-info p,
-.posts__container__box-info a {
+  .posts__container__box-info a {
     font-size: 2.8rem;
   }
   .posts__container__btn a {
@@ -874,15 +871,15 @@ footer {
     font-size: 2.1rem;
   }
   .home__container__title,
-.posts__container__title,
-.categories__container__title {
+  .posts__container__title,
+  .categories__container__title {
     font-size: 4rem;
   }
   .home__container__box-text {
     font-size: 3rem;
   }
   .home__container__box-content-option i,
-.home__container__box-content-option p {
+  .home__container__box-content-option p {
     font-size: 3.2rem;
   }
   .posts__container__box {
@@ -895,7 +892,7 @@ footer {
     font-size: 2rem;
   }
   .posts__container__box__post-reactions i,
-.posts__container__box__post-reactions span {
+  .posts__container__box__post-reactions span {
     font-size: 2.2rem;
   }
   .categories__container__box-text {

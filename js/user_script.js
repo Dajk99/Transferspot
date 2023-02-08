@@ -28,9 +28,6 @@ posts.forEach(content => {
 	}
 })
 
-// window.onscroll = () => {
-// 	header.classList.remove('header--active')
-// 	darkBody()
-// }
-
-burgerBtn.addEventListener('click', showPanel)
+if (document.querySelector('.burger-btn') !== null) {
+	burgerBtn.addEventListener('click', showPanel)
+}

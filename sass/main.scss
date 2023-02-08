@@ -263,10 +263,10 @@ header {
 				font-weight: 200;
 				@include firstLetter;
 
-				span {
-					color: $yellow;
-					font-weight: bolder;
-				}
+				// span {
+				// 	color: $yellow;
+				// 	font-weight: bolder;
+				// }
 
 				a {
 					color: $yellow;
@@ -357,7 +357,7 @@ header {
 
 			&__post {
 				padding: 1.5rem;
-				box-shadow: 0 0 1rem $black-shadow;
+				box-shadow: $box-shadow;
 
 				&-info {
 					display: flex;
@@ -395,6 +395,7 @@ header {
 				}
 
 				&-image {
+					margin-bottom: 1rem;
 					@include annImg;
 				}
 
@@ -503,7 +504,7 @@ header {
 			flex-direction: column;
 			gap: 0.3rem;
 			padding: 1rem;
-			box-shadow: 0 0 1rem $black-shadow;
+			box-shadow: $box-shadow;
 
 			&-user {
 				display: flex;

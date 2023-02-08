@@ -1,31 +1,4 @@
 @media (max-width: 450px) {
-	html {
-		font-size: 50%;
-	}
-
-	.dashboard,
-	.ann-editor,
-	.show-ann {
-		&__heading {
-			margin: 3.6rem 0 2rem;
-			font-size: 3rem;
-		}
-	}
-
-	.header {
-		width: 35rem;
-
-		&__logo {
-			margin-top: 2rem;
-		}
-	}
-
-	.dashboard {
-		&__container {
-			grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-		}
-	}
-
 	.ann-editor {
 		margin: 1rem 0;
 	}

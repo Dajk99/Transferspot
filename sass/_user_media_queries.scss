@@ -1,0 +1,218 @@
+@media (min-width: 576px) {
+	.btn {
+		font-size: 2rem;
+	}
+
+	.header {
+		left: -40rem;
+		width: 40rem;
+
+		&--active {
+			left: 0;
+		}
+
+		&__profile {
+			&-text {
+				font-size: 2rem;
+			}
+		}
+
+		&__navbar {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(5, 5.5rem) 1rem 8rem;
+			gap: 0.8rem;
+
+			&-item {
+				grid-column: 1/3;
+
+				&--login,
+				&--logout {
+					grid-row: 7/8;
+					font-size: 1.8rem;
+				}
+
+				&--login {
+					grid-column: 1/2;
+				}
+
+				&--logout {
+					grid-column: 2/3;
+				}
+			}
+		}
+	}
+
+	.dashboard {
+		&__container {
+			&-box {
+				padding: 2rem;
+
+				&-icon {
+					font-size: 3.5rem;
+				}
+
+				&-text,
+				&-number {
+					font-size: 2.3rem;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 992px) {
+	body {
+		padding-left: 40rem;
+	}
+
+	.dashboard,
+	.ann-editor,
+	.show-ann {
+		&__heading {
+			margin-top: 1rem;
+		}
+	}
+
+	.burger-btn {
+		display: none;
+	}
+
+	.header {
+		left: 0;
+		padding-top: 2rem;
+		border-right: $border-header;
+
+		&__navbar {
+			grid-template-columns: 1fr;
+			grid-template-rows: repeat(5, 5.5rem) repeat(2, 6.5rem);
+			gap: 0.7rem;
+
+			&-item {
+				grid-column: 1/2;
+
+				&--login,
+				&--logout {
+					grid-column: 1/2;
+				}
+
+				&--login {
+					grid-row: 6/7;
+				}
+
+				&--logout {
+					grid-row: 7/8;
+				}
+			}
+		}
+	}
+
+	.dashboard {
+		&__container {
+			&-box {
+				padding: 2rem;
+
+				&-icon {
+					font-size: 3.5rem;
+				}
+
+				&-text,
+				&-number {
+					font-size: 2.3rem;
+				}
+			}
+		}
+	}
+
+	.form-container {
+		&__form {
+			width: 50rem;
+
+			h1 {
+				font-size: 3.5rem;
+			}
+
+			h3 {
+				font-size: 3rem;
+			}
+
+			&-box {
+				font-size: 2rem;
+			}
+
+			&-info {
+				font-size: 2rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 1200px) {
+	body {
+		padding-left: 45rem;
+	}
+
+	.dashboard,
+	.ann-editor,
+	.show-ann {
+		&__heading {
+			font-size: 4rem;
+		}
+	}
+
+	.burger-btn {
+		display: none;
+	}
+
+	.header {
+		left: 0;
+		width: 45rem;
+
+		&__logo {
+			font-size: 4rem;
+		}
+
+		&__navbar {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(5, 5.5rem) 1rem 8rem;
+			gap: 0.8rem;
+
+			&-item {
+				grid-column: 1/3;
+				font-size: 2.2rem;
+
+				&--login,
+				&--logout {
+					grid-row: 7/8;
+				}
+
+				&--login {
+					grid-column: 1/2;
+				}
+
+				&--logout {
+					grid-column: 2/3;
+				}
+			}
+		}
+	}
+
+	.dashboard {
+		&__container {
+			grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+
+			&-box {
+				&-icon {
+					font-size: 4rem;
+				}
+
+				&-text,
+				&-number {
+					font-size: 2.8rem;
+				}
+			}
+		}
+	}
+}

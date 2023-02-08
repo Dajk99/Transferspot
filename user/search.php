@@ -43,8 +43,8 @@ if(isset($_SESSION['user_id'])){
                 <?php
                     if(isset($_POST['search_btn']) or isset($_POST['search_box'])) {
                         $searchText = $_POST['search_box'];
-                        $selectPosts = $conn->prepare("SELECT * FROM posts WHERE title LIKE '%{$searchText}%' OR category LIKE '%{$searchText}%' AND status = ?");
-                        $selectPosts->execute(['aktywne']);
+                        $selectPosts = $conn->prepare("SELECT * FROM posts WHERE status = ? AND title LIKE '%{$searchText}%' OR category LIKE '%{$searchText}%'");
+                        $selectPosts->execute(['Aktywne']);
                         if($selectPosts->rowCount() > 0){
                             while($fetchPosts = $selectPosts->fetch(PDO::FETCH_ASSOC)){
                             

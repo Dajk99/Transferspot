@@ -44,12 +44,10 @@ if(isset($_POST['submit'])){
 </head>
 
 <body class="pd-reset">
-
     <!-- user login section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
             <h1><a href="home.php">Transferspot</a></h1>
-            <div class="underline"></div>
             <h3>logowanie</h3>
             <?php
                 if(isset($message)) {
@@ -64,7 +62,7 @@ if(isset($_POST['submit'])){
             ?>
             <input type="text" required class="form-container__form-box" placeholder="Nazwa użytkownika" maxlength="30" name="username" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="password" required class="form-container__form-box" placeholder="Hasło" maxlength="50" name="pass" oninput="this.value = this.value.replace(/\s/g, '')">
-            <input type="submit" name="submit" class="form-container__form-btn btn form-btn yellow-btn" value="Zaloguj się">
+            <input type="submit" name="submit" class="form-container__form-btn btn yellow-btn" value="Zaloguj się">
             <div class="form-container__form-info">
                 <p>nie masz konta?</p>
                 <a href="user_register.php">zarejestruj się</a>
@@ -73,7 +71,6 @@ if(isset($_POST['submit'])){
     </section>
     
     <!-- JS connection -->
-    <script src="../js/confirm_logout.js"></script>
     <script src="../js/user_script.js"></script>
 </body>
 </html>

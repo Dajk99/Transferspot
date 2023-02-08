@@ -15,14 +15,14 @@
         <a href="./home.php#categories" class="navbar__mobile-item deactive">kategorie</a>
         <?php 
             if ($userId !== '') {
-                echo '<a href="dashboard.php" class="navbar__mobile-item deactive">panel użytkownika</a>
-                <a href="user_login.php" class="navbar__mobile-item deactive">przełącz konto</a>';
+                echo '<a href="dashboard.php" class="navbar__mobile-item deactive">panel użytkownika</a>';
             } else {
                 echo '<a href="user_login.php" class="navbar__mobile-item deactive">zaloguj się</a>
                 <a href="user_register.php" class="navbar__mobile-item deactive">zarejestruj się</a>';
             };
         ?>
     </div>
+
     <!-- DESKTOP -->
     <div class="navbar__desktop">
         <a href="./home.php#home" class="navbar__desktop-logo">transferspot</a>
@@ -32,13 +32,11 @@
         <?php 
             if ($userId !== '') {
                 echo "<a href='dashboard.php' class='navbar__desktop-item'>panel użytkownika</a>
-                <a href='user_login.php' class='navbar__desktop-item'>przełącz konto</a>
                 <a href='../components/user_logout.php' class='navbar__desktop-item'>wyloguj się</a>";
             } else {
                 echo '<a href="user_login.php" class="navbar__desktop-item">zaloguj się</a>
                 <a href="user_register.php" class="navbar__desktop-item">zarejestruj się</a>';
             };
         ?>
-        <!-- <button class="navbar__desktop-option" onclick="location.href='#home'"><i class="fa-solid fa-user"></i></button> -->
     </div>
 </nav>

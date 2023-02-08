@@ -7,7 +7,6 @@ session_start();
 $userId = $_SESSION['user_id'];
 
 if(!isset($userId)){
-    // $_SESSION['user_id'] = 1;
     header('location:user_login.php');
 }
 
@@ -39,64 +38,62 @@ if(!isset($userId)){
     <section class="dashboard">
         <h1 class="dashboard__heading ">panel użytkownika</h1>
         <div class="dashboard__container">
-            <div class="dashboard__container-box">
-                <?php
-                    $selectPosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ?");
-                    $selectPosts->execute([$userId]);
-                    $postCount = $selectPosts->rowCount();
-                ?>
-                <h3>dodane ogłoszenia: <?= $postCount; ?></h3>
-                <button class="dashboard__container-box-content" onclick="location.href='add_ann.php'">
-                    <i class="fa-solid fa-file-circle-plus"></i>
-                    <p>dodaj nowe ogłoszenie</p>
-                </button>
-            </div>
 
-            <div class="dashboard__container-box">
-                <?php
-                    /* liked posts */
-                    $selectLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
-                    $selectLikes->execute([$userId]);
-                    $likesCount = $selectLikes->rowCount();
-                ?>
-                <h3>polubione ogłoszenia: <?= $likesCount; ?></h3>
-                <button class="dashboard__container-box-content" onclick="location.href='likes.php'">
-                    <i class="fa-solid fa-heart"></i>
-                    <p>przeglądaj polubione ogłoszenia</p>
-                </button>
-            </div>
+            <a href="./view_ann.php">
+                <div class="dashboard__container-box">
+                    <?php
+                    /* active posts */ 
+                        $selectActivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
+                        $selectActivePosts->execute([$userId, 'Aktywne']);
+                        $activePostCount = $selectActivePosts->rowCount();
+                    ?>
+                    <h3 class="dashboard__container-box-text">aktywne ogłoszenia</h3>
+                    <i class="fa-solid fa-book-open dashboard__container-box-icon"></i>
+                    <p class="dashboard__container-box-number"><?= $activePostCount; ?></p>
+                </div>
+            </a>
 
-            <div class="dashboard__container-box">
-                <?php
-                /* active posts */ 
-                    $selectActivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $selectActivePosts->execute([$userId, 'Aktywne']);
-                    $activePostCount = $selectActivePosts->rowCount();
-                /* deactive posts */ 
-                    $selectDeactivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
-                    $selectDeactivePosts->execute([$userId, 'Nieaktywne']);
-                    $deactivePostCount = $selectDeactivePosts->rowCount();
-                ?>
-                <h3>aktywne ogłoszenia: <?= $activePostCount; ?></h3>
-                <h3>Zapisane szkice: <?= $deactivePostCount; ?></h3>
-                <button class="dashboard__container-box-content" onclick="location.href='view_ann.php'">
-                    <i class="fa-solid fa-book-open"></i>
-                    <p>przeglądaj dodane ogłoszenia</p>
-                </button>
-            </div>
+            <a href="./view_ann.php">
+                <div class="dashboard__container-box">
+                    <?php
+                        /* deactive posts */ 
+                        $selectDeactivePosts = $conn->prepare("SELECT * FROM posts WHERE user_id = ? AND status = ?");
+                        $selectDeactivePosts->execute([$userId, 'Nieaktywne']);
+                        $deactivePostCount = $selectDeactivePosts->rowCount();
+                    ?>
+                    <h3 class="dashboard__container-box-text">Zapisane szkice</h3>
+                    <i class="fa-solid fa-file-pen dashboard__container-box-icon"></i>
+                    <p class="dashboard__container-box-number"><?= $deactivePostCount; ?></p>
+                </div>
+            </a>
 
-            <div class="dashboard__container-box">
-                <?php
-                    $selectComments = $conn->prepare("SELECT * FROM comments WHERE user_id = ?");
-                    $selectComments->execute([$userId]);
-                    $commentsCount = $selectComments->rowCount();
-                ?>
-                <h3>komentarze: <?= $commentsCount; ?></h3>
-                <button class="dashboard__container-box-content" onclick="location.href='comments.php'">
-                    <i class="fa-solid fa-comment"></i>
-                    <p>przeglądaj komentarze</p>
-                </button>
-            </div>
+            <a href="./likes.php">
+                <div class="dashboard__container-box">
+                    <?php
+                        /* liked posts */
+                        $selectLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ?");
+                        $selectLikes->execute([$userId]);
+                        $likesCount = $selectLikes->rowCount();
+                    ?>
+                    <h3 class="dashboard__container-box-text">polubione ogłoszenia</h3>
+                    <i class="fa-solid fa-heart dashboard__container-box-icon"></i>
+                    <p class="dashboard__container-box-number"><?= $likesCount; ?></p>
+                </div>
+            </a>
+
+            <a href="./comments.php">
+                <div class="dashboard__container-box">
+                    <?php
+                        /* comments */
+                        $selectComments = $conn->prepare("SELECT * FROM comments WHERE user_id = ?");
+                        $selectComments->execute([$userId]);
+                        $commentsCount = $selectComments->rowCount();
+                    ?>
+                    <h3 class="dashboard__container-box-text">komentarze</h3>
+                    <i class="fa-solid fa-comment dashboard__container-box-icon"></i>
+                    <p class="dashboard__container-box-number"><?= $commentsCount; ?></p>
+                </div>
+            </a>
         </div>
     </section>
     

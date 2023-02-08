@@ -4,12 +4,6 @@
 
 session_start();
 
-// $userId = $_SESSION['user_id'];
-
-// if(!isset($userId)) {
-//     header('location:user_header.php');
-// }
-
 if(isset($_POST['submit'])){
 
     $email = $_POST['email'];
@@ -36,7 +30,6 @@ if(isset($_POST['submit'])){
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +48,8 @@ if(isset($_POST['submit'])){
     <!-- css styles connection -->
     <link rel="stylesheet" href="../css/user_style.css">
 </head>
-<body class="pd-reset">
 
+<body class="pd-reset">
     <?php
         if(isset($goodMessage)) {
             foreach($goodMessage as $goodMessage) {
@@ -68,12 +61,10 @@ if(isset($_POST['submit'])){
             } 
         }
     ?>
-
     <!-- user registration section -->
     <section class="form-container">
         <form action="" method="POST" class="form-container__form">
-            <h1 class="logo"><a href="home.php">Transferspot</a></h1>
-            <div class="underline"></div>
+            <h1><a href="home.php">Transferspot</a></h1>
             <h3>Rejestracja</h3>
             <?php
                 if(isset($message)) {
@@ -90,7 +81,7 @@ if(isset($_POST['submit'])){
             <input type="text" required class="form-container__form-box" placeholder="Nazwa użytkownika" maxlength="30" name="username" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="password" required class="form-container__form-box" placeholder="Hasło" maxlength="50" name="pass" oninput="this.value = this.value.replace(/\s/g, '')">
             <input type="password" required class="form-container__form-box" placeholder="Potwierdź hasło" maxlength="50" name="confirm_pass" oninput="this.value = this.value.replace(/\s/g, '')">
-            <input type="submit" name="submit" class="form-container__form-btn btn form-btn yellow-btn" value="Utwórz konto">
+            <input type="submit" name="submit" class="form-container__form-btn btn yellow-btn" value="Utwórz konto">
             <div class="form-container__form-info">
                 <p>Masz już konto?</p>
                 <a href="user_login.php">zaloguj się</a>
@@ -99,7 +90,6 @@ if(isset($_POST['submit'])){
     </section>
     
     <!-- JS connection -->
-    <script src="../js/confirm_logout.js"></script>
     <script src="../js/user_script.js"></script>
 </body>
 </html>

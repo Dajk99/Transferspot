@@ -57,7 +57,7 @@ if(isset($_SESSION['user_id'])){
                     $countUserLikes->execute([$userId]);
                     $totalUserLikes = $countUserLikes->rowCount();
                 ?>
-                <p class="home__container__box-text">użytkownik <span><?=$fetchProfile['username'] ?></span></p>
+                <p class="home__container__box-text">użytkownik <a href="./dashboard.php"><?=$fetchProfile['username'] ?></a></p>
                 <div class="home__container__box-content">
                     <a href="./comments.php" class="home__container__box-content-option">
                         <i class="fa-regular fa-comment"></i>
