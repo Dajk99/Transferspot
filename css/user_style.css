@@ -141,6 +141,16 @@ section {
   overflow: hidden;
 }
 
+.form-btn {
+  margin-top: 1rem;
+  border: none;
+  -webkit-transition: letter-spacing 0.3s;
+  transition: letter-spacing 0.3s;
+}
+.form-btn:hover {
+  letter-spacing: 0.1rem;
+}
+
 .red-btn,
 .navy-btn,
 .green-btn {
@@ -205,14 +215,14 @@ section {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 1.5rem;
+  padding: 1.2rem;
   gap: 2rem;
 }
 .message span,
 .message i,
 .good-message span,
 .good-message i {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 .message i,
 .good-message i {
@@ -220,6 +230,7 @@ section {
 }
 
 .message {
+  margin-bottom: 0.5rem;
   background-color: rgba(192, 0, 0, 0.6);
 }
 
@@ -230,6 +241,11 @@ section {
   background-color: rgba(33, 197, 0, 0.6);
 }
 
+.dashboard,
+.ann-editor,
+.show-ann {
+  padding: 2rem;
+}
 .dashboard__heading,
 .ann-editor__heading,
 .show-ann__heading {
@@ -271,6 +287,15 @@ section {
   color: rgb(20, 33, 61);
   -webkit-transition: 0.3s;
   transition: 0.3s;
+}
+
+.comeback-arrow {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background-color: rgb(20, 33, 61);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 1.5rem;
 }
 
 .header {
@@ -357,9 +382,6 @@ section {
   color: rgba(192, 0, 0, 0.9);
 }
 
-.dashboard {
-  padding: 2rem;
-}
 .dashboard__container {
   display: grid;
   grid-template-columns: 1fr;
@@ -447,11 +469,6 @@ section {
   -webkit-box-shadow: 0 0 1rem rgba(20, 33, 61, 0.5);
           box-shadow: 0 0 1rem rgba(20, 33, 61, 0.5);
 }
-.form-container__form-btn {
-  margin-top: 1rem;
-  border: none;
-  font-weight: bold;
-}
 .form-container__form-info {
   margin-top: 1rem;
   gap: 0.5rem;
@@ -464,11 +481,7 @@ section {
 
 .ann-editor__form {
   margin: 0 auto;
-  padding: 1.5rem;
-  max-width: 80rem;
-  background-color: #ffffff;
-  border: 0.2rem solid rgb(20, 33, 61);
-  border-radius: 0.8rem;
+  max-width: 70rem;
 }
 .ann-editor__form-text {
   padding-top: 0.5rem;
@@ -478,11 +491,18 @@ section {
   color: rgba(192, 0, 0, 0.6);
 }
 .ann-editor__form-box {
-  margin: 0.5rem 0;
-  padding: 0.8rem;
+  margin: 0.8rem 0;
+  padding: 1rem;
   width: 100%;
   font-size: 1.5rem;
-  border: 0.2rem solid rgb(20, 33, 61);
+  border: none;
+  -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.ann-editor__form-box:focus {
+  outline: transparent;
+  -webkit-box-shadow: 0 0 1rem rgba(20, 33, 61, 0.5);
+          box-shadow: 0 0 1rem rgba(20, 33, 61, 0.5);
 }
 .ann-editor__form-btns {
   display: -webkit-box;
@@ -492,24 +512,6 @@ section {
 }
 .ann-editor__form img {
   margin: 1rem 0;
-}
-.ann-editor__form-comeback {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin-top: 1rem;
-}
-.ann-editor__form-comeback a {
-  font-size: 2.2rem;
-}
-.ann-editor__form-comeback a:hover {
-  text-decoration: underline;
 }
 
 .show-ann__form {
@@ -523,45 +525,39 @@ section {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 2.5rem;
   padding: 1rem 2rem;
-  border: 0.2rem solid rgb(20, 33, 61);
-  border-radius: 0.8rem;
   background-color: #ffffff;
 }
-.show-ann__form input {
+.show-ann__form-input {
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.8rem;
   border: none transparent;
 }
-.show-ann__form input:focus {
+.show-ann__form-input:focus {
   outline: none;
 }
-.show-ann__form button {
-  padding: 0.5rem 1rem;
+.show-ann__form-btn {
+  padding: 0.5rem;
 }
-.show-ann__form button i {
+.show-ann__form-btn i {
   color: rgb(252, 163, 17);
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .show-ann__container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, 35rem);
-  gap: 1.5rem;
+  gap: 1rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
-  margin: 1rem 0;
 }
 .show-ann__container__box {
   padding: 2rem;
-  border: 0.2rem solid rgb(20, 33, 61);
-  border-radius: 0.8rem;
-  background-color: #ffffff;
   overflow: hidden;
+  -webkit-box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
 }
 .show-ann__container__box-image {
   margin-bottom: 1rem;
@@ -723,9 +719,6 @@ section {
 
 /* MEDIA QUERIES */
 @media (min-width: 576px) {
-  .btn {
-    font-size: 2rem;
-  }
   .header {
     left: -40rem;
     width: 40rem;
@@ -764,6 +757,27 @@ section {
     font-size: 2.3rem;
   }
 }
+@media (min-width: 768px) {
+  .message span,
+  .message i,
+  .good-message span,
+  .good-message i {
+    font-size: 1.8rem;
+  }
+  .form-container__form-box {
+    font-size: 1.8rem;
+  }
+  .form-container__form-info {
+    font-size: 1.8rem;
+  }
+  .ann-editor__form-text {
+    padding-top: 0.5rem;
+    font-size: 2rem;
+  }
+  .ann-editor__form-box {
+    font-size: 1.8rem;
+  }
+}
 @media (min-width: 992px) {
   body {
     padding-left: 40rem;
@@ -773,8 +787,20 @@ section {
   .show-ann__heading {
     margin-top: 1rem;
   }
+  .btn {
+    font-size: 2rem;
+  }
   .burger-btn {
     display: none;
+  }
+  .message span,
+  .message i,
+  .good-message span,
+  .good-message i {
+    font-size: 2rem;
+  }
+  .comeback-arrow {
+    font-size: 2rem;
   }
   .header {
     left: 0;

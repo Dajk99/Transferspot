@@ -68,8 +68,8 @@ if(isset($_POST['delete'])) {
 
         <!-- search form -->
         <form action="search_page.php" method="POST" class="show-ann__form">
-            <input type="text" placeholder="Szukaj..." required maxlength="100" name="search_box">
-            <button name="search_btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" class="show-ann__form-input" placeholder="Szukaj..." required maxlength="100" name="search_box">
+            <button name="search_btn" class="show-ann__form-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
         <div class="show-ann__container">

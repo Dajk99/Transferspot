@@ -274,7 +274,7 @@ header .fa-chevron-down {
   background-color: rgb(20, 33, 61);
   color: #ffffff;
   border-radius: 50%;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
 .home {
@@ -355,7 +355,6 @@ header .fa-chevron-down {
       -ms-flex-pack: justify;
           justify-content: space-between;
   gap: 1.5rem;
-  margin-bottom: 2rem;
   padding: 1rem 2rem;
   background-color: #ffffff;
 }
@@ -377,6 +376,7 @@ header .fa-chevron-down {
 .posts__container__box {
   display: grid;
   gap: 1.5rem;
+  margin-top: 2rem;
 }
 .posts__container__box__post {
   padding: 1.5rem;

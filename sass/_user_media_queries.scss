@@ -1,8 +1,4 @@
 @media (min-width: 576px) {
-	.btn {
-		font-size: 2rem;
-	}
-
 	.header {
 		left: -40rem;
 		width: 40rem;
@@ -61,6 +57,38 @@
 }
 
 @media (min-width: 768px) {
+	.message,
+	.good-message {
+		span,
+		i {
+			font-size: 1.8rem;
+		}
+	}
+
+	.form-container {
+		&__form {
+			&-box {
+				font-size: 1.8rem;
+			}
+
+			&-info {
+				font-size: 1.8rem;
+			}
+		}
+	}
+
+	.ann-editor {
+		&__form {
+			&-text {
+				padding-top: 0.5rem;
+				font-size: 2rem;
+			}
+
+			&-box {
+				font-size: 1.8rem;
+			}
+		}
+	}
 }
 
 @media (min-width: 992px) {
@@ -76,8 +104,24 @@
 		}
 	}
 
+	.btn {
+		font-size: 2rem;
+	}
+
 	.burger-btn {
 		display: none;
+	}
+
+	.message,
+	.good-message {
+		span,
+		i {
+			font-size: 2rem;
+		}
+	}
+
+	.comeback-arrow {
+		font-size: 2rem;
 	}
 
 	.header {

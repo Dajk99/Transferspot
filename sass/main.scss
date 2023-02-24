@@ -235,12 +235,7 @@ header {
 
 // COMEBACK ARROW
 .comeback-arrow {
-	margin-top: 1.5rem;
-	padding: 1rem;
-	background-color: $navy;
-	color: $white;
-	border-radius: 50%;
-	font-size: 2.5rem;
+	@include comebackArrow;
 }
 
 // SECTION STATS
@@ -323,37 +318,13 @@ header {
 		}
 
 		&__form {
-			display: flex;
-			align-items: center;
-			justify-content: space-between;
-			gap: 1.5rem;
-			margin-bottom: 2rem;
-			padding: 1rem 2rem;
-			background-color: $white;
-
-			&-input {
-				width: 100%;
-				font-size: 1.8rem;
-				border: none transparent;
-
-				&:focus {
-					outline: none;
-				}
-			}
-
-			&-btn {
-				padding: 0.5rem;
-
-				i {
-					color: $yellow;
-					font-size: 1.8rem;
-				}
-			}
+			@include searchForm;
 		}
 
 		&__box {
 			display: grid;
 			gap: 1.5rem;
+			margin-top: 2rem;
 
 			&__post {
 				padding: 1.5rem;
