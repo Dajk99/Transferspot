@@ -431,8 +431,11 @@ header .fa-chevron-down {
   margin: 0.8rem 0;
 }
 .posts__container__box__post-image {
-  margin-bottom: 1rem;
   height: 20rem;
+  margin-bottom: 1rem;
+}
+.posts__container__box__post-image img {
+  height: 100%;
   width: 100%;
   -o-object-fit: contain;
      object-fit: contain;

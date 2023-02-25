@@ -127,7 +127,9 @@ if(isset($_SESSION['user_id'])){
                         <?php
                             if($fetchPosts['image'] != ''){  
                         ?>
-                            <img src="../images/<?= $fetchPosts['image']; ?>" class="posts__container__box__post-image" alt="">
+                        <div class="posts__container__box__post-image">
+                            <img src="../images/<?= $fetchPosts['image']; ?>" alt="">
+                        </div>
                         <?php
                         }
                         ?>

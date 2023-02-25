@@ -492,39 +492,67 @@ section {
 	}
 
 	&__container {
-		display: grid;
-		gap: 1rem;
-		justify-content: center;
-		align-items: flex-start;
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin-top: 2rem;
 
 		&__box {
-			padding: 2rem;
+			display: block;
 			overflow: hidden;
 			box-shadow: $box-shadow;
 
-			&-image {
-				margin-bottom: 1rem;
+			&:hover &__image-img {
+				transform: scale(1.1);
 			}
 
-			&-status {
-				position: relative;
-				display: inline-block;
-				margin-bottom: 1rem;
-				padding: 0.5rem 1rem;
-				border-radius: $border-radius;
-				background-color: $gray;
-				font-size: 1.8rem;
-			}
-
-			&-title {
-				padding: 1rem 0;
-				min-width: 100%;
-				color: $navy;
-				font-size: 2.1rem;
-				font-weight: bold;
+			&__image {
+				height: 20rem;
 				overflow: hidden;
-				overflow-wrap: break-word;
-				// white-space: nowrap;
+
+				&-img {
+					object-fit: cover;
+					transition: transform 0.3s;
+				}
+			}
+
+			&__content {
+				padding: 1rem 2rem;
+
+				&__title {
+					// padding: 1rem 0;
+					// min-width: 100%;
+					margin-bottom: 0.5rem;
+					color: $navy;
+					font-size: 1.8rem;
+					font-weight: bold;
+					// overflow: hidden;
+					overflow-wrap: break-word;
+					@include firstLetter;
+				}
+
+				&__icons {
+					display: flex;
+					gap: 2rem;
+
+					&__icon {
+						font-size: 1.5rem;
+
+						&-likes,
+						&-comments {
+							margin-right: 0.5rem;
+						}
+					}
+				}
+
+				&__status {
+					margin-top: 0.5rem;
+
+					&__text {
+						font-size: 1.5rem;
+						@include firstLetter;
+					}
+				}
 			}
 
 			&-content {
@@ -532,20 +560,6 @@ section {
 				padding: 1rem 0;
 				font-size: 1.8rem;
 				overflow-wrap: break-word;
-			}
-
-			&-icons {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-				padding: 1rem;
-				background-color: $light-gray;
-				border-radius: $border-radius;
-				font-size: 1.5rem;
-
-				i {
-					margin-right: 0.5rem;
-				}
 			}
 
 			&-btns {

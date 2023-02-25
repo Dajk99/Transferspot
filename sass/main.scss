@@ -366,8 +366,12 @@ header {
 				}
 
 				&-image {
+					height: 20rem;
 					margin-bottom: 1rem;
-					@include annImg;
+
+					img {
+						@include annImg;
+					}
 				}
 
 				&-title {
