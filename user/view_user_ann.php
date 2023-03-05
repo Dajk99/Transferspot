@@ -76,8 +76,8 @@ $getId = $_GET['post_id'];
                     <div class="post_underline"></div>
                     <div class="posts__container__box__post-title"><?= $fetchPosts['title']; ?></div>
                     <div class="posts__container__box__post-reactions">
-                            <button><i class="fas fa-comment"></i><span>(<?= $totalPostComments; ?>)</span></button>
-                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span>(<?= $totalPostLikes; ?>)</span></button>
+                            <button><i class="fas fa-comment"></i><span><?= $totalPostComments; ?></span></button>
+                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span><?= $totalPostLikes; ?></span></button>
                     </div>
                     <div class="post_underline"></div>
                     <?php if($fetchPosts['image'] != ''){ ?>
@@ -129,7 +129,6 @@ $getId = $_GET['post_id'];
     </section>
     
     <!-- JS connection -->
-    <script src="../js/confirm_logout.js"></script>
-    <script src="../js/user_script.js"></script>
+    <script src="../js/main.js"></script>
 </body>
 </html>

@@ -318,13 +318,13 @@ header {
 		}
 
 		&__form {
+			margin-bottom: 2rem;
 			@include searchForm;
 		}
 
 		&__box {
 			display: grid;
 			gap: 1.5rem;
-			margin-top: 2rem;
 
 			&__post {
 				padding: 1.5rem;

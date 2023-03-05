@@ -1,6 +1,8 @@
 const header = document.querySelector('.header')
 const burgerBtn = document.querySelector('.burger-btn')
 const burgerBars = document.querySelector('.fa-bars')
+const postsContainer = document.querySelector('.show-ann__container')
+const emptyContainer = document.querySelector('.show-ann__container__empty')
 const posts = document.querySelectorAll('.show-ann__container__box-content')
 
 const darkBody = () => {
@@ -20,14 +22,10 @@ const showPanel = () => {
 	darkBody()
 }
 
-posts.forEach(content => {
-	if (content.classList.contains('no-slice') != true) {
-		if (content.innerHTML.length > 100) {
-			content.innerHTML = content.innerHTML.slice(0, 100) + '...'
-		}
-	}
-})
-
 if (document.querySelector('.burger-btn') !== null) {
 	burgerBtn.addEventListener('click', showPanel)
+}
+
+if (emptyContainer != null) {
+	postsContainer.style.display = 'flex'
 }

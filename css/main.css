@@ -345,6 +345,7 @@ header .fa-chevron-down {
   text-transform: uppercase;
 }
 .posts__container__form {
+  margin-bottom: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -376,7 +377,6 @@ header .fa-chevron-down {
 .posts__container__box {
   display: grid;
   gap: 1.5rem;
-  margin-top: 2rem;
 }
 .posts__container__box__post {
   padding: 1.5rem;

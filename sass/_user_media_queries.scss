@@ -74,6 +74,43 @@
 							font-size: 1.8rem;
 						}
 					}
+
+					&__tags {
+						&__tag {
+							font-size: 1.8rem;
+						}
+					}
+
+					&__text {
+						font-size: 1.9rem;
+					}
+				}
+			}
+
+			&__empty {
+				font-size: 1.9rem;
+			}
+		}
+	}
+
+	.comments {
+		&__title {
+			font-size: 2rem;
+		}
+
+		&__container {
+			&__comment {
+				&__user {
+					&__date,
+					&__info {
+						&__text {
+							font-size: 1.8rem;
+						}
+					}
+				}
+
+				&__content {
+					font-size: 1.9rem;
 				}
 			}
 		}
@@ -118,6 +155,10 @@
 		&__container {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+
+			&--flex {
+				display: flex;
+			}
 		}
 	}
 }
@@ -245,6 +286,43 @@
 							font-size: 2rem;
 						}
 					}
+
+					&__tags {
+						&__tag {
+							font-size: 2rem;
+						}
+					}
+
+					&__text {
+						font-size: 2.1rem;
+					}
+				}
+			}
+
+			&__empty {
+				font-size: 2.1rem;
+			}
+		}
+	}
+
+	.comments {
+		&__title {
+			font-size: 2.2rem;
+		}
+
+		&__container {
+			&__comment {
+				&__user {
+					&__date,
+					&__info {
+						&__text {
+							font-size: 2rem;
+						}
+					}
+				}
+
+				&__content {
+					font-size: 2.1rem;
 				}
 			}
 		}
@@ -322,6 +400,18 @@
 		&__container {
 			display: grid;
 			grid-template-columns: repeat(2, 1fr);
+
+			&--flex {
+				display: flex;
+			}
+
+			&__box {
+				&__image {
+					&--bigger {
+						height: 30rem;
+					}
+				}
+			}
 		}
 	}
 }

@@ -9,23 +9,6 @@ $userId = $_SESSION['user_id'];
 if(!isset($userId)){
     header('location:user_login.php');
 }
-
-if(isset($_POST['delete'])) {
-    $postId = $_POST['post_id'];
-    $postId = filter_var($postId, FILTER_SANITIZE_STRING);
-    $deleteImage = $conn->prepare("SELECT * FROM posts WHERE id = ?");
-    $deleteImage->execute([$postId]);
-    $fetchDeleteImage = $deleteImage->fetch(PDO::FETCH_ASSOC);
-    if($fetchDeleteImage['image'] != ''){
-      unlink('../images/'.$fetchDeleteImage['image']);
-    }
-    $deletePost = $conn->prepare("DELETE FROM posts WHERE id = ?");
-    $deletePost->execute([$postId]);
-    $deleteComments = $conn->prepare("DELETE FROM comments WHERE post_id = ?");
-    $deleteComments->execute([$postId]);
-    $goodMessage[] = 'Pomyślnie usunięto ogłoszenie!';
-}
-
 ?>
 
 <!DOCTYPE html>
@@ -50,33 +33,21 @@ if(isset($_POST['delete'])) {
         include '../components/user_header.php';
     ?>
 
-    <?php
-        if(isset($goodMessage)) {
-            foreach($goodMessage as $goodMessage) {
-                echo '
-                <div class="good-message">
-                <i class="fa-solid fa-circle-xmark" onclick="this.parentElement.remove();"></i><span>'.$goodMessage.'</span>  
-                </div>
-                ';
-            } 
-        }
-    ?>
-
     <section class="show-ann">
         <h1 class="show-ann__heading">twoje ogłoszenia</h1>
 
         <!-- search form -->
         <form action="search_page.php" method="POST" class="show-ann__form">
-            <input type="text" placeholder="Szukaj..." required maxlength="100" name="search_box">
-            <button name="search_btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input type="text" class="show-ann__form-input" placeholder="Szukaj..." required maxlength="100" name="search_box">
+            <button name="search_btn" class="show-ann__form-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
-        <div class="show-ann__container">
+        <div class="show-ann__container show-ann__container--flex">
 
             <?php
                 if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){
                     $activePost = 'rgb(33, 197, 0)';
-                    $deactivePost = 'rgba(192, 0, 0, 0.9)';
+                    $deactivePost = '#b1b1b1';
                     $searchBox = $_POST['search_box'];
                     $selectPosts = $conn->prepare("SELECT * FROM posts where user_id = ? AND title LIKE '%{$searchBox}%'");
                     $selectPosts->execute([$userId]);
@@ -93,36 +64,34 @@ if(isset($_POST['delete'])) {
                             $postLikes->execute([$postId]);
                             $totalPostLikes = $postLikes->rowCount();
             ?>
-            <form method="post" class="show-ann__container__box">
-            <input type="hidden" name="post_id" value="<?= $postId; ?>">
-            <?php
-                if($fetchPosts['status'] == 'Aktywne') {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
-                } else {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-hourglass-end"></i></div>';
-                }
-             ?>
-            <?php if($fetchPosts['image'] != ''){ ?>
-                <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
+            <a href="read_ann.php?post_id=<?= $postId; ?>" class="show-ann__container__box">
+                <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                <?php if($fetchPosts['image'] != ''){ ?>
+                <div class="show-ann__container__box__image">
+                    <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box__image-img ann-image" alt="">
+                </div>
                 <?php } ?>
-                <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
-                <div class="show-ann__container__box-content"><?= $fetchPosts['content']; ?></div>
-                <div class="show-ann__container__box-icons">
-                    <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
-                    <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
+                <div class="show-ann__container__box__content">
+                    <div class="show-ann__container__box__content__title">
+                        <?= $fetchPosts['title']; ?>
+                    </div>
+                    <div class="show-ann__container__box__content__icons">
+                        <div class="show-ann__container__box__content__icons__icon"><i class="fa-solid fa-heart show-ann__container__box__content__icons__icon-likes"></i><?= $totalPostLikes; ?></div>
+                        <div class="show-ann__container__box__content__icons__icon"><i class="fa-solid fa-comment show-ann__container__box__content__icons__icon-comments"></i><?= $totalPostComments; ?></div>
+                    </div>
+                    <?php
+                    if($fetchPosts['status'] == 'Aktywne') {
+                        echo '<div class="show-ann__container__box__content__status" style="color:'.$activePost.';"><p class="show-ann__container__box__content__status__text">ogłoszenie aktywne</p></div>';
+                    } else {
+                        echo '<div class="show-ann__container__box__content__status" style="color:'.$deactivePost.';"><p class="show-ann__container__box__content__status__text">zapisano jako szkic</p></div>';
+                    }
+                    ?>
                 </div>
-                <div class="show-ann__container__box-btns">
-                    <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                    <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
-                </div>
-                <button class="btn form-btn yellow-btn pd-btn-reset">
-                    <a href="read_ann.php?post_id=<?= $postId; ?>" class="view">zobacz ogłoszenie</a>
-                </button>
-                </form>
+            </a>
             <?php
                         }
                     } else {
-                        echo '<div class="show-ann__container-empty">brak wyników wyszukiwania. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
+                        echo '<div class="show-ann__container__empty">brak wyników wyszukiwania. Dodaj swoje ogłoszenie klikając <a href="add_ann.php" class="show-ann__container__empty__link">tutaj</a></div>';
                     }
                 }
             ?>

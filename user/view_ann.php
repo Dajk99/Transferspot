@@ -46,7 +46,7 @@ if(!isset($userId)){
         <div class="show-ann__container">
             <?php
                 $activePost = 'rgb(33, 197, 0)';
-                $deactivePost = 'rgba(192, 0, 0, 0.9)';
+                $deactivePost = '#b1b1b1';
                 $selectPosts = $conn->prepare('SELECT * FROM posts WHERE user_id = ?');
                 $selectPosts->execute([$userId]);
 
@@ -89,7 +89,7 @@ if(!isset($userId)){
             <?php
                     }
                 } else {
-                    echo '<div class="show-ann__container-empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php">tutaj</a></div>';
+                    echo '<div class="show-ann__container__empty">aktualnie nie posiadasz żadnych dodanych ogłoszeń. Dodaj swoje ogłoszenie klikając <a href="add_ann.php" class="show-ann__container__empty__link">tutaj</a></div>';
                 }
             ?>
         </div>

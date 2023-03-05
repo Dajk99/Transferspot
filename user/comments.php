@@ -65,34 +65,34 @@ if(isset($_POST['delete_comment'])) {
                     while($fetchComments = $selectComments->fetch(PDO::FETCH_ASSOC)){
             ?>
 
-            <div class="comments__container-comment">
-                <div class="comments__container-comment-user">
-                    <div class="comments__container-comment-user-date">
-                        <p class="comments__container-comment-user-date-text"><?= $fetchComments['date']; ?></p>
+            <div class="comments__container__comment">
+                <div class="comments__container__comment__user">
+                    <div class="comments__container__comment__user__date">
+                        <form class ="comments__container__comment__user__date__btn" action="" method="POST">
+                            <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
+                            <button type="submit" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-circle-xmark"></i></button>
+                        </form>
+                        <p class="comments__container__comment__user__date__text"><?= $fetchComments['date']; ?></p>
                     </div>
-                    <div class="comments__container-comment-user-info">
+                    <div class="comments__container__comment__user__info">
                         <?php
                             $selectPost = $conn->prepare("SELECT * FROM posts WHERE id = ?");
                             $selectPost->execute([$fetchComments['post_id']]);
                             while($fetchPosts = $selectPost->fetch(PDO::FETCH_ASSOC)){
                         ?>
-                        <p>Komentarz do ogłoszenia <span class="title-highlight"><a class=" href="read_ann.php?post_id=<?= $fetchPosts['id']; ?>" ><?= $fetchPosts['title']; ?></a></span></p>
+                        <p class="comments__container__comment__user__info__text">Komentarz do ogłoszenia <span class="title__highlight"><a href="view_user_ann.php?post_id=<?= $fetchPosts['id']; ?>"><?= $fetchPosts['title']; ?></a></span></p>
                         <?php
                             }
                         ?>
                     </div>
                 </div>
-                <div class="comments__container-comment-content"><?= $fetchComments['comment']; ?></div>
-                <form class ="comments__container-comment-btn" action="" method="POST">
-                    <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
-                    <button type="submit" class="btn form-btn red-btn" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-comment-slash"></i></button>
-                </form>
+                <div class="comments__container__comment__content"><?= $fetchComments['comment']; ?></div>
             </div>
 
             <?php
                     }
                 }else{
-                    echo '<div class="show-ann__container-empty">nie dodałeś do tej pory żadnego komentarza...</div>';
+                    echo '<div class="show-ann__container__empty">nie dodałeś do tej pory żadnego komentarza...</div>';
                 }
             ?>    
         </div>         

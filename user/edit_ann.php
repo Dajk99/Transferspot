@@ -146,9 +146,9 @@ if(isset($_POST['delete_image'])){
             <input type="hidden" name="username" value="<?= $fetchProfile['username']; ?>">
             <p class="ann-editor__form-text">status ogłoszenia <span>*</span></p>
             <select name="status" class="ann-editor__form-box" required>
-                <option value="<?= $fetchPosts['status']; ?>" selected><?= $fetchPosts['status']; ?></option>
-                <option value="active">Aktywne</option>
-                <option value="deactive">Nieaktywne</option>
+                <option hidden selected><?= $fetchPosts['status']; ?></option>
+                <option value="Aktywne">Aktywne</option>
+                <option value="Szkic">Szkic</option>
             </select>
             <p class="ann-editor__form-text">tytuł ogłoszenia<span>*</span></p>
             <input type="text" name="title" required placeholder="Tytuł ogłoszenia" maxlength="100" class="ann-editor__form-box" value="<?= $fetchPosts['title']; ?>">

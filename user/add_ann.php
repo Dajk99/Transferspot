@@ -68,7 +68,7 @@ if(isset($_POST['draft'])) {
     $voivodeship = filter_var($voivodeship, FILTER_SANITIZE_STRING);
     $league = $_POST['league'];
     $league = filter_var($league, FILTER_SANITIZE_STRING);
-    $status = 'Nieaktywne';
+    $status = 'Szkic';
 
     $img = $_FILES['image']['name'];
     $img = filter_var($img, FILTER_SANITIZE_STRING);

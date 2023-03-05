@@ -73,10 +73,10 @@
     ?>
 
     <!-- read ann section -->
-    <section class="read-ann">
+    <section class="show-ann">
         <?php
             $activePost = 'rgb(33, 197, 0)';
-            $deactivePost = 'rgba(192, 0, 0, 0.9)';
+            $deactivePost = '#b1b1b1';
             $selectPosts = $conn->prepare('SELECT * FROM posts WHERE id = ? AND user_id = ?');
             $selectPosts->execute([$getId, $userId]);
 
@@ -95,37 +95,47 @@
                     $postLikes->execute([$postId]);
                     $totalPostLikes = $postLikes->rowCount();
         ?>
-        <form method="post" class="show-ann__container__box .read-ann">
-            <input type="hidden" name="post_id" value="<?= $postId; ?>">
-            <?php
-                if($fetchPosts['status'] == 'Aktywne') {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$activePost.';"><i class="fa-solid fa-circle-check"></i></div>';
-                } else {
-                    echo '<div class="show-ann__container__box-status" style="color:'.$deactivePost.';"><i class="fa-solid fa-pencil"></i></i></div>';
-                }
-            ?>
-            <?php if($fetchPosts['image'] != ''){ ?>
-            <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box-image ann-image" alt="">
-            <?php } ?>
-            <div class="show-ann__container__box-title"><?= $fetchPosts['title']; ?></div>
-            <div class="show-ann__container__box-tags">
-                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
-                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
-                <div class="show-ann__container__box-tags-tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
-            </div>
-            <div class="show-ann__container__box-content no-slice"><?= $fetchPosts['content']; ?></div>
-            <div class="show-ann__container__box-icons">
-                <div class="show-ann__container__box-icons-likes"><i class="fa-solid fa-heart"></i><?= $totalPostLikes; ?></div>
-                <div class="show-ann__container__box-icons-comments"><i class="fa-solid fa-comment"></i><?= $totalPostComments; ?></div>
-            </div>
-            <div class="show-ann__container__box-btns">
-                <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-trash"></i></button>
-            </div>
-            <div class="ann-editor__form-comeback">
-                <a href="view_ann.php">Wróć do ogłoszeń</a>
-            </div>
-        </form>
+        <div class="show-ann__container show-ann__container--margin show-ann__container--flex">
+            <form method="post" class="show-ann__container__box">
+                <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                <?php if($fetchPosts['image'] != ''){ ?>
+                    <div class="show-ann__container__box__image show-ann__container__box__image--bigger">
+                        <img src="../images/<?= $fetchPosts['image']; ?>" class="show-ann__container__box__image-img ann-image" alt="">
+                    </div>
+                <?php } ?>
+                <div class="show-ann__container__box__content">
+                    <?php
+                        if($fetchPosts['status'] == 'Aktywne') {
+                            echo '<div class="show-ann__container__box__content__status" style="color:'.$activePost.';"><p class="show-ann__container__box__content__status__text">ogłoszenie aktywne</p></div>';
+                        } else {
+                            echo '<div class="show-ann__container__box__content__status" style="color:'.$deactivePost.';"><p class="show-ann__container__box__content__status__text">zapisano jako szkic</p></div>';
+                        }
+                    ?>
+                    <div class="show-ann__container__box__content__title">
+                        <?= $fetchPosts['title']; ?>
+                    </div>
+                    <div class="show-ann__container__box__content__tags">
+                        <div class="show-ann__container__box__content__tags__tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
+                        <div class="show-ann__container__box__content__tags__tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
+                        <div class="show-ann__container__box__content__tags__tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
+                    </div>
+                    <div class="show-ann__container__box__content__icons">
+                        <div class="show-ann__container__box__content__icons__icon"><i class="fa-solid fa-heart show-ann__container__box__content__icons__icon-likes"></i><?= $totalPostLikes; ?></div>
+                        <div class="show-ann__container__box__content__icons__icon"><i class="fa-solid fa-comment show-ann__container__box__content__icons__icon-comments"></i><?= $totalPostComments; ?></div>
+                    </div>
+                    <div class="underline--post"></div>
+                    <div class="show-ann__container__box__content__text">
+                        <?= $fetchPosts['content']; ?>
+                    </div>
+                    <div class="show-ann__container__box__content__btns">
+                        <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
         <?php
                 }
             }
@@ -133,7 +143,7 @@
     </section>
 
     <section class="comments">
-        <p class="comments__title">komentarze</p>   
+        <h3 class="comments__title">komentarze</h3>   
         <div class="comments__container">
             <?php
                 $selectComments = $conn->prepare("SELECT * FROM comments WHERE post_id = ?");
@@ -141,27 +151,26 @@
                 if($selectComments->rowCount() > 0){
                     while($fetchComments = $selectComments->fetch(PDO::FETCH_ASSOC)){
             ?>
-
-            <div class="comments__container-comment">
-                <div class="comments__container-comment-user">
-                    <div class="comments__container-comment-user-date">
-                        <p class="comments__container-comment-user-date-text"><?= $fetchComments['date']; ?></p>
+            <div class="comments__container__comment">
+                <div class="comments__container__comment__user">
+                    <div class="comments__container__comment__user__date">
+                        <form class ="comments__container__comment__user__date__btn" action="" method="POST">
+                            <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
+                            <button type="submit" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-circle-xmark"></i></button>
+                        </form>
+                        <p class="comments__container__comment__user__date__text"><?= $fetchComments['date']; ?></p>
                     </div>
-                    <div class="comments__container-comment-user-info">
-                        <p>Użytkownik <span class="username-highlight"><?= $fetchComments['username']; ?></span> napisał:<p>
+                    <div class="comments__container__comment__user__info">
+                        <p class="comments__container__comment__user__info__text">Użytkownik <span class="username__highlight"><?= $fetchComments['username']; ?></span> napisał:<p>
                     </div>
                 </div>
-                <div class="comments__container-comment-content"><?= $fetchComments['comment']; ?></div>
-                <form class ="comments__container-comment-btn" action="" method="POST">
-                    <input type="hidden" name="comment_id" value="<?= $fetchComments['id']; ?>">
-                    <button type="submit" class="btn form-btn red-btn" name="delete_comment" onclick="return confirm('Komentarz zostanie usunięty. Kontynuować?');"><i class="fa-solid fa-comment-slash"></i></button>
-                </form>
+                <div class="comments__container__comment__content"><?= $fetchComments['comment']; ?></div>
             </div>
 
             <?php
                     }
                 }else{
-                    echo '<div class="show-ann__container-empty">brak komentarzy...</div>';
+                    echo '<div class="show-ann__container__empty">brak komentarzy...</div>';
                 }
             ?>    
         </div>         
