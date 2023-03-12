@@ -66,6 +66,11 @@ body {
 	background-color: $light-gray;
 }
 
+// ANN IMAGES
+.ann-image {
+	@include annImg;
+}
+
 // TOP PADDING
 .top-margin {
 	margin-top: 7rem;
@@ -327,105 +332,111 @@ header {
 			gap: 1.5rem;
 
 			&__post {
-				padding: 1.5rem;
+				display: block;
 				box-shadow: $box-shadow;
 
-				&-info {
-					display: flex;
-					flex-direction: column;
-					justify-content: flex-start;
-					align-items: flex-start;
+				&:hover &__image-img {
+					transform: scale(1.1);
+				}
 
-					&-date {
-						color: $dark-gray;
-						font-size: 1.6rem;
+				&__image {
+					@include imgFit;
+				}
+
+				&__content {
+					padding: 1rem;
+
+					&__info {
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-start;
+						align-items: flex-start;
+
+						&__date {
+							color: $dark-gray;
+							font-size: 1.4rem;
+						}
+
+						&__user {
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							font-size: 1.4rem;
+
+							i {
+								margin-right: 0.5rem;
+							}
+
+							p {
+								font-weight: bolder;
+							}
+						}
 					}
 
-					&-user {
+					.underline {
+						@include grayUnderline;
+					}
+
+					.post_underline {
+						@include postUnderline;
+					}
+
+					&__title {
 						display: flex;
 						justify-content: center;
-						align-items: center;
-						font-size: 1.4rem;
+						margin-bottom: 0.5rem;
+						color: $navy;
+						font-size: 1.8rem;
+						font-weight: bolder;
+					}
+
+					&__text {
+						margin-top: 0.5rem;
+						margin-bottom: 1rem;
+						font-size: 1.6rem;
+						text-align: justify;
+					}
+
+					.left {
+						justify-content: flex-start;
+						align-items: flex-start;
+					}
+
+					&__tags,
+					&__reactions {
+						display: flex;
+						justify-content: center;
+						text-align: center;
 
 						i {
 							margin-right: 0.5rem;
 						}
+					}
 
-						p {
-							font-weight: bolder;
+					&__tags {
+						flex-direction: column;
+						gap: 0.2rem;
+						font-size: 1.4rem;
+
+						i {
+							color: $yellow;
 						}
 					}
-				}
 
-				.underline {
-					@include grayUnderline;
-				}
+					&__reactions {
+						display: flex;
+						margin-bottom: 0.5rem;
+						gap: 1rem;
 
-				.post_underline {
-					@include postUnderline;
-				}
-
-				&-image {
-					height: 20rem;
-					margin-bottom: 1rem;
-
-					img {
-						@include annImg;
-					}
-				}
-
-				&-title {
-					margin-bottom: 1rem;
-					color: $navy;
-					font-size: 1.8rem;
-					font-weight: bolder;
-				}
-
-				&-content {
-					margin-top: 0.5rem;
-					margin-bottom: 1rem;
-					font-size: 1.5rem;
-					font-weight: 200;
-					text-align: justify;
-				}
-
-				.left {
-					align-items: flex-start;
-				}
-
-				&-tags,
-				&-reactions {
-					display: flex;
-					justify-content: center;
-					text-align: center;
-
-					i {
-						margin-right: 0.5rem;
-					}
-				}
-
-				&-tags {
-					flex-direction: column;
-					gap: 0.2rem;
-					font-size: 1.4rem;
-
-					i {
-						color: $yellow;
-					}
-				}
-
-				&-reactions {
-					margin-top: 0.5rem;
-					gap: 2rem;
-
-					i,
-					span {
-						font-size: 1.6rem;
+						i,
+						span {
+							font-size: 1.6rem;
+						}
 					}
 				}
 			}
 
-			&-info {
+			&__info {
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -471,6 +482,7 @@ header {
 			margin-bottom: 0.5rem;
 			color: $navy;
 			font-size: 2.3rem;
+			font-weight: bold;
 			@include firstLetter;
 		}
 
@@ -638,38 +650,40 @@ footer {
 
 			&__box {
 				&__post {
-					&-info {
-						&-date {
+					&__content {
+						&__info {
+							&__date {
+								font-size: 1.9rem;
+							}
+
+							&__user {
+								font-size: 1.7rem;
+							}
+						}
+
+						&__title {
+							font-size: 2.2rem;
+						}
+
+						&__text {
 							font-size: 1.9rem;
 						}
 
-						&-user {
-							font-size: 1.7rem;
+						&__tags {
+							gap: 0.5rem;
+							font-size: 1.6rem;
 						}
-					}
 
-					&-title {
-						font-size: 2.2rem;
-					}
-
-					&-content {
-						font-size: 1.9rem;
-					}
-
-					&-tags {
-						gap: 0.5rem;
-						font-size: 1.6rem;
-					}
-
-					&-reactions {
-						i,
-						span {
-							font-size: 2rem;
+						&__reactions {
+							i,
+							span {
+								font-size: 2rem;
+							}
 						}
 					}
 				}
 
-				&-info {
+				&__info {
 					p,
 					a {
 						font-size: 2.3rem;
@@ -811,16 +825,18 @@ footer {
 
 			&__box {
 				&__post {
-					&-info {
-						&-date {
-							font-size: 1.8rem;
-						}
+					&__content {
+						&__info {
+							&__date {
+								font-size: 1.8rem;
+							}
 
-						&-user {
-							font-size: 1.6rem;
+							&__user {
+								font-size: 1.6rem;
 
-							i {
-								margin-right: 0.5rem;
+								i {
+									margin-right: 0.5rem;
+								}
 							}
 						}
 					}
@@ -889,31 +905,33 @@ footer {
 				gap: 2rem;
 
 				&__post {
-					&-title {
-						font-size: 2.1rem;
-					}
+					&__content {
+						&__title {
+							font-size: 2.1rem;
+						}
 
-					&-tags {
-						flex-direction: column;
-						gap: 0.3rem;
-						font-size: 1.8rem;
-					}
+						&__tags {
+							flex-direction: column;
+							gap: 0.3rem;
+							font-size: 1.8rem;
+						}
 
-					&-content {
-						font-size: 2.2rem;
-					}
+						&__text {
+							font-size: 2.2rem;
+						}
 
-					&-reactions {
-						gap: 2.5rem;
+						&__reactions {
+							gap: 2.5rem;
 
-						i,
-						span {
-							font-size: 2rem;
+							i,
+							span {
+								font-size: 2rem;
+							}
 						}
 					}
 				}
 
-				&-info {
+				&__info {
 					p,
 					a {
 						font-size: 2.8rem;
@@ -1008,18 +1026,20 @@ footer {
 				grid-template-columns: repeat(auto-fit, minmax(55rem, 1fr));
 
 				&__post {
-					&-title {
-						font-size: 2.4rem;
-					}
+					&__content {
+						&__title {
+							font-size: 2.4rem;
+						}
 
-					&-tags {
-						font-size: 2rem;
-					}
+						&__tags {
+							font-size: 2rem;
+						}
 
-					&-reactions {
-						i,
-						span {
-							font-size: 2.2rem;
+						&__reactions {
+							i,
+							span {
+								font-size: 2.2rem;
+							}
 						}
 					}
 				}

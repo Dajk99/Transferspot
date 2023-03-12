@@ -6,7 +6,7 @@
             <button class="navbar__mobile-btns-btn navbar__mobile-btns-btn-burger"><i class="fa-solid fa-bars"></i></button>
             <?php
                 if ($userId !== '') {
-                    echo '<button class="navbar__mobile-btns-btn" onclick="location.href=\'../components/user_logout.php\'"><i class="fa-solid fa-power-off"></i></button>';
+                    echo '<button class="navbar__mobile-btns-btn" onclick="location.href=\'../components/user_logout.php\'" confirm=""><i class="fa-solid fa-power-off"></i></button>';
                 }
             ?>
         </div>

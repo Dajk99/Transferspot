@@ -55,6 +55,16 @@
 	object-fit: contain;
 }
 
+@mixin imgFit {
+	height: 20rem;
+	overflow: hidden;
+
+	&-img {
+		object-fit: cover;
+		transition: transform 0.3s;
+	}
+}
+
 @mixin comebackArrow {
 	margin-top: 1.5rem;
 	padding: 1rem;

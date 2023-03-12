@@ -110,51 +110,41 @@ if(isset($_SESSION['user_id'])){
                         $confirmLikes = $conn->prepare("SELECT * FROM likes WHERE user_id = ? AND post_id = ?");
                         $confirmLikes->execute([$userId, $postId]);
                 ?>
-                <a href="./view_user_ann.php?post_id=<?= $postId; ?>">
-                    <form class="posts__container__box__post" method="post">
-                        <input type="hidden" name="post_id" value="<?= $postId; ?>">
-                        <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">
-                        <div class="posts__container__box__post-info">
-                            <div class="posts__container__box__post-info-date">
-                                <p><?= $fetchPosts['date']?></p>
-                            </div>
-                            <div class="posts__container__box__post-info-user">
-                                <i class="fa-solid fa-user"></i>
-                                <p><?= $fetchPosts['username']?></p>
-                            </div>
+                <a href="./view_user_ann.php?post_id=<?= $postId; ?>" class="posts__container__box__post">
+                    <input type="hidden" name="post_id" value="<?= $postId; ?>">
+                    <input type="hidden" name="user_id" value="<?= $fetchPosts['user_id']; ?>">
+                    <?php
+                        if($fetchPosts['image'] != ''){  
+                    ?>
+                    <div class="posts__container__box__post__image">
+                        <img src="../images/<?= $fetchPosts['image']; ?>" class="posts__container__box__post__image-img ann-image" alt="">
+                    </div>
+                    <?php
+                    }
+                    ?>
+                    <div class="posts__container__box__post__content">
+                        <div class="posts__container__box__post__content__title"><?= $fetchPosts['title']; ?></div>
+                        <div class="posts__container__box__post__content__reactions">
+                            <button><i class="fas fa-comment"></i><span><?= $totalPostComments; ?></span></button>
+                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span><?= $totalPostLikes; ?></span></button>
                         </div>
-                        <div class="underline"></div>
-                        <?php
-                            if($fetchPosts['image'] != ''){  
-                        ?>
-                        <div class="posts__container__box__post-image">
-                            <img src="../images/<?= $fetchPosts['image']; ?>" alt="">
-                        </div>
-                        <?php
-                        }
-                        ?>
-                        <div class="posts__container__box__post-title"><?= $fetchPosts['title']; ?></div>
-                        <div class="posts__container__box__post-tags">
-                            <div class="posts__container__box__post-tags-tag">
+                        <div class="posts__container__box__post__content__tags">
+                            <div class="posts__container__box__post__content__tags__tag">
                                 <i class="fas fa-tag"></i><?= $fetchPosts['category']; ?>
                             </div>
-                            <div class="posts__container__box__post-tags-tag">
+                            <div class="posts__container__box__post__content__tags__tag">
                                 <i class="fa-solid fa-location-dot"></i><?= $fetchPosts['voivodeship']; ?>
                             </div>
-                            <div class="posts__container__box__post-tags-tag">
+                            <div class="posts__container__box__post__content__tags__tag">
                                 <i class="fa-solid fa-futbol"></i><?= $fetchPosts['league']; ?>
                             </div>
                         </div>
-                        <div class="posts__container__box__post-reactions">
-                            <button><i class="fas fa-comment"></i><span>(<?= $totalPostComments; ?>)</span></button>
-                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span>(<?= $totalPostLikes; ?>)</span></button>
-                        </div>
-                    </form>
+                    </div>
                 </a>
                 <?php
                         }
                     } else {
-                        echo '<div class="posts__container__box-info">
+                        echo '<div class="posts__container__box__info">
                             <p>aktualnie brak jakichkolwiek ogłoszeń...</p>
                         </div>';
                     }

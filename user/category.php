@@ -97,21 +97,21 @@ if(isset($_GET['category'])) {
                             </div>
                         </div>
                         <div class="posts__container__box__post-reactions">
-                            <button><i class="fas fa-comment"></i><span>(<?= $totalPostComments; ?>)</span></button>
-                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span>(<?= $totalPostLikes; ?>)</span></button>
+                            <button><i class="fas fa-comment"></i><span><?= $totalPostComments; ?></span></button>
+                            <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span><?= $totalPostLikes; ?></span></button>
                         </div>
                     </form>
                 </a>
                 <?php
                         }
                     } else {
-                        echo '<div class="posts__container__box-info">
+                        echo '<div class="posts__container__box__info">
                             <p>aktualnie brak ogłoszeń z tej kategorii!</p>
                         </div>';
                     }
                 ?>
             </div>
-            <a href="./home.php#home"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
+            <a href="./home.php#categories"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
         </div>
     </section>
     <script src="../js/main.js"></script>

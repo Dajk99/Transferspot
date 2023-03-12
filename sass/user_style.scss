@@ -515,13 +515,7 @@ section {
 			}
 
 			&__image {
-				height: 20rem;
-				overflow: hidden;
-
-				&-img {
-					object-fit: cover;
-					transition: transform 0.3s;
-				}
+				@include imgFit;
 			}
 
 			&__content {
