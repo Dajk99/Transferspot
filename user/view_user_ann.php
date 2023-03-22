@@ -69,25 +69,27 @@ $getId = $_GET['post_id'];
                         <img src="../images/<?= $fetchPosts['image']; ?>" class="posts__container__box__post__image-img ann-image" alt="">
                     </div>
                     <?php } ?>
-                    <div class="posts__container__box__post__content">
-                        <div class="posts__container__box__post__content__title left"><?= $fetchPosts['title']; ?></div>
-                        <div class="posts__container__box__post__content__reactions left">
+                    <div class="posts__container__box__post__info">
+                        <div class="posts__container__box__post__info__title left"><?= $fetchPosts['title']; ?></div>
+                        <div class="posts__container__box__post__info__reactions left">
                                 <button><i class="fas fa-comment"></i><span><?= $totalPostComments; ?></span></button>
                                 <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span><?= $totalPostLikes; ?></span></button>
                         </div>
-                        <div class="posts__container__box__post__content__tags left">
-                            <div class="posts__container__box__post__content__tags__tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
-                            <div class="posts__container__box__post__content__tags__tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
-                            <div class="posts__container__box__post__content__tags__tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
+                        <div class="posts__container__box__post__info__tags left">
+                            <div class="posts__container__box__post__info__tags__tag"><i class="fa-solid fa-tag"></i><?= $postCategory?></div>
+                            <div class="posts__container__box__post__info__tags__tag"><i class="fa-solid fa-location-dot"></i><?= $postVoivodeship?></div>
+                            <div class="posts__container__box__post__info__tags__tag"><i class="fa-solid fa-futbol"></i><?= $postLeague?></div>
                         </div>
-                        <div class="post_underline"></div>
+                    </div>
+                    <div class="posts__container__box__post__content">
                         <div class="posts__container__box__post__content__text"><?= $fetchPosts['content']; ?></div>
-                        <div class="post_underline"></div>
-                        <div class="posts__container__box__post__content__info">
-                            <div class="posts__container__box__post__content__info__date">
+                    </div>
+                    <div class="posts__container__box__post__footer">
+                        <div class="posts__container__box__post__footer__info">
+                            <div class="posts__container__box__post__footer__info__date">
                                 <p><?= $fetchPosts['date']?></p>
                             </div>
-                            <div class="posts__container__box__post__content__info__user">
+                            <div class="posts__container__box__post__footer__info__user">
                                 <i class="fa-solid fa-user"></i>
                                 <p><?= $fetchPosts['username']?></p>
                             </div>

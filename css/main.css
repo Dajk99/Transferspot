@@ -295,7 +295,7 @@ header .fa-chevron-down {
   text-align: center;
 }
 .home__container__box-text {
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
   color: #ffffff;
   font-size: 2.3rem;
   font-weight: 200;
@@ -406,57 +406,10 @@ header .fa-chevron-down {
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
 }
-.posts__container__box__post__content {
+.posts__container__box__post__info, .posts__container__box__post__content, .posts__container__box__post__footer {
   padding: 1rem;
 }
-.posts__container__box__post__content__info {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-.posts__container__box__post__content__info__date {
-  color: #b1b1b1;
-  font-size: 1.4rem;
-}
-.posts__container__box__post__content__info__user {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  font-size: 1.4rem;
-}
-.posts__container__box__post__content__info__user i {
-  margin-right: 0.5rem;
-}
-.posts__container__box__post__content__info__user p {
-  font-weight: bolder;
-}
-.posts__container__box__post__content .underline {
-  height: 0.1rem;
-  background-color: #e5e5e5;
-  margin: 0.5rem 0 1rem;
-}
-.posts__container__box__post__content .post_underline {
-  height: 0.1rem;
-  background-color: #e5e5e5;
-  margin: 0.8rem 0;
-}
-.posts__container__box__post__content__title {
+.posts__container__box__post__info__title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -468,21 +421,7 @@ header .fa-chevron-down {
   font-size: 1.8rem;
   font-weight: bolder;
 }
-.posts__container__box__post__content__text {
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
-  font-size: 1.6rem;
-  text-align: justify;
-}
-.posts__container__box__post__content .left {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
-}
-.posts__container__box__post__content__tags, .posts__container__box__post__content__reactions {
+.posts__container__box__post__info__tags, .posts__container__box__post__info__reactions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -491,10 +430,10 @@ header .fa-chevron-down {
           justify-content: center;
   text-align: center;
 }
-.posts__container__box__post__content__tags i, .posts__container__box__post__content__reactions i {
+.posts__container__box__post__info__tags i, .posts__container__box__post__info__reactions i {
   margin-right: 0.5rem;
 }
-.posts__container__box__post__content__tags {
+.posts__container__box__post__info__tags {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -502,19 +441,85 @@ header .fa-chevron-down {
   gap: 0.2rem;
   font-size: 1.4rem;
 }
-.posts__container__box__post__content__tags i {
+.posts__container__box__post__info__tags i {
   color: rgb(252, 163, 17);
 }
-.posts__container__box__post__content__reactions {
+.posts__container__box__post__info__reactions {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 0.5rem;
   gap: 1rem;
 }
-.posts__container__box__post__content__reactions i,
-.posts__container__box__post__content__reactions span {
+.posts__container__box__post__info__reactions i,
+.posts__container__box__post__info__reactions span {
   font-size: 1.6rem;
+}
+.posts__container__box__post__info .left {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.posts__container__box__post__info .underline {
+  height: 0.1rem;
+  background-color: #e5e5e5;
+  margin: 0.5rem 0 1rem;
+}
+.posts__container__box__post__info .post_underline {
+  height: 0.1rem;
+  background-color: #e5e5e5;
+  margin: 0.8rem 0;
+}
+.posts__container__box__post__content {
+  border-top: 0.2rem solid rgb(20, 33, 61);
+}
+.posts__container__box__post__content__text {
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+  text-align: justify;
+}
+.posts__container__box__post__footer {
+  background-color: rgb(20, 33, 61);
+}
+.posts__container__box__post__footer__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+.posts__container__box__post__footer__info__date, .posts__container__box__post__footer__info__user {
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+.posts__container__box__post__footer__info__user {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.posts__container__box__post__footer__info__user i {
+  margin-right: 0.5rem;
+}
+.posts__container__box__post__footer__info__user p {
+  font-weight: bolder;
 }
 .posts__container__box__info {
   display: -webkit-box;
@@ -706,25 +711,25 @@ footer {
   .posts__container__form-input, .posts__container__form-btn i {
     font-size: 2rem;
   }
-  .posts__container__box__post__content__info__date {
-    font-size: 1.9rem;
-  }
-  .posts__container__box__post__content__info__user {
-    font-size: 1.7rem;
-  }
-  .posts__container__box__post__content__title {
+  .posts__container__box__post__info__title {
     font-size: 2.2rem;
+  }
+  .posts__container__box__post__info__tags {
+    gap: 0.5rem;
+    font-size: 1.6rem;
+  }
+  .posts__container__box__post__info__reactions i,
+  .posts__container__box__post__info__reactions span {
+    font-size: 2rem;
   }
   .posts__container__box__post__content__text {
     font-size: 1.9rem;
   }
-  .posts__container__box__post__content__tags {
-    gap: 0.5rem;
-    font-size: 1.6rem;
+  .posts__container__box__post__footer__info__date {
+    font-size: 1.9rem;
   }
-  .posts__container__box__post__content__reactions i,
-  .posts__container__box__post__content__reactions span {
-    font-size: 2rem;
+  .posts__container__box__post__footer__info__user {
+    font-size: 1.7rem;
   }
   .posts__container__box__info p,
   .posts__container__box__info a {
@@ -799,13 +804,13 @@ footer {
   .posts__container__form-input, .posts__container__form-btn i {
     font-size: 2.2rem;
   }
-  .posts__container__box__post__content__info__date {
+  .posts__container__box__post__footer__info__date {
     font-size: 1.8rem;
   }
-  .posts__container__box__post__content__info__user {
+  .posts__container__box__post__footer__info__user {
     font-size: 1.6rem;
   }
-  .posts__container__box__post__content__info__user i {
+  .posts__container__box__post__footer__info__user i {
     margin-right: 0.5rem;
   }
   .categories__container__box-text {
@@ -847,10 +852,10 @@ footer {
     text-align: center;
     gap: 2rem;
   }
-  .posts__container__box__post__content__title {
+  .posts__container__box__post__info__title {
     font-size: 2.1rem;
   }
-  .posts__container__box__post__content__tags {
+  .posts__container__box__post__info__tags {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
@@ -858,15 +863,15 @@ footer {
     gap: 0.3rem;
     font-size: 1.8rem;
   }
-  .posts__container__box__post__content__text {
-    font-size: 2.2rem;
-  }
-  .posts__container__box__post__content__reactions {
+  .posts__container__box__post__info__reactions {
     gap: 2.5rem;
   }
-  .posts__container__box__post__content__reactions i,
-  .posts__container__box__post__content__reactions span {
+  .posts__container__box__post__info__reactions i,
+  .posts__container__box__post__info__reactions span {
     font-size: 2rem;
+  }
+  .posts__container__box__post__content__text {
+    font-size: 2.2rem;
   }
   .posts__container__box__info p,
   .posts__container__box__info a {
@@ -917,14 +922,7 @@ footer {
     grid-template-columns: repeat(auto-fit, minmax(55rem, 1fr));
   }
   .posts__container__box__post__content__title {
-    font-size: 2.4rem;
-  }
-  .posts__container__box__post__content__tags {
-    font-size: 2rem;
-  }
-  .posts__container__box__post__content__reactions i,
-  .posts__container__box__post__content__reactions span {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
   }
   .categories__container__box-text {
     font-size: 3rem;

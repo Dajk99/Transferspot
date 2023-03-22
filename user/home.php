@@ -122,20 +122,20 @@ if(isset($_SESSION['user_id'])){
                     <?php
                     }
                     ?>
-                    <div class="posts__container__box__post__content">
-                        <div class="posts__container__box__post__content__title"><?= $fetchPosts['title']; ?></div>
-                        <div class="posts__container__box__post__content__reactions">
+                    <div class="posts__container__box__post__info">
+                        <div class="posts__container__box__post__info__title"><?= $fetchPosts['title']; ?></div>
+                        <div class="posts__container__box__post__info__reactions">
                             <button><i class="fas fa-comment"></i><span><?= $totalPostComments; ?></span></button>
                             <button type="submit" name="like_post"><i class="fas fa-heart" style="<?php if($confirmLikes->rowCount() > 0){ echo 'color: $red;'; } ?>"></i><span><?= $totalPostLikes; ?></span></button>
                         </div>
-                        <div class="posts__container__box__post__content__tags">
-                            <div class="posts__container__box__post__content__tags__tag">
+                        <div class="posts__container__box__post__info__tags">
+                            <div class="posts__container__box__post__info__tags__tag">
                                 <i class="fas fa-tag"></i><?= $fetchPosts['category']; ?>
                             </div>
-                            <div class="posts__container__box__post__content__tags__tag">
+                            <div class="posts__container__box__post__info__tags__tag">
                                 <i class="fa-solid fa-location-dot"></i><?= $fetchPosts['voivodeship']; ?>
                             </div>
-                            <div class="posts__container__box__post__content__tags__tag">
+                            <div class="posts__container__box__post__info__tags__tag">
                                 <i class="fa-solid fa-futbol"></i><?= $fetchPosts['league']; ?>
                             </div>
                         </div>
