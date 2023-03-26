@@ -42,7 +42,7 @@ if(!isset($userId)){
             <button name="search_btn" class="show-ann__form-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
 
-        <div class="show-ann__container show-ann__container--flex">
+        <div class="show-ann__container">
 
             <?php
                 if(isset($_POST['search_box']) OR isset($_POST['search_btn'])){

@@ -207,7 +207,7 @@ if(isset($_POST['delete_image'])){
                 <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');"><i class="fa-solid fa-file-circle-xmark"></i><p>usuń ogłoszenie</p></button>
             </div>
             <div class="ann-editor__form-comeback">
-                <a href="view_ann.php">Wróć do ogłoszeń</a>
+                <a href="./read_ann.php?post_id=<?=$postId ?>"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
             </div>
         </form>
         <?php

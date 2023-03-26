@@ -130,7 +130,7 @@ $getId = $_GET['post_id'];
                     echo '<p class="comments__container-text">Brak komentarzy...</p>';
                 }
             ?>
-            <a href="./home.php#home"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>    
+            <a href="./home.php#announcements"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>    
         </div>         
     </section>
     

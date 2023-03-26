@@ -127,9 +127,10 @@
                     <div class="show-ann__container__box__content__text">
                         <?= $fetchPosts['content']; ?>
                     </div>
+                    <div class="underline--post"></div>
                     <div class="show-ann__container__box__content__btns">
-                        <a href="edit_ann.php?post_id=<?= $postId; ?>" class="btn form-btn navy-btn"><i class="fa-solid fa-pen-to-square"></i></a>
-                        <button type="submit" name="delete" class="btn form-btn red-btn" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');">
+                        <a href="edit_ann.php?post_id=<?= $postId; ?>" class="show-ann__container__box__content__btns__btn show-ann__container__box__content__btns__btn--edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                        <button type="submit" name="delete" class="show-ann__container__box__content__btns__btn show-ann__container__box__content__btns__btn--delete" onclick="return confirm('Wybrane ogłoszenie zostanie usunięte, kontynuować?');">
                             <i class="fa-solid fa-trash"></i>
                         </button>
                     </div>

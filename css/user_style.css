@@ -149,11 +149,6 @@ section {
 .form-btn {
   margin-top: 1rem;
   border: none;
-  -webkit-transition: letter-spacing 0.3s;
-  transition: letter-spacing 0.3s;
-}
-.form-btn:hover {
-  letter-spacing: 0.1rem;
 }
 
 .red-btn,
@@ -353,6 +348,7 @@ section {
       -ms-flex-align: center;
           align-items: center;
   grid-column: 1/2;
+  letter-spacing: 0.1rem;
 }
 .header__navbar-item--login, .header__navbar-item--logout {
   display: -webkit-box;
@@ -363,6 +359,7 @@ section {
       -ms-flex-direction: column;
           flex-direction: column;
   grid-column: 1/2;
+  letter-spacing: normal;
 }
 .header__navbar-item--login i, .header__navbar-item--logout i {
   -webkit-transition: -webkit-transform 0.3s;
@@ -612,9 +609,6 @@ section {
 .show-ann__container__box__content__icons__icon-likes, .show-ann__container__box__content__icons__icon-comments {
   margin-right: 0.5rem;
 }
-.show-ann__container__box__content__status {
-  margin-top: 0.5rem;
-}
 .show-ann__container__box__content__status__text {
   font-size: 1.5rem;
 }
@@ -649,7 +643,20 @@ section {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  gap: 1rem;
+  gap: 2.5rem;
+}
+.show-ann__container__box__content__btns__btn {
+  font-size: 1.8rem;
+  overflow: hidden;
+  -webkit-transition: color 0.3s;
+  transition: color 0.3s;
+  cursor: pointer;
+}
+.show-ann__container__box__content__btns__btn--edit:hover {
+  color: rgb(252, 163, 17);
+}
+.show-ann__container__box__content__btns__btn--delete:hover {
+  color: rgba(192, 0, 0, 0.9);
 }
 .show-ann__container__empty {
   font-size: 1.7rem;
@@ -924,6 +931,9 @@ section {
     font-size: 2rem;
   }
   .show-ann__container__box__content__text {
+    font-size: 2.1rem;
+  }
+  .show-ann__container__box__content__btns__btn {
     font-size: 2.1rem;
   }
   .show-ann__container__empty {

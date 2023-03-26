@@ -103,7 +103,7 @@ if(isset($_GET['category'])) {
                     }
                 ?>
             </div>
-            <a href="./home.php#home"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
+            <a href="./home.php#categories"><i class="fa-solid fa-arrow-left comeback-arrow"></i></a>
         </div>
     </section>  
     <script src="../js/main.js"></script>

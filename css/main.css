@@ -921,7 +921,7 @@ footer {
   .posts__container__box {
     grid-template-columns: repeat(auto-fit, minmax(55rem, 1fr));
   }
-  .posts__container__box__post__content__title {
+  .posts__container__box__post__info__title {
     font-size: 2.5rem;
   }
   .categories__container__box-text {

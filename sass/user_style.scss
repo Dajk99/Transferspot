@@ -133,11 +133,6 @@ section {
 .form-btn {
 	margin-top: 1rem;
 	border: none;
-	transition: letter-spacing 0.3s;
-
-	&:hover {
-		letter-spacing: 0.1rem;
-	}
 }
 
 .red-btn,
@@ -323,12 +318,14 @@ section {
 			justify-content: center;
 			align-items: center;
 			grid-column: 1/2;
+			letter-spacing: 0.1rem;
 
 			&--login,
 			&--logout {
 				display: flex;
 				flex-direction: column;
 				grid-column: 1/2;
+				letter-spacing: normal;
 
 				i {
 					transition: transform 0.3s;
@@ -545,8 +542,6 @@ section {
 				}
 
 				&__status {
-					margin-top: 0.5rem;
-
 					&__text {
 						font-size: 1.5rem;
 						@include firstLetter;
@@ -575,7 +570,26 @@ section {
 
 				&__btns {
 					display: flex;
-					gap: 1rem;
+					gap: 2.5rem;
+
+					&__btn {
+						font-size: 1.8rem;
+						overflow: hidden;
+						transition: color 0.3s;
+						cursor: pointer;
+					}
+
+					&__btn--edit {
+						&:hover {
+							color: $yellow;
+						}
+					}
+
+					&__btn--delete {
+						&:hover {
+							color: $red;
+						}
+					}
 				}
 			}
 		}
